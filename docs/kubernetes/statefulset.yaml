@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ark-server
+spec:
+  serviceName: ark-server
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ark-server
+  template:
+    metadata:
+      labels:
+        app: ark-server
+    spec:
+      initContainers:
+      - name: config
+        image: busybox
+        command: ['/bin/sh', '-c', './conf/update-configs.sh']
+        volumeMounts:
+        - name: conf
+          mountPath: /conf
+        - name: ark
+          mountPath: /ark
+          readOnly: false
+      containers:
+      - name: ark
+        image: aimvector/ark:latest
+        env:
+        - name: UPDATEPONSTART
+          value: "0"
+        - name: ADMINPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: ADMINPASSWORD
+        - name: BACKUPONSTOP
+          value: "1"
+        - name: BACKUPONSTART
+          value: "0"
+        - name: WARNONSTOP
+          value: "1"
+        - name: SESSIONNAME
+          value: "thatdevopsark"
+        ports:
+        - containerPort: 7777
+          name: clientudp
+        - containerPort: 7778
+          name: clientrawudp
+        - containerPort: 27015
+          name: queryportudpone
+        - containerPort: 27016
+          name: queryportudptwo
+        volumeMounts:
+        - name: conf
+          mountPath: /conf
+          readOnly: false
+        - name: ark
+          mountPath: /ark
+          readOnly: false
+      volumes:
+      - name: conf
+        configMap:
+          name: ark-configuration
+          defaultMode: 0755
+      - name: ark
+        hostPath:
+          path: /ark
+        # persistentVolumeClaim:
+        #   claimName: ark-server
+---
