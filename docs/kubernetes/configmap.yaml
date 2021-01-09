@@ -8,8 +8,9 @@ data:
     #!/bin/sh
     cd /conf 
     cp GameUserSettings.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/
-    cp arkmanager.cfg /ark/server/ShooterGame/Saved/Config/LinuxServer/
     cp Game.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/
+    cp arkmanager.cfg /ark/
+    
   
   GameUserSettings.ini: |+
     [ServerSettings]
