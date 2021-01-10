@@ -1,5 +1,8 @@
 # How to join That DevOps Ark
 
+
+## Get your Steam64 ID
+
 First things first, you will need your steam64 ID. <br/>
 
 * Open up steam
@@ -12,3 +15,33 @@ First things first, you will need your steam64 ID. <br/>
 * Paste the page URL you copied into the input section and click on `lookup
 * Copy the `steamID64` 
 * Paste it in the appropriate gaming discord channel
+
+## Wait for whitelist approval
+
+Once you've been added to the server, you will get credentials. </br>
+Move on to the next step
+
+## Add ThatDevOpsArk to your servers
+
+* Open Steam
+* In the top menu, click `View`
+* Click on `Servers`
+* Open the `FAVORITES` tab
+* Click on `ADD A SERVER` on the bottom right corner
+* Type in address: `192.53.169.17:30015`
+* Click on `FIND GAMES AT THIS ADDRESS`
+* Select the `ThatDevOpsArk` server by clicking on it once
+* Click on `ADD SELECTED GAME SERVER TO FAV...`
+
+## Connect to the server
+
+You can now either right click the added server and </br>
+click `Connect to Server`. This will open ark and join automatically.
+
+Or you can open Ark:
+* In Ark, click on `Join Ark`
+* Select `Favorites` from the `SESSION FILTER` drop down
+* You should see `ThatDevOpsArk` server, click it
+* Click the `Join` button. Enter the password.
+
+

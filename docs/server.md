@@ -35,13 +35,14 @@ docker run -it --rm \
 # server secrets
 
 $ENV:ADMINPASSWORD=xxxxxxxxx
+$ENV:SERVERPASSWORD=xxxxxxxxx
 
 
 # install 
 kubectl create ns ark
 
 #secrets
-kubectl -n ark create secret generic ark-secrets --from-literal=ADMINPASSWORD=$ENV:ADMINPASSWORD
+kubectl -n ark create secret generic ark-secrets --from-literal=ADMINPASSWORD=$ENV:ADMINPASSWORD --from-literal=SERVERPASSWORD=$ENV:SERVERPASSWORD
 
 #configuration
 kubectl apply -n ark -f .\docs\kubernetes\configmap.yaml
@@ -71,6 +72,16 @@ kubectl -n ark exec -it ark-server-0 -- du -sh /ark
 kubectl -n ark exec -it ark-server-0 -- arkmanager status
 
 kubectl -n ark exec -it ark-server-0 -- cat /ark/log/arkserver.log
+
+# check settings
+kubectl -n ark exec -it ark-server-0 -- cat /ark/server/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini 
+
+```
+
+## Save and Restart
+
+```
+kubectl -n ark exec -it ark-server-0 -- arkmanager restart --saveworld
 ```
 
 ## Service details 

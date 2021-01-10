@@ -29,6 +29,11 @@ spec:
         env:
         - name: UPDATEPONSTART
           value: "0"
+        - name: SERVERPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: SERVERPASSWORD
         - name: ADMINPASSWORD
           valueFrom:
             secretKeyRef:

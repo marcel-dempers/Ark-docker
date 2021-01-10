@@ -20,7 +20,7 @@ data:
     TamingSpeedMultiplier=3.00000
     HarvestAmountMultiplier=4
     DifficultyOffset=4
-    XPMultiplier=3.00000
+    XPMultiplier=1.50000
     EnablePVPGamma=0
     EnablePVEGamma=0
     AdminLogging=false
@@ -222,6 +222,7 @@ data:
     MaxPlayers=70
 
   arkmanager.cfg: |+
+    arkflag_exclusivejoin=true
     # --- USER CONFIG --- #
     # ARK server options - use ark_<optionname>=<value>
     # comment out these values if you want to define them
