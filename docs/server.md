@@ -7,18 +7,20 @@ docker volume create ark
 
 $ENV:ADMINPASSWORD=xxxxxxxxx
 
-docker run -it --rm `
--p 7777:7777/udp `
--p 7778:7778/udp `
--p 27015:27015/udp `
--p 27016:27016/udp `
--e UPDATEPONSTART=0 `
--e ADMINPASSWORD=$ENV:ADMINPASSWORD `
--e BACKUPONSTOP=1 `
--e BACKUPONSTART=0 `
--e WARNONSTOP=1 `
--e SESSIONNAME=thatdevopsark `
--v ark:/ark --name ark aimvector/ark
+docker run -it --rm \
+-p 30777:30777/udp \
+-p 30778:30778/udp \
+-p 30015:30015/udp \
+-p 30016:30016/udp \
+-e STEAMPORT=30778 \
+-e SERVERPORT=30015 \
+-e UPDATEPONSTART=0 \
+-e ADMINPASSWORD=$ADMINPASSWORD \
+-e BACKUPONSTOP=1 \
+-e BACKUPONSTART=0 \
+-e WARNONSTOP=1 \
+-e SESSIONNAME=ThatDevopsArk \
+-v /data/ark:/ark --name ark aimvector/ark
 ```
 
 ## Config locations WSL2
