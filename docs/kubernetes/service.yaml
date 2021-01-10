@@ -3,49 +3,23 @@ kind: Service
 metadata:
   name: ark-server
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-  - port: 27015
+  - port: 30015
     protocol: UDP
     name: queryportudpone
-    targetPort: 27015
-  - port: 27016
+    nodePort: 30015
+  - port: 30016
     protocol: UDP
     name: queryportudptwo
-    targetPort: 27016
-  - port: 7777
+    nodePort: 30016
+  - port: 30777
     protocol: UDP
     name: clientudp
-    targetPort: 7777
-  - port: 7778
+    nodePort: 30777
+  - port: 30778
     protocol: UDP
     name: clientrawudp
-    targetPort: 7778
+    nodePort: 30778
   selector:
     app: ark-server
----
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: ark-server
-# spec:
-#   type: NodePort
-#   ports:
-#   - port: 27015
-#     protocol: UDP
-#     name: queryportudpone
-#     nodePort: 30015
-#   - port: 27016
-#     protocol: UDP
-#     name: queryportudptwo
-#     nodePort: 30016
-#   - port: 7777
-#     protocol: UDP
-#     name: clientudp
-#     nodePort: 30777
-#   - port: 7778
-#     protocol: UDP
-#     name: clientrawudp
-#     nodePort: 30778
-#   selector:
-#     app: ark-server

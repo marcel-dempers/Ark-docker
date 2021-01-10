@@ -68,7 +68,9 @@ kubectl -n ark logs ark-server-0
 # check ark size
 kubectl -n ark exec -it ark-server-0 -- du -sh /ark
 
+kubectl -n ark exec -it ark-server-0 -- arkmanager status
 
+kubectl -n ark exec -it ark-server-0 -- cat /ark/log/arkserver.log
 ```
 
 ## Service details 

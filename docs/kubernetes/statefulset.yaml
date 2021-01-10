@@ -41,15 +41,19 @@ spec:
         - name: WARNONSTOP
           value: "1"
         - name: SESSIONNAME
-          value: "thatdevopsark"
+          value: "ThatDevOpsArk"
+        - name: STEAMPORT
+          value: "30778"
+        - name: SERVERPORT
+          value: "30015"
         ports:
-        - containerPort: 7777
+        - containerPort: 30777
           name: clientudp
-        - containerPort: 7778
+        - containerPort: 30778
           name: clientrawudp
-        - containerPort: 27015
+        - containerPort: 30015
           name: queryportudpone
-        - containerPort: 27016
+        - containerPort: 30016
           name: queryportudptwo
         volumeMounts:
         - name: conf

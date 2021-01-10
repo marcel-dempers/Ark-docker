@@ -17,10 +17,10 @@ data:
     alwaysNotifyPlayerJoined=True
     alwaysNotifyPlayerLeft=True
     DayTimeSpeedScale=0.50000
-    TamingSpeedMultiplier=5.00000
+    TamingSpeedMultiplier=3.00000
     HarvestAmountMultiplier=4
     DifficultyOffset=4
-    XPMultiplier=4.00000
+    XPMultiplier=3.00000
     EnablePVPGamma=0
     EnablePVEGamma=0
     AdminLogging=false
@@ -235,8 +235,7 @@ data:
     ark_MaxPlayers=${MAX_PLAYERS}                                   # Number MAX of player
     # ark_bRawSockets=""                                            # Uncomment if you want to use ark raw socket (instead of steam p2p) [Not recommended]
     arkflag_log=""
-
-
+    
     # ----- Mods ----- #
     #ark_GameModIds="487516323,487516324,487516325"                     # Uncomment to specify additional mods by Mod Id separated by commas
     # Mod OS Selection
