@@ -76,12 +76,35 @@ kubectl -n ark exec -it ark-server-0 -- cat /ark/log/arkserver.log
 # check settings
 kubectl -n ark exec -it ark-server-0 -- cat /ark/server/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini 
 
+# white list players 
+kubectl -n ark exec -it ark-server-0 -- arkmanager rconcmd "AllowPlayerToJoinNoCheck xxxxxxxx"
+
+#list players 
+kubectl -n ark exec -it ark-server-0 -- arkmanager rconcmd 'ListPlayers'
+
 ```
 
-## Save and Restart
+## Graceful save+backup+restart
+
+This script will countdown broadcast to all that server shutdown will occur in provided minutes.
 
 ```
-kubectl -n ark exec -it ark-server-0 -- arkmanager restart --saveworld
+# graceful restart including a count down broadcast for players
+.\docs\kubernetes\update.ps1
+```
+
+Shutting down & restart pod if needed
+
+```
+
+Write-Host "saving world..."
+kubectl -n ark exec -it ark-server-0 -- arkmanager saveworld
+Write-Host "running backup..."
+kubectl -n ark exec -it ark-server-0 -- arkmanager backup
+Write-Host "running restart..."
+kubectl -n ark exec -it ark-server-0 -- arkmanager shutdown
+
+kubectl -n ark delete po ark-server-0
 ```
 
 ## Service details 

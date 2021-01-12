@@ -27,6 +27,8 @@ spec:
       - name: ark
         image: aimvector/ark:latest
         env:
+        - name: ALT_SAVE_DIRECTORY_NAME
+          value: "ArkTheIslandSave"
         - name: UPDATEPONSTART
           value: "0"
         - name: SERVERPASSWORD

@@ -14,9 +14,11 @@ data:
   
   GameUserSettings.ini: |+
     [ServerSettings]
+    ResourcesRespawnPeriodMultiplier=0.5
     alwaysNotifyPlayerJoined=True
     alwaysNotifyPlayerLeft=True
     DayTimeSpeedScale=0.50000
+    NightTimeSpeedScale=3.0
     TamingSpeedMultiplier=3.00000
     HarvestAmountMultiplier=4
     DifficultyOffset=4
@@ -26,9 +28,9 @@ data:
     AdminLogging=false
     PerPlatformMaxStructuresMultiplier=10.00000
     ForceFlyerExplosives=0
+    DinoCharacterStaminaDrainMultiplier=0.5
     MaxPlatformSaddleStructureLimit=100
     AllowCrateSpawnsOnTopOfStructures=1
-    AllowFlyingStaminaRecovery=True
     ShowMapPlayerLocation=True
     allowThirdPersonPlayer=True
     ServerCrosshair=True
@@ -222,6 +224,7 @@ data:
     MaxPlayers=70
 
   arkmanager.cfg: |+
+    ark_AltSaveDirectoryName=${ALT_SAVE_DIRECTORY_NAME}   
     arkflag_exclusivejoin=true
     # --- USER CONFIG --- #
     # ARK server options - use ark_<optionname>=<value>
@@ -274,6 +277,8 @@ data:
 
   Game.ini: |+
     [/script/shootergame.shootergamemode]
+    ResourceNoReplenishRadiusPlayers=0.1
+    ResourceNoReplenishRadiusStructures=0.1
     OverridePlayerLevelEngramPoints=100
     OverridePlayerLevelEngramPoints=100
     OverridePlayerLevelEngramPoints=100
