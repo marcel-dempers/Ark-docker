@@ -224,6 +224,16 @@ data:
     MaxPlayers=70
 
   arkmanager.cfg: |+
+    ark_PreventDownloadSurvivors=False
+    ark_PreventDownloadItems=False
+    ark_PreventDownloadDinos=False
+    ark_PreventUploadSurvivors=False
+    ark_PreventUploadDinos=False
+    ark_PreventUploadItems=False
+    ark_noTributeDownloads=False
+    arkopt_clusterid=${CLUSTER_ID}
+    arkflag_NoTransferFromFiltering=True
+    arkopt_ClusterDirOverride=/ark/server/ShooterGame/Clusters
     ark_AltSaveDirectoryName=${ALT_SAVE_DIRECTORY_NAME}   
     arkflag_exclusivejoin=true
     # --- USER CONFIG --- #

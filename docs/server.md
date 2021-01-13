@@ -62,13 +62,13 @@ docker run -it --rm \
 
 $ENV:ADMINPASSWORD=xxxxxxxxx
 $ENV:SERVERPASSWORD=xxxxxxxxx
-
+$ENV:CLUSTER_ID=xxxxxxxxx
 
 # install 
 kubectl create ns ark
 
 #secrets
-kubectl -n ark create secret generic ark-secrets --from-literal=ADMINPASSWORD=$ENV:ADMINPASSWORD --from-literal=SERVERPASSWORD=$ENV:SERVERPASSWORD
+kubectl -n ark create secret generic ark-secrets --from-literal=ADMINPASSWORD=$ENV:ADMINPASSWORD --from-literal=SERVERPASSWORD=$ENV:SERVERPASSWORD --from-literal=CLUSTER_ID=$ENV:CLUSTER_ID
 
 #configuration
 kubectl apply -n ark -f .\docs\kubernetes\configmap.yaml
@@ -128,9 +128,13 @@ kubectl -n ark exec -it ark-server-0 -- arkmanager saveworld
 Write-Host "running backup..."
 kubectl -n ark exec -it ark-server-0 -- arkmanager backup
 Write-Host "running restart..."
-kubectl -n ark exec -it ark-server-0 -- arkmanager shutdown
+kubectl -n ark exec -it ark-server-0 -- arkmanager stop
 
 kubectl -n ark delete po ark-server-0
 ```
 
 ## Service details 
+
+```
+kubectl -n ark exec -it ark-server-0 -- arkmanager status
+```

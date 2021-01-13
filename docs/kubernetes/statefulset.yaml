@@ -27,6 +27,8 @@ spec:
       - name: ark
         image: aimvector/ark:latest
         env:
+        - name: SERVERMAP
+          value: TheIsland
         - name: ALT_SAVE_DIRECTORY_NAME
           value: "ArkTheIslandSave"
         - name: UPDATEPONSTART
@@ -53,6 +55,11 @@ spec:
           value: "30778"
         - name: SERVERPORT
           value: "30015"
+        - name: CLUSTER_ID
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: CLUSTER_ID
         ports:
         - containerPort: 30777
           name: clientudp
