@@ -15,14 +15,16 @@ docker run -it --rm \
 -p 30015:30015/udp \
 -p 30016:30016/udp \
 -e ALT_SAVE_DIRECTORY_NAME="ArkTheIslandSave" \
+-e SERVERMAP=TheIsland \
 -e STEAMPORT=30778 \
 -e SERVERPORT=30015 \
 -e UPDATEPONSTART=0 \
 -e ADMINPASSWORD=$ADMINPASSWORD \
--e BACKUPONSTOP=1 \
+-e BACKUPONSTOP=0 \
 -e BACKUPONSTART=0 \
 -e WARNONSTOP=1 \
--e SESSIONNAME=ThatDevopsArk \
+-e SESSIONNAME=ThatDevopsArkIsland \
+-e CLUSTER_ID=testcluster \
 -v /data/ark:/ark --name ark aimvector/ark
 
 #instance 2 = Ark ScorchedEarth (optional)
@@ -33,15 +35,17 @@ docker run -it --rm \
 -p 30017:30017/udp \
 -p 30018:30018/udp \
 -e ALT_SAVE_DIRECTORY_NAME="ArkScorchedEarthSave" \
+-e SERVERMAP=ScorchedEarth_P \
 -e STEAMPORT=30780 \
 -e SERVERPORT=30017 \
 -e UPDATEPONSTART=0 \
 -e ADMINPASSWORD=$ADMINPASSWORD \
--e BACKUPONSTOP=1 \
+-e BACKUPONSTOP=0 \
 -e BACKUPONSTART=0 \
 -e WARNONSTOP=1 \
--e SESSIONNAME=ThatDevopsArk-02 \
--v /data/ark:/ark --name ark aimvector/ark
+-e SESSIONNAME=ThatDevopsArkScorchedEarth \
+-e CLUSTER_ID=testcluster \
+-v /data/ark:/ark --name arkse aimvector/ark
 
 ```
 
