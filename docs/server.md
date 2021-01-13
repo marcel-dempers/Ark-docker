@@ -5,13 +5,16 @@
 # needed on windows because of file permissions
 docker volume create ark
 
-$ENV:ADMINPASSWORD=xxxxxxxxx
+ADMINPASSWORD=xxxxxxxxx
+
+#instance 1 = Ark Island
 
 docker run -it --rm \
 -p 30777:30777/udp \
 -p 30778:30778/udp \
 -p 30015:30015/udp \
 -p 30016:30016/udp \
+-e ALT_SAVE_DIRECTORY_NAME="ArkTheIslandSave" \
 -e STEAMPORT=30778 \
 -e SERVERPORT=30015 \
 -e UPDATEPONSTART=0 \
@@ -21,6 +24,25 @@ docker run -it --rm \
 -e WARNONSTOP=1 \
 -e SESSIONNAME=ThatDevopsArk \
 -v /data/ark:/ark --name ark aimvector/ark
+
+#instance 2 = Ark ScorchedEarth (optional)
+
+docker run -it --rm \
+-p 30779:30779/udp \
+-p 30780:30780/udp \
+-p 30017:30017/udp \
+-p 30018:30018/udp \
+-e ALT_SAVE_DIRECTORY_NAME="ArkScorchedEarthSave" \
+-e STEAMPORT=30780 \
+-e SERVERPORT=30017 \
+-e UPDATEPONSTART=0 \
+-e ADMINPASSWORD=$ADMINPASSWORD \
+-e BACKUPONSTOP=1 \
+-e BACKUPONSTART=0 \
+-e WARNONSTOP=1 \
+-e SESSIONNAME=ThatDevopsArk-02 \
+-v /data/ark:/ark --name ark aimvector/ark
+
 ```
 
 ## Config locations WSL2
