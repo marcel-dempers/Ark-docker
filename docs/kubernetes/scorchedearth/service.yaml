@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: se-server
+spec:
+  type: NodePort
+  ports:
+  - port: 30017
+    protocol: UDP
+    name: queryportudpone
+    nodePort: 30017
+  - port: 30018
+    protocol: UDP
+    name: queryportudptwo
+    nodePort: 30018
+  - port: 30779
+    protocol: UDP
+    name: clientudp
+    nodePort: 30779
+  - port: 30780
+    protocol: UDP
+    name: clientrawudp
+    nodePort: 30780
+  selector:
+    app: se-server

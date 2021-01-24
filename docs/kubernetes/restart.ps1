@@ -3,7 +3,7 @@ $ENV:REASON="updating configuration"
 
 $ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-kubeconfig.yaml"
 $delayMinutes = 2
-while ($delayMinutes -ge 0)
+while ($delayMinutes -gt 0)
 {
   if ($delayMinutes -eq 60)
   {

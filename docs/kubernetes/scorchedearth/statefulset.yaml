@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: se-server
+spec:
+  serviceName: se-server
+  replicas: 1
+  selector:
+    matchLabels:
+      app: se-server
+  template:
+    metadata:
+      labels:
+        app: se-server
+    spec:
+      initContainers:
+      - name: config
+        image: busybox
+        command: ['/bin/sh', '-c', './conf/update-configs.sh']
+        volumeMounts:
+        - name: conf
+          mountPath: /conf
+        - name: ark
+          mountPath: /ark
+          readOnly: false
+      containers:
+      - name: ark
+        image: aimvector/ark:latest
+        env:
+        - name: SERVERMAP
+          value: ScorchedEarth_P
+        - name: ALT_SAVE_DIRECTORY_NAME
+          value: "ArkScorchedEarthSave"
+        - name: UPDATEPONSTART
+          value: "0"
+        - name: SERVERPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: SERVERPASSWORD
+        - name: ADMINPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: ADMINPASSWORD
+        - name: BACKUPONSTOP
+          value: "1"
+        - name: BACKUPONSTART
+          value: "0"
+        - name: WARNONSTOP
+          value: "1"
+        - name: SESSIONNAME
+          value: "ThatDevopsArkScorchedEarth"
+        - name: STEAMPORT
+          value: "30780"
+        - name: SERVERPORT
+          value: "30017"
+        - name: CLUSTER_ID
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: CLUSTER_ID
+        ports:
+        - containerPort: 30779
+          name: clientudp
+        - containerPort: 30780
+          name: clientrawudp
+        - containerPort: 30017
+          name: queryportudpone
+        - containerPort: 30018
+          name: queryportudptwo
+        volumeMounts:
+        - name: conf
+          mountPath: /conf
+          readOnly: false
+        - name: ark
+          mountPath: /ark
+          readOnly: false
+      volumes:
+      - name: conf
+        configMap:
+          name: ark-configuration
+          defaultMode: 0755
+      - name: ark
+        hostPath:
+          path: /scorchedearth
+        # persistentVolumeClaim:
+        #   claimName: se-server
+---

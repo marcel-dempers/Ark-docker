@@ -21,7 +21,7 @@ data:
     NightTimeSpeedScale=3.0
     TamingSpeedMultiplier=3.00000
     HarvestAmountMultiplier=4
-    DifficultyOffset=4
+    DifficultyOffset=5
     XPMultiplier=1.50000
     EnablePVPGamma=0
     EnablePVEGamma=0
@@ -287,6 +287,18 @@ data:
 
   Game.ini: |+
     [/script/shootergame.shootergamemode]
+    TamedDinoCharacterFoodDrainMultiplier=0.25
+    KillXPMultiplier=2
+    HarvestXPMultiplier=2
+    CraftXPMultiplier=2
+    GenericXPMultiplier=2
+    FuelConsumptionIntervalMultiplier=0.5
+    SupplyCrateLootQualityMultiplier=4
+    MatingIntervalMultiplier=0.25
+    EggHatchSpeedMultiplier=2
+    BabyMatureSpeedMultiplier=4
+    BabyFoodConsumptionSpeedMultiplier=0.5
+    LayEggIntervalMultiplier=3
     ResourceNoReplenishRadiusPlayers=0.1
     ResourceNoReplenishRadiusStructures=0.1
     OverridePlayerLevelEngramPoints=100
