@@ -1,5 +1,5 @@
 ark:
-  container_name: ark-server-tools
+  container_name: ark
   image: aimvector/ark-server-tools:0.0.1
   environment:
     - SERVERPASSWORD=""
