@@ -2,47 +2,47 @@
 $ENV:REASON="updating configuration"
 
 $ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-kubeconfig.yaml"
-$delayMinutes = 2
+$delayMinutes = 1
 while ($delayMinutes -gt 0)
 {
   if ($delayMinutes -eq 60)
   {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
   }
 
   if ($delayMinutes -eq 45)
   {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
   }
 
   if ($delayMinutes -eq 30)
   {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
   }
 
   if ($delayMinutes -eq 15)
   {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
   }
 
   if ($delayMinutes -eq 10)
   {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
   }
 
   if ($delayMinutes -eq 5)
   {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
   }
 
   if ($delayMinutes -eq 2)
   {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
   }
 
   if ($delayMinutes -eq 1)
   {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server will restart in $delayMinutes min. Reason: $ENV:REASON"
   }
 
   Write-Host "Minutes Remaining: $($delayMinutes)"
@@ -51,12 +51,12 @@ while ($delayMinutes -gt 0)
 }
 
 
-kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast "Server restarting... Reason: $ENV:REASON"
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server restarting... Reason: $ENV:REASON"
 Write-Host "saving world..."
-kubectl -n ark exec -it ark-server-0 -- arkmanager saveworld
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager saveworld @arkmanager-island
 Write-Host "running backup..."
-kubectl -n ark exec -it ark-server-0 -- arkmanager backup
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager backup @arkmanager-island
 Write-Host "running restart..."
-kubectl -n ark exec -it ark-server-0 -- arkmanager restart
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager restart @arkmanager-island
 
-kubectl -n ark exec -it ark-server-0 -- arkmanager status
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager status @arkmanager-island
