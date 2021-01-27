@@ -1,26 +1,22 @@
 ark:
-  container_name: ark
-  image: boerngenschmidt/ark-docker
+  container_name: ark-server-tools
+  image: aimvector/ark-server-tools:0.0.1
   environment:
-    - SESSIONNAME=Ark Docker
-    - SERVERMAP=TheIsland
-    - MAX_PLAYERS=70
-    - SERVERPASSWORD="" 
-    - ADMINPASSWORD=adminpassword
-    - SERVERPORT=27015
-    - STEAMPORT=7778
-    - BACKUPONSTART=1
-    - BACKUPONSTOP=1
-    - WARNONSTOP=1
-    - UPDATEONSTART=1
-    - TZ=UTC
-    - ARK_GID=1000
-    - ARK_UID=1000
+    - SERVERPASSWORD=""
+    - ADMINPASSWORD=test
+    - BACKUPONSTART=0
+    - BACKUPONSTOP=0
+    - WARNONSTOP=0
+    - UPDATEONSTART=0
+    - CLUSTER_ID=ThatDevOpsArkCluster
   volumes:
-    - /my/path/to/ark:/ark
+    - ark:/ark
   ports:
-   - 7778:7778/udp
-   - 7778:7778
-   - 27015:27015/udp
-   - 27015:27015
-   - 32330:32330
+  - 30777:30777/udp 
+  - 30778:30778/udp
+  - 30015:30015/udp
+  - 30016:30016/udp
+  - 30779:30779/udp
+  - 30780:30780/udp
+  - 30017:30017/udp
+  - 30018:30018/udp
