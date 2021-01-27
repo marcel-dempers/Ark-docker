@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkmanager
+spec:
+  type: NodePort
+  ports:
+  - port: 30015
+    protocol: UDP
+    name: queryportudp1
+    nodePort: 30015
+  - port: 30016
+    protocol: UDP
+    name: queryportudp2
+    nodePort: 30016
+  - port: 30017
+    protocol: UDP
+    name: queryportudp3
+    nodePort: 30017
+  - port: 30018
+    protocol: UDP
+    name: queryportudp4
+    nodePort: 30018
+  - port: 30777
+    protocol: UDP
+    name: clientudp
+    nodePort: 30777
+  - port: 30778
+    protocol: UDP
+    name: clientrawudp
+    nodePort: 30778
+  - port: 30779
+    protocol: UDP
+    name: clientudp2
+    nodePort: 30779
+  - port: 30780
+    protocol: UDP
+    name: clientrawudp2
+    nodePort: 30780
+  selector:
+    app: arkmanager

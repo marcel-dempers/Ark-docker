@@ -1,0 +1,428 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ark-configuration
+data:
+  update-configs.sh: |
+    #!/bin/sh
+    cd /conf 
+    mkdir -p /ark/island/ShooterGame/Saved/Config/LinuxServer/
+    mkdir -p /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
+    mkdir -p /etc/arkmanager/instances/
+
+    #island
+    cp GameUserSettings.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
+    cp Game.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
+    
+    #scorchedearth
+    cp GameUserSettings.ini /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
+    cp Game.ini /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
+
+    cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
+    cp arkmanager-island.cfg /etc/arkmanager/instances/arkmanager-island.cfg
+    
+    #disable SE for now
+    #cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
+  arkmanager.cfg: |+
+    arkstChannel=master                                                 # change it to a different branch to get non-stable versions
+    install_bindir="/usr/bin"
+    install_libexecdir="/usr/libexec/arkmanager"
+    install_datadir="/usr/share/arkmanager"
+    # config SteamCMD
+    steamcmdroot="/home/steam/steamcmd"                                 # path of your steamcmd instance
+    steamcmdexec="steamcmd.sh"                                          # name of steamcmd executable
+    steamcmd_user="steam"                                               # name of the system user who own steamcmd folder
+    steamcmd_appinfocache="/home/steam/Steam/appcache/appinfo.vdf"      # cache of the appinfo command
+    # config environment
+    arkserverexec="ShooterGame/Binaries/Linux/ShooterGameServer"        # name of ARK server executable
+    arkautorestartfile="ShooterGame/Saved/.autorestart"                 # path to autorestart file
+    # config Service
+    servicename="arkserv"                                               # Name of the service (don't change if you don't know what are you doing)
+    logdir="/ark/log/"                                                  # Logs path (default /var/log/arktools)                                         
+    # steamdb specific
+    appid=376030                                                        # Linux server App ID
+    mod_appid=346110                                                    # App ID for mods
+    # Need to be true to work with UPDATEPONSTART (See #10)
+    arkAutoUpdateOnStart="false"                                        # set this to true if you want to always update before startup
+    # We don't use the dots because it doesn't show.
+    progressDisplayType=spinner
+    ark_PreventDownloadSurvivors=False
+    ark_PreventDownloadItems=False
+    ark_PreventDownloadDinos=False
+    ark_PreventUploadSurvivors=False
+    ark_PreventUploadDinos=False
+    ark_PreventUploadItems=False
+    ark_noTributeDownloads=False
+    arkopt_clusterid=${CLUSTER_ID}
+    arkflag_NoTransferFromFiltering=True
+    arkopt_ClusterDirOverride=/ark/clusters
+    ark_ShowFloatingDamageText=True
+    arkflag_exclusivejoin=true
+    ark_ServerPassword=${SERVERPASSWORD}
+    ark_ServerAdminPassword=${ADMINPASSWORD}
+    ark_MaxPlayers=${MAX_PLAYERS}
+    arkflag_log=""
+    # ----- Mods ----- #
+    ark_GameModIds="895711211"
+    mod_branch=Windows
+    msgWarnUpdateMinutes="This ARK server will shutdown for an update in %d minutes"
+    msgWarnUpdateSeconds="This ARK server will shutdown for an update in %d seconds"
+    msgWarnRestartMinutes="This ARK server will shutdown for a restart in %d minutes"
+    msgWarnRestartSeconds="This ARK server will shutdown for a restart in %d seconds"
+    msgWarnShutdownMinutes="This ARK server will shutdown in %d minutes"
+    msgWarnShutdownSeconds="This ARK server will shutdown in %d seconds"
+    arkwarnminutes="60"                                                 # number of minutes to warn players when using update --warn
+    arkBackupPreUpdate="false"                                          # set this to true if you want to perform a backup before updating
+    arkMaxBackupSizeMB="500"                                            # Set to automatically remove old backups when size exceeds this limit
+  arkmanager-island.cfg: |+
+    arkserverroot="/ark/island"                    # path of your ARK server files (default ~/ARK)
+    arkbackupdir="/ark/backup/island"  		         # path to backup directory
+    arkStagingDir="/ark/staging/island"  
+    # Port config 
+    ark_Port=30778                                 # ARK server port (default 7778)
+    ark_QueryPort=30015                            # ARK query port (default 27016)
+    ark_RCONEnabled="True"                         # Enable RCON Protocol
+    ark_RCONPort="32330"
+    ark_AltSaveDirectoryName=ArkTheIslandSave
+    serverMap=TheIsland
+    ark_SessionName=ThatDevOpsArk
+  arkmanager-se.cfg: |+
+    arkserverroot="/ark/scorchedearth"                    # path of your ARK server files (default ~/ARK)
+    arkbackupdir="/ark/backup/scorchedearth"  		        # path to backup directory
+    arkStagingDir="/ark/staging/scorchedearth"  
+    # Port config 
+    ark_Port=30780                                        # ARK server port (default 7778)
+    ark_QueryPort=30017                                   # ARK query port (default 27016)
+    ark_RCONEnabled="True"                                # Enable RCON Protocol
+    ark_RCONPort="32331"
+    ark_AltSaveDirectoryName=ArkScorchedEarthSave
+    serverMap=ScorchedEarth_P
+    ark_SessionName=ThatDevOpsArkScorchedEarth
+  GameUserSettings.ini: |+
+    [ServerSettings]
+    ResourcesRespawnPeriodMultiplier=0.5
+    alwaysNotifyPlayerJoined=True
+    alwaysNotifyPlayerLeft=True
+    DayTimeSpeedScale=0.50000
+    NightTimeSpeedScale=3.0
+    TamingSpeedMultiplier=3.00000
+    HarvestAmountMultiplier=4
+    DifficultyOffset=5
+    XPMultiplier=1.50000
+    EnablePVPGamma=0
+    EnablePVEGamma=0
+    AdminLogging=false
+    PerPlatformMaxStructuresMultiplier=10.00000
+    ForceFlyerExplosives=0
+    DinoCharacterStaminaDrainMultiplier=0.5
+    MaxPlatformSaddleStructureLimit=100
+    AllowCrateSpawnsOnTopOfStructures=1
+    ShowMapPlayerLocation=True
+    allowThirdPersonPlayer=True
+    ServerCrosshair=True
+    ServerPassword=
+    ServerAdminPassword=
+    RCONEnabled=True
+    RCONPort=32330
+    TheMaxStructuresInRange=10500.000000
+    OxygenSwimSpeedStatMultiplier=1.000000
+    StructurePreventResourceRadiusMultiplier=1.000000
+    TribeNameChangeCooldown=15.000000
+    PlatformSaddleBuildAreaBoundsMultiplier=1.000000
+    StructurePickupTimeAfterPlacement=30.000000
+    StructurePickupHoldDuration=0.500000
+    AllowIntegratedSPlusStructures=True
+    AllowHideDamageSourceFromLogs=True
+    RaidDinoCharacterFoodDrainMultiplier=1.000000
+    PvEDinoDecayPeriodMultiplier=1.000000
+    KickIdlePlayersPeriod=3600.000000
+    AutoSavePeriodMinutes=15.000000
+    ListenServerTetherDistanceMultiplier=1.000000
+    MaxTamedDinos=5000.000000
+    ItemStackSizeMultiplier=1.000000
+    RCONServerGameLogBuffer=600.000000
+    AllowHitMarkers=True
+    [/Script/ShooterGame.ShooterGameUserSettings]
+    MasterAudioVolume=1.000000
+    MusicAudioVolume=1.000000
+    SFXAudioVolume=1.000000
+    VoiceAudioVolume=1.000000
+    UIScaling=1.000000
+    UIQuickbarScaling=0.650000
+    CameraShakeScale=0.650000
+    bFirstPersonRiding=False
+    bThirdPersonPlayer=False
+    bShowStatusNotificationMessages=True
+    TrueSkyQuality=0.000000
+    FOVMultiplier=1.000000
+    GroundClutterDensity=0.000000
+    bFilmGrain=False
+    bMotionBlur=False
+    bUseDistanceFieldAmbientOcclusion=False
+    bUseSSAO=False
+    bShowChatBox=True
+    bCameraViewBob=True
+    bInvertLookY=False
+    bFloatingNames=True
+    bChatBubbles=True
+    bHideServerInfo=False
+    bJoinNotifications=False
+    bCraftablesShowAllItems=False
+    bLocalInventoryItemsShowAllItems=False
+    bLocalInventoryCraftingShowAllItems=True
+    bRemoteInventoryItemsShowAllItems=False
+    bRemoteInventoryCraftingShowAllItems=False
+    bRemoteInventoryShowEngrams=True
+    LookLeftRightSensitivity=1.000000
+    LookUpDownSensitivity=1.000000
+    GraphicsQuality=1
+    ActiveLingeringWorldTiles=1
+    ClientNetQuality=3
+    LastServerSearchType=0
+    LastServerSort=2
+    LastPVESearchType=-1
+    LastDLCTypeSearchType=-1
+    LastServerSortAsc=True
+    LastAutoFavorite=True
+    LastServerSearchHideFull=False
+    LastServerSearchProtected=False
+    LastServerSearchIncludeServersWithActiveMods=True
+    HideItemTextOverlay=True
+    bQuickToggleItemNames=True
+    bDistanceFieldShadowing=False
+    LODScalar=0.780000
+    bToggleToTalk=False
+    HighQualityMaterials=True
+    HighQualitySurfaces=True
+    bTemperatureF=False
+    bDisableTorporEffect=False
+    bChatShowSteamName=False
+    bChatShowTribeName=True
+    bReverseTribeLogOrder=False
+    EmoteKeyBind1=0
+    EmoteKeyBind2=0
+    bNoBloodEffects=False
+    bLowQualityVFX=False
+    bSpectatorManualFloatingNames=False
+    bSuppressAdminIcon=True
+    bUseSimpleDistanceMovement=False
+    bDisableMeleeCameraSwingAnims=False
+    bHighQualityAnisotropicFiltering=False
+    bUseLowQualityLevelStreaming=True
+    bPreventInventoryOpeningSounds=False
+    bPreventItemCraftingSounds=False
+    bPreventHitMarkers=False
+    bPreventCrosshair=False
+    bPreventColorizedItemNames=False
+    bHighQualityLODs=False
+    bExtraLevelStreamingDistance=False
+    bEnableColorGrading=True
+    DOFSettingInterpTime=0.000000
+    bDisableBloom=False
+    bDisableLightShafts=False
+    LastJoinedSessionPerCategory=" "
+    LastJoinedSessionPerCategory=" "
+    LastJoinedSessionPerCategory=" "
+    LastJoinedSessionPerCategory=" "
+    LastJoinedSessionPerCategory=" "
+    LastJoinedSessionPerCategory=" "
+    LastJoinedSessionPerCategory=" "
+    LastJoinedSessionPerCategory=" "
+    LastJoinedSessionPerCategory=" "
+    bDisableMenuTransitions=False
+    bEnableInventoryItemTooltips=True
+    bRemoteInventoryShowCraftables=False
+    bNoTooltipDelay=False
+    LocalItemSortType=0
+    LocalCraftingSortType=0
+    RemoteItemSortType=0
+    RemoteCraftingSortType=0
+    VersionMetaTag=1
+    ShowExplorerNoteSubtitles=False
+    DisableMenuMusic=False
+    DisableDefaultCharacterItems=False
+    bHideFloatingPlayerNames=False
+    bHideGamepadItemSelectionModifier=False
+    bToggleExtendedHUDInfo=False
+    PlayActionWheelClickSound=True
+    CompanionReactionVerbosity=3
+    EnableEnvironmentalReactions=True
+    EnableRespawnReactions=True
+    EnableDeathReactions=True
+    EnableSayHelloReactions=True
+    EnableEmoteReactions=True
+    EnableMovementSounds=True
+    CompanionSubtitleVerbosityLevel=3
+    CompanionIsHiddenState=False
+    MaxAscensionLevel=0
+    bHostSessionHasBeenOpened=False
+    bForceTPVCameraOffset=False
+    bDisableTPVCameraInterpolation=False
+    bFPVClimbingGear=False
+    bFPVGlidingGear=False
+    Gamma1=2.200000
+    Gamma2=3.000000
+    AmbientSoundVolume=1.000000
+    bAllowAnimationStaggering=True
+    bUseOldThirdPersonCameraTrace=False
+    bUseOldThirdPersonCameraOffset=False
+    bLowQualityAnimations=True
+    bShowedGenesisDLCBackground=False
+    bViewedAnimatedSeriesTrailer=False
+    bViewedARK2Trailer=False
+    bUseVSync=False
+    MacroCtrl0=
+    MacroCtrl1=
+    MacroCtrl2=
+    MacroCtrl3=
+    MacroCtrl4=
+    MacroCtrl5=
+    MacroCtrl6=
+    MacroCtrl7=
+    MacroCtrl8=
+    MacroCtrl9=
+    ResolutionSizeX=1280
+    ResolutionSizeY=720
+    LastUserConfirmedResolutionSizeX=1280
+    LastUserConfirmedResolutionSizeY=720
+    WindowPosX=-1
+    WindowPosY=-1
+    bUseDesktopResolutionForFullscreen=False
+    FullscreenMode=2
+    LastConfirmedFullscreenMode=2
+    Version=5
+    [ScalabilityGroups]
+    sg.ResolutionQuality=100
+    sg.ViewDistanceQuality=3
+    sg.AntiAliasingQuality=3
+    sg.ShadowQuality=3
+    sg.PostProcessQuality=3
+    sg.TextureQuality=3
+    sg.EffectsQuality=3
+    sg.TrueSkyQuality=3
+    sg.GroundClutterQuality=3
+    sg.IBLQuality=1
+    sg.HeightFieldShadowQuality=3
+    sg.GroundClutterRadius=10000
+    [SessionSettings]
+    SessionName=mytestserver
+    [/Script/Engine.GameSession]
+    MaxPlayers=70
+  Game.ini: |+
+    [/script/shootergame.shootergamemode]
+    TamedDinoCharacterFoodDrainMultiplier=0.25
+    KillXPMultiplier=2
+    HarvestXPMultiplier=2
+    CraftXPMultiplier=2
+    GenericXPMultiplier=2
+    FuelConsumptionIntervalMultiplier=0.5
+    SupplyCrateLootQualityMultiplier=4
+    MatingIntervalMultiplier=0.25
+    EggHatchSpeedMultiplier=2
+    BabyMatureSpeedMultiplier=4
+    BabyFoodConsumptionSpeedMultiplier=0.5
+    LayEggIntervalMultiplier=3
+    ResourceNoReplenishRadiusPlayers=0.1
+    ResourceNoReplenishRadiusStructures=0.1
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+    OverridePlayerLevelEngramPoints=100
+---
