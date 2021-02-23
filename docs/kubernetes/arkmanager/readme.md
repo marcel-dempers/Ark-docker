@@ -66,7 +66,7 @@ kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager rconcmd "AllowPlayerTo
 
 # see white listed players 
 kubectl -n arkmanager exec -it arkmanager-0 -- nano /ark/island/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt
-
+kubectl -n arkmanager cp arkmanager-0:/ark/island/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt PlayersJoinNoCheckList.txt 
 ```
 
 # Restore
@@ -102,30 +102,34 @@ This script will countdown broadcast to all that server shutdown will occur in p
 .\docs\kubernetes\shutdown.ps1
 
 #restart a pod (if needed)
-kubectl -n ark delete po ark-server-0
+kubectl -n arkmanager delete po arkmanager-0
 ```
 
 ## Graceful updates (staged)
 
 ```
 # check and download updates
-kubectl -n ark exec -it ark-server-0 -- arkmanager checkupdate
-kubectl -n ark exec -it ark-server-0 -- arkmanager update --downloadonly
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager checkupdate
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager update --downloadonly
 
 #graceful stop to apply updates
 .\docs\kubernetes\shutdown.ps1
 
 #update
-kubectl -n ark exec -it ark-server-0 -- arkmanager update --no-download
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager update --no-download
 
 #start
-kubectl -n ark exec -it ark-server-0 -- arkmanager start
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager start @arkmanager-island
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager start @arkmanager-se
 ```
 
 ## Service details 
 
 ```
-kubectl -n ark exec -it ark-server-0 -- arkmanager status
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager status
+
+Watch 
+.\docs\kubernetes\watch.ps1
 ```
 
 ## Backup \ Restores
@@ -134,9 +138,9 @@ kubectl -n ark exec -it ark-server-0 -- arkmanager status
 #get latest backups
 $BACKUP_DIR = '/ark/backup'
 
-$OUTPUT=(kubectl -n ark exec -it ark-server-0 -- bash -c "arkmanager saveworld && arkmanager backup && find $BACKUP_DIR -name *.tar.bz2 -print | sort -nr | head -n1")
+$OUTPUT=(kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager saveworld && arkmanager backup && find $BACKUP_DIR -name *.tar.bz2 -print | sort -nr | head -n1")
 $BACKUP = (echo $OUTPUT | select -Last 1)
-kubectl -n ark cp ark-server-0:$BACKUP backup.tar.bz2
+kubectl -n arkmanager cp arkmanager-0:$BACKUP backup.tar.bz2
 
 #extract backup locally
 docker run -it -v ${PWD}:/work -w /work alpine sh -c 'apk add tar && tar -xvjf backup.tar.bz2'
