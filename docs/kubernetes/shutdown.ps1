@@ -1,48 +1,15 @@
 
-$ENV:REASON="updating configuration"
+$ENV:REASON="updating server"
 
 $ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-kubeconfig.yaml"
 $delayMinutes = 2
+
 while ($delayMinutes -gt 0)
 {
-  if ($delayMinutes -eq 60)
+  if (($delayMinutes -eq 60) -or ($delayMinutes -eq 45) -or ($delayMinutes -eq 30) -or ($delayMinutes -eq 15) -or ($delayMinutes -eq 10) -or ($delayMinutes -eq 5) -or ($delayMinutes -eq 2) -or ($delayMinutes -eq 1))
   {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast @arkmanager-island "Server will stop in $delayMinutes min. Reason: $ENV:REASON"
-  }
-
-  if ($delayMinutes -eq 45)
-  {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast @arkmanager-island "Server will stop in $delayMinutes min. Reason: $ENV:REASON"
-  }
-
-  if ($delayMinutes -eq 30)
-  {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast @arkmanager-island "Server will stop in $delayMinutes min. Reason: $ENV:REASON"
-  }
-
-  if ($delayMinutes -eq 15)
-  {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast @arkmanager-island "Server will stop in $delayMinutes min. Reason: $ENV:REASON"
-  }
-
-  if ($delayMinutes -eq 10)
-  {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast @arkmanager-island "Server will stop in $delayMinutes min. Reason: $ENV:REASON"
-  }
-
-  if ($delayMinutes -eq 5)
-  {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast @arkmanager-island "Server will stop in $delayMinutes min. Reason: $ENV:REASON"
-  }
-
-  if ($delayMinutes -eq 2)
-  {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast @arkmanager-island "Server will stop in $delayMinutes min. Reason: $ENV:REASON"
-  }
-
-  if ($delayMinutes -eq 1)
-  {
-    kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast @arkmanager-island "Server will stop in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server will shutdown in $delayMinutes min. Reason: $ENV:REASON"
+    kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-se "Server will shutdown in $delayMinutes min. Reason: $ENV:REASON"
   }
 
   Write-Host "Minutes Remaining: $($delayMinutes)"
@@ -50,11 +17,14 @@ while ($delayMinutes -gt 0)
   $delayMinutes -= 1
 }
 
-
-kubectl -n ark exec -it ark-server-0 -- arkmanager broadcast @arkmanager-island "Server shutting down... Reason: $ENV:REASON"
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server shutting down... Reason: $ENV:REASON"
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-se "Server shutting down... Reason: $ENV:REASON"
 Write-Host "saving world..."
-kubectl -n ark exec -it ark-server-0 -- arkmanager saveworld @arkmanager-island
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager saveworld @arkmanager-island
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager saveworld @arkmanager-se
 Write-Host "running backup..."
-kubectl -n ark exec -it ark-server-0 -- arkmanager backup @arkmanager-island
-Write-Host "running restart..."
-kubectl -n ark exec -it ark-server-0 -- arkmanager stop @arkmanager-island
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager backup @arkmanager-island
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager backup @arkmanager-se
+Write-Host "stop instances..."
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager stop @arkmanager-island
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager stop @arkmanager-se
