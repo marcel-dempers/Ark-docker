@@ -21,9 +21,7 @@ data:
 
     cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
     cp arkmanager-island.cfg /etc/arkmanager/instances/arkmanager-island.cfg
-    
-    #disable SE for now
-    #cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
+    cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -101,6 +99,7 @@ data:
     ark_SessionName=ThatDevOpsArkScorchedEarth
   GameUserSettings.ini: |+
     [ServerSettings]
+    EnablePvPGamma=True
     ResourcesRespawnPeriodMultiplier=0.5
     alwaysNotifyPlayerJoined=True
     alwaysNotifyPlayerLeft=True
@@ -110,8 +109,6 @@ data:
     HarvestAmountMultiplier=4
     DifficultyOffset=5
     XPMultiplier=1.50000
-    EnablePVPGamma=0
-    EnablePVEGamma=0
     AdminLogging=false
     PerPlatformMaxStructuresMultiplier=10.00000
     ForceFlyerExplosives=0
@@ -311,6 +308,19 @@ data:
     MaxPlayers=70
   Game.ini: |+
     [/script/shootergame.shootergamemode]
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_PreservingSalt_C",Quantity=(MaxItemQuantity=35, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_SweetVeggieCake_C",Quantity=(MaxItemQuantity=200, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Honey_C",Quantity=(MaxItemQuantity=5, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_RawMeat_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_RawMeat_Fish_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Amarberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Azulberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Mejoberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Narcoberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Stimberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Tintoberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    BabyImprintAmountMultiplier=2.0
+    BabyCuddleIntervalMultiplier=0.25
     TamedDinoCharacterFoodDrainMultiplier=0.25
     KillXPMultiplier=2
     HarvestXPMultiplier=2
@@ -318,7 +328,7 @@ data:
     GenericXPMultiplier=2
     FuelConsumptionIntervalMultiplier=0.5
     SupplyCrateLootQualityMultiplier=4
-    MatingIntervalMultiplier=0.25
+    MatingIntervalMultiplier=0.10
     EggHatchSpeedMultiplier=2
     BabyMatureSpeedMultiplier=4
     BabyFoodConsumptionSpeedMultiplier=0.5
