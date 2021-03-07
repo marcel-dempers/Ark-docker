@@ -32,14 +32,20 @@ if [ ! -d "/ark/island/ShooterGame/Binaries/Linux" ]; then
   echo "Installing  files in /ark/island..."
   arkmanager install @arkmanager-island
   # mods
+  #classic flyer
   arkmanager installmod 895711211 @arkmanager-island
+  #s+
+  arkmanager installmod 731604991 @arkmanager-island
 fi
 
 if [ ! -d "/ark/scorchedearth/ShooterGame/Binaries/Linux" ]; then
   echo "Installing  files in /ark/scorchedearth..."
   arkmanager install @arkmanager-se
   # mods
+  #classic flyer
   arkmanager installmod 895711211 @arkmanager-se
+  #s+
+  arkmanager installmod 731604991 @arkmanager-se
 fi
 
 

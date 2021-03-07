@@ -62,7 +62,7 @@ data:
     ark_MaxPlayers=${MAX_PLAYERS}
     arkflag_log=""
     # ----- Mods ----- #
-    ark_GameModIds="895711211"
+    ark_GameModIds="895711211,731604991"
     mod_branch=Windows
     msgWarnUpdateMinutes="This ARK server will shutdown for an update in %d minutes"
     msgWarnUpdateSeconds="This ARK server will shutdown for an update in %d seconds"
@@ -319,8 +319,10 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Narcoberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Stimberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Tintoberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Hide_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Fibers_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
     BabyImprintAmountMultiplier=2.0
-    BabyCuddleIntervalMultiplier=0.25
+    BabyCuddleIntervalMultiplier=0.10
     TamedDinoCharacterFoodDrainMultiplier=0.25
     KillXPMultiplier=2
     HarvestXPMultiplier=2
@@ -328,10 +330,10 @@ data:
     GenericXPMultiplier=2
     FuelConsumptionIntervalMultiplier=0.5
     SupplyCrateLootQualityMultiplier=4
-    MatingIntervalMultiplier=0.10
-    EggHatchSpeedMultiplier=2
-    BabyMatureSpeedMultiplier=4
-    BabyFoodConsumptionSpeedMultiplier=0.5
+    MatingIntervalMultiplier=0.05
+    EggHatchSpeedMultiplier=4
+    BabyMatureSpeedMultiplier=3
+    BabyFoodConsumptionSpeedMultiplier=1
     LayEggIntervalMultiplier=3
     ResourceNoReplenishRadiusPlayers=0.1
     ResourceNoReplenishRadiusStructures=0.1
