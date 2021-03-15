@@ -332,7 +332,7 @@ data:
     SupplyCrateLootQualityMultiplier=4
     MatingIntervalMultiplier=0.05
     EggHatchSpeedMultiplier=4
-    BabyMatureSpeedMultiplier=3
+    BabyMatureSpeedMultiplier=7
     BabyFoodConsumptionSpeedMultiplier=1
     LayEggIntervalMultiplier=3
     ResourceNoReplenishRadiusPlayers=0.1

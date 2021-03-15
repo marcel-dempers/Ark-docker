@@ -109,14 +109,14 @@ kubectl -n arkmanager delete po arkmanager-0
 
 ```
 # check and download updates
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager checkupdate
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager update --downloadonly
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager checkupdate @arkmanager-island
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager update --update-mods
 
 #graceful stop to apply updates
 .\docs\kubernetes\shutdown.ps1
 
 #update
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager update --no-download
+kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager update --no-download --update-mods
 
 #start
 kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager start @arkmanager-island
