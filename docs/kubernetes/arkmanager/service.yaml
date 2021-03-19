@@ -37,5 +37,21 @@ spec:
     protocol: UDP
     name: clientrawudp2
     nodePort: 30780
+  - port: 30781
+    protocol: UDP
+    name: aberration-udp1
+    nodePort: 30781
+  - port: 30782
+    protocol: UDP
+    name: aberration-udp2
+    nodePort: 30782
+  - port: 30019
+    protocol: UDP
+    name: aberration-udp3
+    nodePort: 30019
+  - port: 30020
+    protocol: UDP
+    name: aberration-udp4
+    nodePort: 30020
   selector:
     app: arkmanager

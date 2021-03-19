@@ -29,7 +29,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-server-tools:0.0.1
+        image: aimvector/ark-server-tools:0.0.2
         imagePullPolicy: Always
         env:
         - name: SERVERPASSWORD
@@ -70,9 +70,16 @@ spec:
           name: queryportudp3
         - containerPort: 30018
           name: queryportudp4
+        - containerPort: 30781
+          name: aberration-udp1
+        - containerPort: 30782
+          name: aberration-udp2
+        - containerPort: 30019
+          name: aberration-udp3
+        - containerPort: 30020
+          name: aberration-udp4
+
         volumeMounts:
-        - name: test
-          mountPath: /test
         - name: conf
           mountPath: /conf
           readOnly: false
@@ -91,9 +98,4 @@ spec:
       - name: ark
         hostPath:
           path: /arkmanager
-      - name: test
-        hostPath:
-          path: /ark
-        # persistentVolumeClaim:
-        #   claimName: arkmanager
 ---

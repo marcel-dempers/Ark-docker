@@ -9,6 +9,7 @@ data:
     cd /conf 
     mkdir -p /ark/island/ShooterGame/Saved/Config/LinuxServer/
     mkdir -p /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
+    mkdir -p /ark/aberration/ShooterGame/Saved/Config/LinuxServer/
     mkdir -p /etc/arkmanager/instances/
 
     #island
@@ -19,9 +20,14 @@ data:
     cp GameUserSettings.ini /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
     cp Game.ini /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
 
+    #aberration
+    cp GameUserSettings.ini /ark/aberration/ShooterGame/Saved/Config/LinuxServer/
+    cp Game.ini /ark/aberration/ShooterGame/Saved/Config/LinuxServer/
+
     cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
     cp arkmanager-island.cfg /etc/arkmanager/instances/arkmanager-island.cfg
     cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
+    cp arkmanager-abby.cfg /etc/arkmanager/instances/arkmanager-abby.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -45,13 +51,6 @@ data:
     arkAutoUpdateOnStart="false"                                        # set this to true if you want to always update before startup
     # We don't use the dots because it doesn't show.
     progressDisplayType=spinner
-    ark_PreventDownloadSurvivors=False
-    ark_PreventDownloadItems=False
-    ark_PreventDownloadDinos=False
-    ark_PreventUploadSurvivors=False
-    ark_PreventUploadDinos=False
-    ark_PreventUploadItems=False
-    ark_noTributeDownloads=False
     arkopt_clusterid=${CLUSTER_ID}
     arkflag_NoTransferFromFiltering=True
     arkopt_ClusterDirOverride=/ark/clusters
@@ -85,6 +84,13 @@ data:
     ark_AltSaveDirectoryName=ArkTheIslandSave
     serverMap=TheIsland
     ark_SessionName=ThatDevOpsArk
+    ark_PreventDownloadSurvivors=False
+    ark_PreventDownloadItems=False
+    ark_PreventDownloadDinos=False
+    ark_PreventUploadSurvivors=False
+    ark_PreventUploadDinos=False
+    ark_PreventUploadItems=False
+    ark_noTributeDownloads=False
   arkmanager-se.cfg: |+
     arkserverroot="/ark/scorchedearth"                    # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/scorchedearth"  		        # path to backup directory
@@ -97,6 +103,32 @@ data:
     ark_AltSaveDirectoryName=ArkScorchedEarthSave
     serverMap=ScorchedEarth_P
     ark_SessionName=ThatDevOpsArkScorchedEarth
+    ark_PreventDownloadSurvivors=False
+    ark_PreventDownloadItems=False
+    ark_PreventDownloadDinos=False
+    ark_PreventUploadSurvivors=False
+    ark_PreventUploadDinos=False
+    ark_PreventUploadItems=False
+    ark_noTributeDownloads=False
+  arkmanager-abby.cfg: |+
+    arkserverroot="/ark/aberration"                       # path of your ARK server files (default ~/ARK)
+    arkbackupdir="/ark/backup/aberration"  		            # path to backup directory
+    arkStagingDir="/ark/staging/aberration"  
+    # Port config 
+    ark_Port=30782                                        # ARK server port (default 7778)
+    ark_QueryPort=30019                                   # ARK query port (default 27016)
+    ark_RCONEnabled="True"                                # Enable RCON Protocol
+    ark_RCONPort="32332"
+    ark_AltSaveDirectoryName=ArkAberrationSave
+    serverMap=Aberration_P
+    ark_SessionName=ThatDevOpsArkAberration
+    ark_PreventDownloadSurvivors=False
+    ark_PreventDownloadItems=True
+    ark_PreventDownloadDinos=True
+    ark_PreventUploadSurvivors=False
+    ark_PreventUploadDinos=True
+    ark_PreventUploadItems=True
+    ark_noTributeDownloads=False
   GameUserSettings.ini: |+
     [ServerSettings]
     EnablePvPGamma=True
