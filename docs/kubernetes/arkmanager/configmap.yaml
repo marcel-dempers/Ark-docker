@@ -110,6 +110,8 @@ data:
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
     ark_noTributeDownloads=False
+    ark_OverrideOfficialDifficulty=5.0
+    ark_DifficultyOffset=1.0
   arkmanager-abby.cfg: |+
     arkserverroot="/ark/aberration"                       # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/aberration"  		            # path to backup directory
