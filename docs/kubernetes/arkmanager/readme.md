@@ -92,14 +92,14 @@ This script will countdown broadcast to all that server shutdown will occur in p
 
 ```
 # graceful restart including a count down broadcast for players
-.\docs\kubernetes\restart.ps1
+.\scripts\restart.ps1
 ```
 
 ## Graceful stop (for updates)
 
 ```
 # graceful restart including a count down broadcast for players
-.\docs\kubernetes\shutdown.ps1
+.\scripts\shutdown.ps1
 
 #restart a pod (if needed)
 kubectl -n arkmanager delete po arkmanager-0
@@ -113,7 +113,7 @@ kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager checkupdate @arkmanage
 kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager update --update-mods
 
 #graceful stop to apply updates
-.\docs\kubernetes\shutdown.ps1
+.\scripts\shutdown.ps1
 
 #update
 kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager update --no-download --update-mods
@@ -129,7 +129,7 @@ kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager start @arkmanager-se
 kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager status
 
 Watch 
-.\docs\kubernetes\watch.ps1
+.\scripts\watch.ps1
 ```
 
 ## Backup \ Restores
