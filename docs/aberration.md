@@ -1,7 +1,13 @@
 # Ark : Aberration
 
 <img src="https://static.wikia.nocookie.net/arksurvivalevolved_gamepedia/images/0/09/ARK-_Aberration.png/revision/latest/scale-to-width-down/250?cb=20180927203421" /> <br/>
-"Aberration places survivors on a damaged ARK: its internal atmosphere has leaked away, resulting in a harsh surface with intense radiation, and a plethora of lush biomes underground. With the maintenance systems of this ARK malfunctioning, the many hazards, creatures, and nature of the environment present a thrilling new world to explore and master." - [Ark WIKI](https://ark.gamepedia.com/Aberration)
+"Aberration places survivors on a damaged ARK: its internal atmosphere has leaked away, resulting in a harsh surface with intense radiation, and a plethora of lush biomes underground. With the maintenance systems of this ARK malfunctioning, the many hazards, creatures, and nature of the environment present a thrilling new world to explore and master." - [Ark WIKI](https://ark.gamepedia.com/Aberration) </br>
+
+* New Creatures
+* New Items 
+* Max Level Dinos : 150
+* Rockwell Boss Arenas
+* Reapers & Nameless creatures
 
 ## How to join
 
@@ -18,5 +24,5 @@ Please read the Rules & Exceptions before joining to avoid losing items. </br>
 ## Exceptions
 
 * Items & Dino transfers will be unlocked once all artifacts are collected by tribes.
-* Tribes who have spent months on mutations will be able to use mutated creatures for Boss progression.
+* Tribes who have spent months on mutations will be able to use mutated creatures for Boss progression onces all artifacts are collected.
 * This will avoid having to repeat mutation breeding.
