@@ -137,8 +137,6 @@ data:
     ResourcesRespawnPeriodMultiplier=0.5
     alwaysNotifyPlayerJoined=True
     alwaysNotifyPlayerLeft=True
-    DayTimeSpeedScale=0.50000
-    NightTimeSpeedScale=3.0
     TamingSpeedMultiplier=3.00000
     HarvestAmountMultiplier=4
     DifficultyOffset=5
