@@ -18,19 +18,18 @@ while ($delayMinutes -gt 0)
   $delayMinutes -= 1
 }
 
+
 kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-island "Server shutting down... Reason: $ENV:REASON"
 kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-se "Server shutting down... Reason: $ENV:REASON"
 kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager broadcast @arkmanager-abby "Server shutting down... Reason: $ENV:REASON"
+
 Write-Host "saving world..."
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager saveworld @arkmanager-island
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager saveworld @arkmanager-se
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager saveworld @arkmanager-abby
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager saveworld @all" 
+
 Write-Host "running backup..."
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager backup @arkmanager-island
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager backup @arkmanager-se
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager backup @arkmanager-abby
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager backup @all" 
+
 Write-Host "stop instances..."
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager stop @arkmanager-island
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager stop @arkmanager-se
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager stop @arkmanager-abby
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager stop @all" 
+
 
