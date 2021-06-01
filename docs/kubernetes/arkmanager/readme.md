@@ -61,8 +61,11 @@ kubectl -n arkmanager exec -it arkmanager-0 -- du -sh /ark/scorchedearth/
 # Maintenance
 
 ```
-# white list players 
+# white list players on all servers
 kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager rconcmd "AllowPlayerToJoinNoCheck xxxxxxxx"
+
+# white list players on 1 instance:
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager rconcmd @arkmanager-island 'AllowPlayerToJoinNoCheck xxxxxxxx'"
 
 # see white listed players 
 kubectl -n arkmanager exec -it arkmanager-0 -- nano /ark/island/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt
