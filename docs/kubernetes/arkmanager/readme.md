@@ -148,3 +148,21 @@ kubectl -n arkmanager cp arkmanager-0:$BACKUP backup.tar.bz2
 #extract backup locally
 docker run -it -v ${PWD}:/work -w /work alpine sh -c 'apk add tar && tar -xvjf backup.tar.bz2'
 ```
+
+## Using Swap memory for low cost cloud machines
+
+```
+####################################################
+dd if=/dev/zero of=/swapfile count=16384 bs=1MiB
+ls -lh /swapfile
+chmod 600 /swapfile
+ls -lh /swapfile
+mkswap /swapfile
+swapon /swapfile
+swapon --show
+free -h
+
+cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+####################################################
+```

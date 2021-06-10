@@ -29,7 +29,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-server-tools:0.0.2
+        image: aimvector/ark-server-tools:0.0.3
         imagePullPolicy: Always
         env:
         - name: SERVERPASSWORD
@@ -78,6 +78,14 @@ spec:
           name: aberration-udp3
         - containerPort: 30020
           name: aberration-udp4
+        - containerPort: 30021
+          name: extinction-udp1
+        - containerPort: 30022
+          name: extinction-udp2
+        - containerPort: 30784
+          name: extinction-udp3
+        - containerPort: 30783
+          name: extinction-udp4
 
         volumeMounts:
         - name: conf

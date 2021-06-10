@@ -53,5 +53,21 @@ spec:
     protocol: UDP
     name: aberration-udp4
     nodePort: 30020
+  - port: 30021
+    protocol: UDP
+    name: extinction-udp1
+    nodePort: 30021
+  - port: 30022
+    protocol: UDP
+    name: extinction-udp2
+    nodePort: 30022
+  - port: 30784
+    protocol: UDP
+    name: extinction-udp3
+    nodePort: 30784
+  - port: 30783
+    protocol: UDP
+    name: extinction-udp4
+    nodePort: 30783
   selector:
     app: arkmanager

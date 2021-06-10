@@ -48,6 +48,16 @@ if [ ! -d "/ark/aberration/ShooterGame/Binaries/Linux" ]; then
   arkmanager installmod 731604991 @arkmanager-abby
 fi
 
+if [ ! -d "/ark/extinction/ShooterGame/Binaries/Linux" ]; then
+  echo "Installing  files in /ark/extinction..."
+  arkmanager install @arkmanager-ext
+  # mods
+  #classic flyer
+  arkmanager installmod 895711211 @arkmanager-ext
+  #s+
+  arkmanager installmod 731604991 @arkmanager-ext
+fi
+
 if test -f "/etc/arkmanager/instances/arkmanager-island.cfg"; then
   echo "arkmanager-island.cfg exists, starting instance..."
   arkmanager start @arkmanager-island
@@ -61,6 +71,11 @@ fi
 if test -f "/etc/arkmanager/instances/arkmanager-abby.cfg"; then
   echo "arkmanager-abby.cfg exists, starting instance..."
   arkmanager start @arkmanager-abby
+fi
+
+if test -f "/etc/arkmanager/instances/arkmanager-ext.cfg"; then
+  echo "arkmanager-ext.cfg exists, starting instance..."
+  arkmanager start @arkmanager-ext
 fi
 
 # Stop server in case of signal INT or TERM

@@ -10,6 +10,7 @@ data:
     mkdir -p /ark/island/ShooterGame/Saved/Config/LinuxServer/
     mkdir -p /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
     mkdir -p /ark/aberration/ShooterGame/Saved/Config/LinuxServer/
+    mkdir -p /ark/extinction/ShooterGame/Saved/Config/LinuxServer/
     mkdir -p /etc/arkmanager/instances/
 
     #island
@@ -23,11 +24,16 @@ data:
     #aberration
     cp GameUserSettings.ini /ark/aberration/ShooterGame/Saved/Config/LinuxServer/
     cp Game.ini /ark/aberration/ShooterGame/Saved/Config/LinuxServer/
+    
+    #extinction
+    cp GameUserSettings.ini /ark/extinction/ShooterGame/Saved/Config/LinuxServer/
+    cp Game.ini /ark/extinction/ShooterGame/Saved/Config/LinuxServer/
 
     cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
     cp arkmanager-island.cfg /etc/arkmanager/instances/arkmanager-island.cfg
-    cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
-    cp arkmanager-abby.cfg /etc/arkmanager/instances/arkmanager-abby.cfg
+    #cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
+    #cp arkmanager-abby.cfg /etc/arkmanager/instances/arkmanager-abby.cfg
+    cp arkmanager-ext.cfg /etc/arkmanager/instances/arkmanager-ext.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -124,6 +130,25 @@ data:
     ark_AltSaveDirectoryName=ArkAberrationSave
     serverMap=Aberration_P
     ark_SessionName=ThatDevOpsArkAberration
+    ark_PreventDownloadSurvivors=False
+    ark_PreventDownloadItems=True
+    ark_PreventDownloadDinos=True
+    ark_PreventUploadSurvivors=False
+    ark_PreventUploadDinos=True
+    ark_PreventUploadItems=True
+    ark_noTributeDownloads=False
+  arkmanager-ext.cfg: |+
+    arkserverroot="/ark/extinction"                       # path of your ARK server files (default ~/ARK)
+    arkbackupdir="/ark/backup/extinction"  		            # path to backup directory
+    arkStagingDir="/ark/staging/extinction"  
+    # Port config 
+    ark_Port=30784                                        # ARK server port (default 7778)
+    ark_QueryPort=30021                                   # ARK query port (default 27016)
+    ark_RCONEnabled="True"                                # Enable RCON Protocol
+    ark_RCONPort="32333"
+    ark_AltSaveDirectoryName=ArkExtinctionSave
+    serverMap=Extinction
+    ark_SessionName=ThatDevOpsArkExtinction
     ark_PreventDownloadSurvivors=False
     ark_PreventDownloadItems=True
     ark_PreventDownloadDinos=True
@@ -355,6 +380,7 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Fibers_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_MetalIngot_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Silicon_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gasoline_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
     BabyImprintAmountMultiplier=2.0
     BabyCuddleIntervalMultiplier=0.8
     TamedDinoCharacterFoodDrainMultiplier=0.25
