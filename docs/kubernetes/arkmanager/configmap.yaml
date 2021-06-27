@@ -34,6 +34,15 @@ data:
     #cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
     #cp arkmanager-abby.cfg /etc/arkmanager/instances/arkmanager-abby.cfg
     cp arkmanager-ext.cfg /etc/arkmanager/instances/arkmanager-ext.cfg
+
+    #backups if exists 
+    if test -f "/s3cfg/.s3cfg"; then
+      cp /s3cfg/.s3cfg /home/steam/.s3cfg
+      echo "s3cmd configured"
+    else
+      echo "s3cmd is not configured" 
+    fi 
+    
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -66,6 +75,7 @@ data:
     ark_ServerAdminPassword=${ADMINPASSWORD}
     ark_MaxPlayers=${MAX_PLAYERS}
     arkflag_log=""
+    arkBackupPostCommand='. /home/steam/backup-s3.sh $backupfile'
     # ----- Mods ----- #
     ark_GameModIds="895711211,731604991"
     mod_branch=Windows
@@ -156,6 +166,9 @@ data:
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
+    ark_serverPVE=true
+    ark_AllowFlyerCarryPvE=true
+    ark_PvEAllowStructuresAtSupplyDrops=false
   GameUserSettings.ini: |+
     [ServerSettings]
     EnablePvPGamma=True

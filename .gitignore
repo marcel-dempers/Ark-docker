@@ -48,3 +48,4 @@ fabric.properties
 .idea/
 Ark-docker.iml
 notes.txt
+.s3cfg

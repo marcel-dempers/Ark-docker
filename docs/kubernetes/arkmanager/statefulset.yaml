@@ -29,7 +29,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-server-tools:0.0.3
+        image: aimvector/ark-server-tools:0.1.0
         imagePullPolicy: Always
         env:
         - name: SERVERPASSWORD
@@ -88,6 +88,9 @@ spec:
           name: extinction-udp4
 
         volumeMounts:
+        - name: backup-secret
+          mountPath: /s3cfg
+          readOnly: false
         - name: conf
           mountPath: /conf
           readOnly: false
@@ -97,6 +100,9 @@ spec:
           mountPath: /ark
           readOnly: false
       volumes:
+      - name: backup-secret
+        secret:
+          secretName: ark-backup
       - name: conf
         configMap:
           name: ark-configuration

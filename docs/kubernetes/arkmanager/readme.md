@@ -9,6 +9,9 @@ $ENV:ADMINPASSWORD="xxxxxxxxx"
 $ENV:SERVERPASSWORD="xxxxxxxxx"
 $ENV:CLUSTER_ID="xxxxxxxxx"
 
+# optional s3 backup secrets
+
+kubectl -n arkmanager create secret generic ark-backup --from-file=./.s3cfg
 ```
 
 ## Configuration

@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:8
 
 # Var for first config
 ENV SESSIONNAME="Ark Docker" \
@@ -17,7 +17,7 @@ ENV SESSIONNAME="Ark Docker" \
     TZ=UTC
 
 ## Install dependencies
-RUN yum -y install glibc.i686 libstdc++.i686 git lsof bzip2 cronie perl-Compress-Zlib \
+RUN yum -y install glibc.i686 git lsof bzip2 cronie perl-Compress-Zlib \
  && yum clean all \
  && adduser -u $ARK_UID -s /bin/bash -U steam
 
@@ -41,7 +41,18 @@ RUN chmod 777 /home/steam/run.sh \
 RUN rm -f  /etc/arkmanager/instances/instance.cfg.example
 RUN rm -f  /etc/arkmanager/instances/main.cfg
 
+# Install cloud tools for backups AWS\AZURE\Linode\etc
+# Install s3cmd to allow backups on s3-compatible story
+# S3 secret mounted to /root/.s3cfg
+RUN yum install -y python3 && \
+    pip3 install linode-cli boto && \ 
+    yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
+    yum --enablerepo=epel install -y s3cmd
+
 COPY arkmanager.cfg /etc/arkmanager/arkmanager.cfg
+
+COPY backup-s3.sh /home/steam/backup-s3.sh
+RUN chmod 777 /home/steam/backup-s3.sh
 
 VOLUME  /ark
 
