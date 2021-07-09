@@ -1,5 +1,11 @@
 # Ark Manager on Kubernetes
 
+## Namespace 
+
+```
+kubectl create ns arkmanager
+```
+
 ## Server secrets
 
 ```
@@ -8,6 +14,10 @@
 $ENV:ADMINPASSWORD="xxxxxxxxx"
 $ENV:SERVERPASSWORD="xxxxxxxxx"
 $ENV:CLUSTER_ID="xxxxxxxxx"
+$ENV:DISCORD_URL="xxxxxxxxx"
+
+#secrets
+kubectl -n arkmanager create secret generic ark-secrets --from-literal=ADMINPASSWORD=$ENV:ADMINPASSWORD --from-literal=SERVERPASSWORD=$ENV:SERVERPASSWORD --from-literal=CLUSTER_ID=$ENV:CLUSTER_ID --from-literal=DISCORD_URL=$ENV:DISCORD_URL
 
 # optional s3 backup secrets
 
@@ -17,16 +27,14 @@ kubectl -n arkmanager create secret generic ark-backup --from-file=./.s3cfg
 ## Configuration
 
 ```
-# namespace 
-kubectl create ns arkmanager
-
-#secrets
-kubectl -n arkmanager create secret generic ark-secrets --from-literal=ADMINPASSWORD=$ENV:ADMINPASSWORD --from-literal=SERVERPASSWORD=$ENV:SERVERPASSWORD --from-literal=CLUSTER_ID=$ENV:CLUSTER_ID
-
 #configuration
 kubectl apply -n arkmanager -f .\docs\kubernetes\arkmanager\configmap.yaml
 
 ```
+
+## Optional: Restore Server to filesystem
+
+
 
 ## Deployment
 
@@ -65,7 +73,7 @@ kubectl -n arkmanager exec -it arkmanager-0 -- du -sh /ark/scorchedearth/
 
 ```
 # white list players on all servers
-kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager rconcmd "AllowPlayerToJoinNoCheck xxxxxxxx"
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager rconcmd @all 'AllowPlayerToJoinNoCheck xxxxxxxx'"
 
 # white list players on 1 instance:
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager rconcmd @arkmanager-island 'AllowPlayerToJoinNoCheck xxxxxxxx'"
