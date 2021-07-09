@@ -32,6 +32,11 @@ spec:
         image: aimvector/ark-server-tools:0.1.0
         imagePullPolicy: Always
         env:
+        - name: DISCORD_URL
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: DISCORD_URL
         - name: SERVERPASSWORD
           valueFrom:
             secretKeyRef:

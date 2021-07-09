@@ -31,10 +31,11 @@ data:
 
     cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
     cp arkmanager-island.cfg /etc/arkmanager/instances/arkmanager-island.cfg
-    #cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
-    #cp arkmanager-abby.cfg /etc/arkmanager/instances/arkmanager-abby.cfg
     cp arkmanager-ext.cfg /etc/arkmanager/instances/arkmanager-ext.cfg
 
+    #cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
+    #cp arkmanager-abby.cfg /etc/arkmanager/instances/arkmanager-abby.cfg
+    
     #backups if exists 
     if test -f "/s3cfg/.s3cfg"; then
       cp /s3cfg/.s3cfg /home/steam/.s3cfg
@@ -88,6 +89,7 @@ data:
     arkwarnminutes="60"                                                 # number of minutes to warn players when using update --warn
     arkBackupPreUpdate="false"                                          # set this to true if you want to perform a backup before updating
     arkMaxBackupSizeMB="500"                                            # Set to automatically remove old backups when size exceeds this limit
+    discordWebhookURL="${DISCORD_URL}"
   arkmanager-island.cfg: |+
     arkserverroot="/ark/island"                    # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/island"  		         # path to backup directory
@@ -107,6 +109,10 @@ data:
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
     ark_noTributeDownloads=False
+    ark_serverPVE=true
+    ark_AllowFlyerCarryPvE=true
+    ark_PvEAllowStructuresAtSupplyDrops=false
+    notifyTemplate="Message from The Island: {msg}"
   arkmanager-se.cfg: |+
     arkserverroot="/ark/scorchedearth"                    # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/scorchedearth"  		        # path to backup directory
@@ -128,6 +134,7 @@ data:
     ark_noTributeDownloads=False
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
+    notifyTemplate="Message from Scorched Earth: {msg}"
   arkmanager-abby.cfg: |+
     arkserverroot="/ark/aberration"                       # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/aberration"  		            # path to backup directory
@@ -147,6 +154,7 @@ data:
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
+    notifyTemplate="Message from Abberation: {msg}"
   arkmanager-ext.cfg: |+
     arkserverroot="/ark/extinction"                       # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/extinction"  		            # path to backup directory
@@ -160,15 +168,16 @@ data:
     serverMap=Extinction
     ark_SessionName=ThatDevOpsArkExtinction
     ark_PreventDownloadSurvivors=False
-    ark_PreventDownloadItems=True
-    ark_PreventDownloadDinos=True
+    ark_PreventDownloadItems=False
+    ark_PreventDownloadDinos=False
     ark_PreventUploadSurvivors=False
-    ark_PreventUploadDinos=True
-    ark_PreventUploadItems=True
+    ark_PreventUploadDinos=False
+    ark_PreventUploadItems=False
     ark_noTributeDownloads=False
     ark_serverPVE=true
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
+    notifyTemplate="Message from Extinction: {msg}"
   GameUserSettings.ini: |+
     [ServerSettings]
     EnablePvPGamma=True
