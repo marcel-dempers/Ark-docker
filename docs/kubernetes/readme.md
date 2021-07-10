@@ -1,5 +1,37 @@
 # Ark Manager on Kubernetes
 
+## Using Swap memory for low cost cloud machines
+
+Ark runs reasonably well on SWAP memory for small server tribes.
+SSH to your instance as root and setup SWAP memory:
+
+```
+####################################################
+
+#set failSwapOn: false (kubelet will not start with swap on!)
+nano /var/lib/kubelet/config.yaml
+
+dd if=/dev/zero of=/swapfile count=32384 bs=1MiB
+ls -lh /swapfile
+chmod 600 /swapfile
+ls -lh /swapfile
+mkswap /swapfile
+swapon /swapfile
+swapon --show
+free -h
+
+#ensure reboot persistence
+cp /etc/fstab /etc/fstab.bak
+
+echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+####################################################
+
+# turn off swap
+swapoff -v /swapfile
+rm -rf /swapfile
+
+```
+
 ## Namespace 
 
 ```
@@ -32,14 +64,16 @@ kubectl apply -n arkmanager -f .\docs\kubernetes\arkmanager\configmap.yaml
 
 ```
 
-## Optional: Restore Server to filesystem
+## Optional: Restore Server from S3 to filesystem
 
-
+```
+kubectl apply -n arkmanager -f .\docs\kubernetes\restore-aws\job.yaml
+kubectl -n arkmanager get pods
+```
 
 ## Deployment
 
 ```
-# deploy
 kubectl apply -n arkmanager -f .\docs\kubernetes\arkmanager\statefulset.yaml
 
 ```
@@ -52,9 +86,15 @@ kubectl apply -n arkmanager -f .\docs\kubernetes\arkmanager\service.yaml
 kubectl -n arkmanager get services
 ```
 
-# Troubleshooting installation
+# Monitoring installation
+
+It will take a while for the server to download binaries for the first time.
 
 ```
+# track download (roughly 17GB!)
+kubectl -n arkmanager exec -it arkmanager-0 -- ls -l /ark/
+kubectl -n arkmanager exec -it arkmanager-0 -- du -sh /ark/island/
+
 # pod logs
 kubectl -n arkmanager logs arkmanager-0
 
@@ -64,9 +104,7 @@ kubectl -n arkmanager exec -it arkmanager-0 -- arkmanager status
 #server log
 kubectl -n arkmanager exec -it arkmanager-0 -- cat /ark/log/arkserver.log
 
-#track download size
-kubectl -n arkmanager exec -it arkmanager-0 -- du -sh /ark/island/
-kubectl -n arkmanager exec -it arkmanager-0 -- du -sh /ark/scorchedearth/
+
 ```
 
 # Maintenance
@@ -158,22 +196,4 @@ kubectl -n arkmanager cp arkmanager-0:$BACKUP backup.tar.bz2
 
 #extract backup locally
 docker run -it -v ${PWD}:/work -w /work alpine sh -c 'apk add tar && tar -xvjf backup.tar.bz2'
-```
-
-## Using Swap memory for low cost cloud machines
-
-```
-####################################################
-dd if=/dev/zero of=/swapfile count=16384 bs=1MiB
-ls -lh /swapfile
-chmod 600 /swapfile
-ls -lh /swapfile
-mkswap /swapfile
-swapon /swapfile
-swapon --show
-free -h
-
-cp /etc/fstab /etc/fstab.bak
-echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
-####################################################
 ```
