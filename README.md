@@ -7,17 +7,6 @@ Kubernetes deployment for running ARK server manager on Kubernetes
 
 Checkout the [Joining instructions](./docs/how-to-join.md) on how to join.
 
-## Server Addresses
-
-```
-STATUS: ❎(stopped) ✅(up) 
-
-✅  The Island: ark.marceldempers.dev:30015
-✅  Extinction: ark.marceldempers.dev:30021
-❎  Scorched Earth: ark.marceldempers.dev:30017
-❎  Aberration: ark.marceldempers.dev:30019
-```
-
 ## Scorched Earth
 
 You can cross server travel to Scorched Earth from any obelisk.

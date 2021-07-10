@@ -28,7 +28,18 @@ Move on to the next step
 * Click on `Servers`
 * Open the `FAVORITES` tab
 * Click on `ADD A SERVER` on the bottom right corner
-* Type in address: `192.53.169.17:30015`
+* Type in the server address you wish to join (see addresses below)
+
+### Server Addresses
+```
+STATUS: ❎(stopped) ✅(up) 
+
+✅  The Island: ark.marceldempers.dev:30015
+✅  Extinction: ark.marceldempers.dev:30021
+❎  Scorched Earth: ark.marceldempers.dev:30017
+❎  Aberration: ark.marceldempers.dev:30019
+
+```
 * Click on `FIND GAMES AT THIS ADDRESS`
 * Select the `ThatDevOpsArk` server by clicking on it once
 * Click on `ADD SELECTED GAME SERVER TO FAV...`
