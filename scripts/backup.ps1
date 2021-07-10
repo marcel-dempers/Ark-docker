@@ -1,4 +1,4 @@
-$ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-kubeconfig.yaml"
+$ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-2-kubeconfig.yaml"
 
 Write-Host "saving world..."
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager saveworld @all" 

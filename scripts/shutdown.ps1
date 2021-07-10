@@ -1,7 +1,7 @@
 
 $ENV:REASON="updating server"
 
-$ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-kubeconfig.yaml"
+$ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-2-kubeconfig.yaml"
 $delayMinutes = 2
 
 while ($delayMinutes -gt 0)
