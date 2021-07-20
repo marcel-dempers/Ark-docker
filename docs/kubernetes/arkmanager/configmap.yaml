@@ -36,14 +36,6 @@ data:
     #cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
     #cp arkmanager-abby.cfg /etc/arkmanager/instances/arkmanager-abby.cfg
     
-    #backups if exists 
-    if test -f "/s3cfg/.s3cfg"; then
-      cp /s3cfg/.s3cfg /home/steam/.s3cfg
-      echo "s3cmd configured"
-    else
-      echo "s3cmd is not configured" 
-    fi 
-    
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -180,6 +172,8 @@ data:
     notifyTemplate="Message from Extinction: {msg}"
   GameUserSettings.ini: |+
     [ServerSettings]
+    DisableStructureDecayPvE=True
+    DisableDinoDecayPvE=True
     EnablePvPGamma=True
     ResourcesRespawnPeriodMultiplier=0.5
     alwaysNotifyPlayerJoined=True
