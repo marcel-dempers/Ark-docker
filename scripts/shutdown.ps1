@@ -1,8 +1,9 @@
-
 $ENV:REASON="updating server"
 
 $ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-2-kubeconfig.yaml"
-$delayMinutes = 2
+
+
+$delayMinutes = 5
 
 while ($delayMinutes -gt 0)
 {
@@ -15,6 +16,8 @@ while ($delayMinutes -gt 0)
   start-sleep 60
   $delayMinutes -= 1
 }
+
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify @all 'Automated routine server maintenance. Will be up in 20 minutes'"
 
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager broadcast @all 'Server shutting down... Reason: $ENV:REASON'"
 
