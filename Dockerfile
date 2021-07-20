@@ -21,14 +21,8 @@ RUN yum -y install glibc.i686 git lsof bzip2 cronie perl-Compress-Zlib \
  && yum clean all \
  && adduser -u $ARK_UID -s /bin/bash -U steam
 
-# Copy & rights to folders
-COPY run.sh /home/steam/run.sh
-COPY user.sh /home/steam/user.sh
-
-RUN chmod 777 /home/steam/run.sh \
- && chmod 777 /home/steam/user.sh \
- ## Always get the latest version of ark-server-tools
- && git clone -b $(git ls-remote --tags https://github.com/FezVrasta/ark-server-tools.git | awk '{print $2}' | grep -v '{}' | awk -F"/" '{print $3}' | tail -n 1) --single-branch --depth 1 https://github.com/FezVrasta/ark-server-tools.git /home/steam/ark-server-tools \
+## Always get the latest version of ark-server-tools
+RUN git clone -b $(git ls-remote --tags https://github.com/FezVrasta/ark-server-tools.git | awk '{print $2}' | grep -v '{}' | awk -F"/" '{print $3}' | tail -n 1) --single-branch --depth 1 https://github.com/FezVrasta/ark-server-tools.git /home/steam/ark-server-tools \
  && cd /home/steam/ark-server-tools/tools \
  && bash install.sh steam --bindir=/usr/bin \
  && mkdir /ark \
@@ -48,6 +42,11 @@ RUN yum install -y python3 && \
     pip3 install linode-cli boto && \ 
     yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
     yum --enablerepo=epel install -y s3cmd
+
+COPY run.sh /home/steam/run.sh
+COPY user.sh /home/steam/user.sh
+RUN chmod 777 /home/steam/run.sh \
+ && chmod 777 /home/steam/user.sh
 
 COPY arkmanager.cfg /etc/arkmanager/arkmanager.cfg
 
