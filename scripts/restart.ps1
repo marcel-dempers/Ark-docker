@@ -2,7 +2,9 @@
 $ENV:REASON="routine server restart"
 
 $ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-2-kubeconfig.yaml"
-$delayMinutes = 5
+$delayMinutes = 10
+
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify @all 'Automated routine server restart starting in $delayMinutes minutes'"
 
 while ($delayMinutes -gt 0)
 {
@@ -15,6 +17,8 @@ while ($delayMinutes -gt 0)
   start-sleep 60
   $delayMinutes -= 1
 }
+
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify @all 'Automated routine server restart. Will be up in 20 minutes'"
 
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager broadcast @all 'Server restarting... Reason: $ENV:REASON'"
 
