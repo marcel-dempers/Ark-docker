@@ -33,7 +33,7 @@ data:
     cp arkmanager-island.cfg /etc/arkmanager/instances/arkmanager-island.cfg
     cp arkmanager-ext.cfg /etc/arkmanager/instances/arkmanager-ext.cfg
 
-    #cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
+    cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
     #cp arkmanager-abby.cfg /etc/arkmanager/instances/arkmanager-abby.cfg
     
   arkmanager.cfg: |+
@@ -118,11 +118,11 @@ data:
     serverMap=ScorchedEarth_P
     ark_SessionName=ThatDevOpsArkScorchedEarth
     ark_PreventDownloadSurvivors=False
-    ark_PreventDownloadItems=False
-    ark_PreventDownloadDinos=False
+    ark_PreventDownloadItems=True
+    ark_PreventDownloadDinos=True
     ark_PreventUploadSurvivors=False
-    ark_PreventUploadDinos=False
-    ark_PreventUploadItems=False
+    ark_PreventUploadDinos=True
+    ark_PreventUploadItems=True
     ark_noTributeDownloads=False
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
@@ -146,6 +146,8 @@ data:
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
+    ark_OverrideOfficialDifficulty=5.0
+    ark_DifficultyOffset=1.0
     notifyTemplate="Message from Abberation: {msg}"
   arkmanager-ext.cfg: |+
     arkserverroot="/ark/extinction"                       # path of your ARK server files (default ~/ARK)
@@ -172,6 +174,7 @@ data:
     notifyTemplate="Message from Extinction: {msg}"
   GameUserSettings.ini: |+
     [ServerSettings]
+    RaidDinoCharacterFoodDrainMultiplier=0.001
     DisableStructureDecayPvE=True
     DisableDinoDecayPvE=True
     EnablePvPGamma=True
@@ -204,7 +207,6 @@ data:
     StructurePickupHoldDuration=0.500000
     AllowIntegratedSPlusStructures=True
     AllowHideDamageSourceFromLogs=True
-    RaidDinoCharacterFoodDrainMultiplier=1.000000
     PvEDinoDecayPeriodMultiplier=1.000000
     KickIdlePlayersPeriod=3600.000000
     AutoSavePeriodMinutes=15.000000
