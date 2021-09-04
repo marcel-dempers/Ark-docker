@@ -7,34 +7,17 @@ data:
   update-configs.sh: |
     #!/bin/sh
     cd /conf 
-    mkdir -p /ark/island/ShooterGame/Saved/Config/LinuxServer/
-    mkdir -p /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
-    mkdir -p /ark/aberration/ShooterGame/Saved/Config/LinuxServer/
-    mkdir -p /ark/extinction/ShooterGame/Saved/Config/LinuxServer/
+    mkdir -p /ark/server/ShooterGame/Saved/Config/LinuxServer/
     mkdir -p /etc/arkmanager/instances/
 
-    #island
-    cp GameUserSettings.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
-    cp Game.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
-    
-    #scorchedearth
-    cp GameUserSettings.ini /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
-    cp Game.ini /ark/scorchedearth/ShooterGame/Saved/Config/LinuxServer/
-
-    #aberration
-    cp GameUserSettings.ini /ark/aberration/ShooterGame/Saved/Config/LinuxServer/
-    cp Game.ini /ark/aberration/ShooterGame/Saved/Config/LinuxServer/
-    
-    #extinction
-    cp GameUserSettings.ini /ark/extinction/ShooterGame/Saved/Config/LinuxServer/
-    cp Game.ini /ark/extinction/ShooterGame/Saved/Config/LinuxServer/
-
+    #server
+    cp GameUserSettings.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/
+    cp Game.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/
     cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
-    cp arkmanager-island.cfg /etc/arkmanager/instances/arkmanager-island.cfg
-    cp arkmanager-ext.cfg /etc/arkmanager/instances/arkmanager-ext.cfg
-
-    cp arkmanager-se.cfg /etc/arkmanager/instances/arkmanager-se.cfg
-    #cp arkmanager-abby.cfg /etc/arkmanager/instances/arkmanager-abby.cfg
+    #instances
+    cp extinction.cfg /etc/arkmanager/instances/extinction.cfg
+    cp island.cfg /etc/arkmanager/instances/island.cfg
+    cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
     
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
@@ -80,8 +63,8 @@ data:
     arkBackupPreUpdate="false"                                          # set this to true if you want to perform a backup before updating
     arkMaxBackupSizeMB="500"                                            # Set to automatically remove old backups when size exceeds this limit
     discordWebhookURL="${DISCORD_URL}"
-  arkmanager-island.cfg: |+
-    arkserverroot="/ark/island"                    # path of your ARK server files (default ~/ARK)
+  island.cfg: |+
+    arkserverroot="/ark/server"                    # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/island"  		         # path to backup directory
     arkStagingDir="/ark/staging/island"  
     # Port config 
@@ -105,8 +88,8 @@ data:
     notifyTemplate="Message from The Island: {msg}"
     # ----- Mods ----- #
     ark_GameModIds="895711211,731604991"
-  arkmanager-se.cfg: |+
-    arkserverroot="/ark/scorchedearth"                    # path of your ARK server files (default ~/ARK)
+  scorchedearth.cfg: |+
+    arkserverroot="/ark/server"                           # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/scorchedearth"  		        # path to backup directory
     arkStagingDir="/ark/staging/scorchedearth"  
     # Port config 
@@ -129,8 +112,8 @@ data:
     notifyTemplate="Message from Scorched Earth: {msg}"
     # ----- Mods ----- #
     ark_GameModIds="895711211,731604991"
-  arkmanager-abby.cfg: |+
-    arkserverroot="/ark/aberration"                       # path of your ARK server files (default ~/ARK)
+  aberration.cfg: |+
+    arkserverroot="/ark/server"                       # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/aberration"  		            # path to backup directory
     arkStagingDir="/ark/staging/aberration"  
     # Port config 
@@ -153,8 +136,8 @@ data:
     notifyTemplate="Message from Abberation: {msg}"
     # ----- Mods ----- #
     ark_GameModIds="895711211,731604991"
-  arkmanager-ext.cfg: |+
-    arkserverroot="/ark/extinction"                       # path of your ARK server files (default ~/ARK)
+  extinction.cfg: |+
+    arkserverroot="/ark/server"                           # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/extinction"  		            # path to backup directory
     arkStagingDir="/ark/staging/extinction"  
     # Port config 
