@@ -1,22 +1,41 @@
-ark:
-  container_name: ark
-  image: aimvector/ark-server-tools:0.0.1
-  environment:
-    - SERVERPASSWORD=""
-    - ADMINPASSWORD=test
+version: "3.4"
+volumes: 
+  ark:
+services:
+  ark-init: 
+    container_name: init
+    image: alpine 
+    command: 
+    - /bin/sh 
+    - -c 
+    - |
+      #du -sh /ark/
+      apk add tree
+      ls -l /ark
+      mkdir -p /ark/island/ShooterGame/Saved/Config/LinuxServer/
+      cd /conf
+      cp GameUserSettings.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
+      cp Game.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
+      #tree /ark
+    volumes:
+    - ark:/ark
+    - ./docs/docker/configs/:/conf
+  ark:
+    container_name: ark
+    image: aimvector/ark-server-tools:0.2.0
+    environment:
+    - SERVERPASSWORD=test
+    - ADMINPASSWORD=testadmin
     - BACKUPONSTART=0
     - BACKUPONSTOP=0
     - WARNONSTOP=0
     - UPDATEONSTART=0
-    - CLUSTER_ID=ThatDevOpsArkCluster
-  volumes:
+    - CLUSTER_ID=TestCluster
+    volumes:
+    - ./docs/docker/configs/arkmanager/:/etc/arkmanager/
     - ark:/ark
-  ports:
-  - 30777:30777/udp 
-  - 30778:30778/udp
-  - 30015:30015/udp
-  - 30016:30016/udp
-  - 30779:30779/udp
-  - 30780:30780/udp
-  - 30017:30017/udp
-  - 30018:30018/udp
+    ports:
+    - 30777:30777/udp 
+    - 30778:30778/udp
+    - 30015:30015/udp
+    - 30016:30016/udp
