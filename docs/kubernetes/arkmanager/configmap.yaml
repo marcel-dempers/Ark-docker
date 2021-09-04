@@ -69,8 +69,6 @@ data:
     ark_MaxPlayers=${MAX_PLAYERS}
     arkflag_log=""
     arkBackupPostCommand='. /home/steam/backup-s3.sh $backupfile'
-    # ----- Mods ----- #
-    ark_GameModIds="895711211,731604991"
     mod_branch=Windows
     msgWarnUpdateMinutes="This ARK server will shutdown for an update in %d minutes"
     msgWarnUpdateSeconds="This ARK server will shutdown for an update in %d seconds"
@@ -105,6 +103,8 @@ data:
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
     notifyTemplate="Message from The Island: {msg}"
+    # ----- Mods ----- #
+    ark_GameModIds="895711211,731604991"
   arkmanager-se.cfg: |+
     arkserverroot="/ark/scorchedearth"                    # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/scorchedearth"  		        # path to backup directory
@@ -127,6 +127,8 @@ data:
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
     notifyTemplate="Message from Scorched Earth: {msg}"
+    # ----- Mods ----- #
+    ark_GameModIds="895711211,731604991"
   arkmanager-abby.cfg: |+
     arkserverroot="/ark/aberration"                       # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/aberration"  		            # path to backup directory
@@ -149,6 +151,8 @@ data:
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
     notifyTemplate="Message from Abberation: {msg}"
+    # ----- Mods ----- #
+    ark_GameModIds="895711211,731604991"
   arkmanager-ext.cfg: |+
     arkserverroot="/ark/extinction"                       # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/extinction"  		            # path to backup directory
@@ -172,6 +176,8 @@ data:
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
     notifyTemplate="Message from Extinction: {msg}"
+    # ----- Mods ----- #
+    ark_GameModIds="895711211,731604991"
   GameUserSettings.ini: |+
     [ServerSettings]
     StructurePickupTimeAfterPlacement=600.00
