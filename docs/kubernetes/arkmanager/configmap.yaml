@@ -167,12 +167,12 @@ data:
     RaidDinoCharacterFoodDrainMultiplier=0.001
     DisableStructureDecayPvE=True
     DisableDinoDecayPvE=True
-    EnablePvPGamma=True
+    EnablePvPGamma=False
     ResourcesRespawnPeriodMultiplier=0.5
     alwaysNotifyPlayerJoined=True
     alwaysNotifyPlayerLeft=True
-    TamingSpeedMultiplier=3.00000
-    HarvestAmountMultiplier=4
+    TamingSpeedMultiplier=2.00000
+    HarvestAmountMultiplier=2
     DifficultyOffset=5
     XPMultiplier=1.50000
     AdminLogging=false
@@ -397,7 +397,7 @@ data:
     GenericXPMultiplier=2
     FuelConsumptionIntervalMultiplier=0.5
     SupplyCrateLootQualityMultiplier=4
-    MatingIntervalMultiplier=0.05
+    MatingIntervalMultiplier=1.0
     EggHatchSpeedMultiplier=4
     BabyMatureSpeedMultiplier=7
     BabyFoodConsumptionSpeedMultiplier=1
