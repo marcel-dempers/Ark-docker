@@ -69,5 +69,21 @@ spec:
     protocol: UDP
     name: extinction-udp4
     nodePort: 30783
+  - port: 30023
+    protocol: UDP
+    name: genesis-udp1
+    nodePort: 30023
+  - port: 30024
+    protocol: UDP
+    name: genesis-udp2
+    nodePort: 30024
+  - port: 30785
+    protocol: UDP
+    name: genesis-udp3
+    nodePort: 30785
+  - port: 30786
+    protocol: UDP
+    name: genesis-udp4
+    nodePort: 30786
   selector:
     app: arkmanager

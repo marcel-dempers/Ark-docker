@@ -18,7 +18,7 @@ data:
     cp extinction.cfg /etc/arkmanager/instances/extinction.cfg
     cp island.cfg /etc/arkmanager/instances/island.cfg
     cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
-    
+    cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -161,6 +161,26 @@ data:
     notifyTemplate="Message from Extinction: {msg}"
     # ----- Mods ----- #
     ark_GameModIds="895711211,731604991"
+  genesis.cfg: |+
+    arkserverroot="/ark/server"                           # path of your ARK server files (default ~/ARK)
+    arkbackupdir="/ark/backup/genesis"  		            # path to backup directory
+    arkStagingDir="/ark/staging/genesis"  
+    # Port config 
+    ark_Port=30786                                        # ARK server port (default 7778)
+    ark_QueryPort=30023                                   # ARK query port (default 27016)
+    ark_RCONEnabled="True"                                # Enable RCON Protocol
+    ark_RCONPort="32334"
+    ark_AltSaveDirectoryName=ArkGenesisOneSave
+    serverMap=Genesis
+    ark_SessionName=ThatDevOpsGenesisOne
+    ark_PreventDownloadSurvivors=False
+    ark_PreventDownloadItems=True
+    ark_PreventDownloadDinos=True
+    ark_PreventUploadSurvivors=False
+    ark_PreventUploadDinos=True
+    ark_PreventUploadItems=True
+    ark_noTributeDownloads=False
+    notifyTemplate="Message from Genesis 1: {msg}"
   GameUserSettings.ini: |+
     [ServerSettings]
     StructurePickupTimeAfterPlacement=600.00
