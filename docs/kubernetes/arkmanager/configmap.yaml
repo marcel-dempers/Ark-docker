@@ -50,6 +50,7 @@ data:
     ark_ServerPassword=${SERVERPASSWORD}
     ark_ServerAdminPassword=${ADMINPASSWORD}
     ark_MaxPlayers=${MAX_PLAYERS}
+    arkopt_AllowAnyoneBabyImprintCuddle=True
     arkflag_log=""
     arkBackupPostCommand='. /home/steam/backup-s3.sh $backupfile'
     mod_branch=Windows
@@ -82,7 +83,7 @@ data:
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
     ark_noTributeDownloads=False
-    ark_serverPVE=true
+    arkopt_serverPVE=True
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
     notifyTemplate="Message from The Island: {msg}"
@@ -107,6 +108,7 @@ data:
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
+    arkopt_serverPVE=False
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
     notifyTemplate="Message from Scorched Earth: {msg}"
@@ -131,6 +133,7 @@ data:
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
+    arkopt_serverPVE=False
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
     notifyTemplate="Message from Abberation: {msg}"
@@ -155,7 +158,7 @@ data:
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
     ark_noTributeDownloads=False
-    ark_serverPVE=true
+    arkopt_serverPVE=True
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
     notifyTemplate="Message from Extinction: {msg}"
@@ -180,6 +183,7 @@ data:
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
+    arkopt_serverPVE=True
     notifyTemplate="Message from Genesis 1: {msg}"
   GameUserSettings.ini: |+
     [ServerSettings]
@@ -408,6 +412,29 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_MetalIngot_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Silicon_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gasoline_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_Glowstick_C",LevelToAutoUnlock=10)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_PortableRopeLadder_C",LevelToAutoUnlock=15)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_WoodElevatorPlatform_Small_C",LevelToAutoUnlock=20)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_WoodElevator_Switch_C",LevelToAutoUnlock=20)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_WoodElevator_Track_C",LevelToAutoUnlock=20)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_WoodElevatorPlatform_Medium_C",LevelToAutoUnlock=23)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_WoodElevatorPlatform_Large_C",LevelToAutoUnlock=30)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ZiplineAmmo_C",LevelToAutoUnlock=31)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ClimbingPick_C",LevelToAutoUnlock=34)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_StoneCliffPlatform_C",LevelToAutoUnlock=37)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_GasCollector_C",LevelToAutoUnlock=40)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_MetalCliffPlatform_C",LevelToAutoUnlock=51)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ZiplineMotor_C",LevelToAutoUnlock=54)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_Glider_C",LevelToAutoUnlock=62)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_KarkinoSaddle_C",LevelToAutoUnlock=65)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_HazardSuit_Boots_C",LevelToAutoUnlock=68)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_HazardSuit_Gloves_C",LevelToAutoUnlock=68)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_HazardSuit_Helmet_C",LevelToAutoUnlock=68)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_HazardSuit_Pants_C",LevelToAutoUnlock=68)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_HazardSuit_Chest_C",LevelToAutoUnlock=68)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ChargeBattery_C",LevelToAutoUnlock=71)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ChargeLantern_C",LevelToAutoUnlock=80)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_BasiliskSaddle_C",LevelToAutoUnlock=85)
     BabyImprintAmountMultiplier=2.0
     BabyCuddleIntervalMultiplier=0.8
     TamedDinoCharacterFoodDrainMultiplier=0.25
