@@ -1,7 +1,9 @@
 $ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-2-kubeconfig.yaml"
 
+. $PSScriptRoot\active_instances.ps1 
+
 Write-Host "saving world..."
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager saveworld @all" 
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager saveworld @$i" }
 
 Write-Host "running backup..."
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager backup @all"
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager backup @$i" }
