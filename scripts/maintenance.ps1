@@ -7,7 +7,7 @@ $ENV:REASON="updating server"
 # start all inactive servers for backups and wait for up countdown
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager start @all"
 
-foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify $i 'Automated routine server maintenance starting in $delayMinutes minutes'" }
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify $i 'Automated routine server maintenance starting in $delayMinutes minutes.'" }
 
 while ($delayMinutes -gt 0)
 {
