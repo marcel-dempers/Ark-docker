@@ -83,7 +83,7 @@ data:
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
     ark_noTributeDownloads=False
-    arkopt_serverPVE=True
+    ark_serverPVE=True
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
     notifyTemplate="Message from The Island: {msg}"
@@ -108,7 +108,7 @@ data:
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
-    arkopt_serverPVE=False
+    ark_serverPVE=False
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
     notifyTemplate="Message from Scorched Earth: {msg}"
@@ -133,7 +133,7 @@ data:
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
-    arkopt_serverPVE=False
+    ark_serverPVE=False
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
     notifyTemplate="Message from Abberation: {msg}"
@@ -158,7 +158,7 @@ data:
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
     ark_noTributeDownloads=False
-    arkopt_serverPVE=True
+    ark_serverPVE=True
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
     notifyTemplate="Message from Extinction: {msg}"
@@ -183,10 +183,11 @@ data:
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
-    arkopt_serverPVE=True
+    ark_serverPVE=True
     notifyTemplate="Message from Genesis 1: {msg}"
   GameUserSettings.ini: |+
     [ServerSettings]
+    AllowTekSuitPowersInGenesis=True
     StructurePickupTimeAfterPlacement=600.00
     RaidDinoCharacterFoodDrainMultiplier=0.001
     DisableStructureDecayPvE=True
