@@ -2,22 +2,18 @@ version: "3.4"
 volumes: 
   ark:
 services:
-  ark-init: 
+  init: 
     container_name: init
     image: alpine 
     command: 
     - /bin/sh 
     - -c 
     - |
-      #du -sh /ark/
-      apk add tree
-      ls -l /ark
       mkdir -p /ark/island/ShooterGame/Saved/Config/LinuxServer/
       cd /conf
       cp GameUserSettings.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
       cp Game.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
-      #tree /ark
-      sleep 900s
+      #sleep 900s
     volumes:
     - ark:/ark
     - ./docs/docker/configs/:/conf
@@ -40,7 +36,7 @@ services:
     - 30778:30778/udp
     - 30015:30015/udp
     - 30016:30016/udp
-    - 30779:30779/udp 
-    - 30780:30780/udp
-    - 30017:30017/udp
-    - 30018:30018/udp
+    # - 30779:30779/udp 
+    # - 30780:30780/udp
+    # - 30017:30017/udp
+    # - 30018:30018/udp

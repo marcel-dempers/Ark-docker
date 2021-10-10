@@ -32,12 +32,12 @@ Move on to the next step
 
 ### Server Addresses
 ```
-STATUS:  ❌ (stopped) ✅(up) 
+STATUS: ⏸ (paused) ✅(up) 
 
-❌  The Island:     ark.marceldempers.dev:30015
+⏸  The Island:     ark.marceldempers.dev:30015
 ✅  Extinction:     ark.marceldempers.dev:30021
-❎  Scorched Earth: ark.marceldempers.dev:30017
-❌  Aberration:     ark.marceldempers.dev:30019
+⏸  Scorched Earth: ark.marceldempers.dev:30017
+⏸  Aberration:     ark.marceldempers.dev:30019
 ✅  Genesis:        ark.marceldempers.dev:30023
 
 ```

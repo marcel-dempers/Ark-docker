@@ -1,5 +1,4 @@
 $instances = @(
-    '@scorchedearth'
+    '@genesis',
     '@extinction'
-    '@genesis'
 )

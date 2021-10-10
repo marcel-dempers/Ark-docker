@@ -1,5 +1,5 @@
 $ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-2-kubeconfig.yaml"
-$delayMinutes = 30
+$delayMinutes = 20
 $ENV:REASON="updating server"
 
 . $PSScriptRoot\active_instances.ps1 
