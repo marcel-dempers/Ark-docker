@@ -1,4 +1,3 @@
 $instances = @(
-    '@genesis',
-    '@extinction'
+    '@genesis'
 )
