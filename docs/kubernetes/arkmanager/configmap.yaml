@@ -42,9 +42,6 @@ data:
     arkAutoUpdateOnStart="false"                                        # set this to true if you want to always update before startup
     # We don't use the dots because it doesn't show.
     progressDisplayType=spinner
-    arkopt_clusterid=${CLUSTER_ID}
-    arkflag_NoTransferFromFiltering=True
-    arkopt_ClusterDirOverride=/ark/clusters
     ark_ShowFloatingDamageText=True
     arkflag_exclusivejoin=true
     ark_ServerPassword=${SERVERPASSWORD}
@@ -76,6 +73,9 @@ data:
     ark_AltSaveDirectoryName=ArkTheIslandSave
     serverMap=TheIsland
     ark_SessionName=ThatDevOpsArk
+    arkflag_NoTransferFromFiltering=True
+    arkopt_clusterid=${CLUSTER_ID}
+    arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
     ark_PreventDownloadItems=False
     ark_PreventDownloadDinos=False
@@ -101,6 +101,9 @@ data:
     ark_AltSaveDirectoryName=ArkScorchedEarthSave
     serverMap=ScorchedEarth_P
     ark_SessionName=ThatDevOpsArkScorchedEarth
+    arkflag_NoTransferFromFiltering=True
+    arkopt_clusterid=${CLUSTER_ID}
+    arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
     ark_PreventDownloadItems=True
     ark_PreventDownloadDinos=True
@@ -126,6 +129,9 @@ data:
     ark_AltSaveDirectoryName=ArkAberrationSave
     serverMap=Aberration_P
     ark_SessionName=ThatDevOpsArkAberration
+    arkflag_NoTransferFromFiltering=True
+    arkopt_clusterid=${CLUSTER_ID}
+    arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
     ark_PreventDownloadItems=True
     ark_PreventDownloadDinos=True
@@ -151,6 +157,9 @@ data:
     ark_AltSaveDirectoryName=ArkExtinctionSave
     serverMap=Extinction
     ark_SessionName=ThatDevOpsArkExtinction
+    arkflag_NoTransferFromFiltering=True
+    arkopt_clusterid=${CLUSTER_ID}
+    arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
     ark_PreventDownloadItems=False
     ark_PreventDownloadDinos=False
@@ -176,6 +185,9 @@ data:
     ark_AltSaveDirectoryName=ArkGenesisOneSave
     serverMap=Genesis
     ark_SessionName=ThatDevOpsGenesisOne
+    arkflag_NoTransferFromFiltering=True
+    arkopt_clusterid=${CLUSTER_ID}
+    arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
     ark_PreventDownloadItems=True
     ark_PreventDownloadDinos=True
@@ -199,7 +211,7 @@ data:
     TamingSpeedMultiplier=2.00000
     HarvestAmountMultiplier=2
     DifficultyOffset=5
-    XPMultiplier=1.50000
+    XPMultiplier=1.0
     AdminLogging=false
     PerPlatformMaxStructuresMultiplier=10.00000
     ForceFlyerExplosives=0
