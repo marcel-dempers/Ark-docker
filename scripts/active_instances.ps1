@@ -1,3 +1,4 @@
 $instances = @(
-    '@genesis'
+    '@genesis',
+    '@ragnarok1'
 )
