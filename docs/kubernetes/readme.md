@@ -93,7 +93,7 @@ It will take a while for the server to download binaries for the first time.
 ```
 # track download (roughly 17GB!)
 kubectl -n arkmanager exec -it arkmanager-0 -- ls -l /ark/
-kubectl -n arkmanager exec -it arkmanager-0 -- du -sh /ark/island/
+kubectl -n arkmanager exec -it arkmanager-0 -- du -sh /ark/server/
 
 # pod logs
 kubectl -n arkmanager logs arkmanager-0
@@ -117,8 +117,8 @@ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager rconcmd @all 
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager rconcmd @arkmanager-island 'AllowPlayerToJoinNoCheck xxxxxxxx'"
 
 # see white listed players 
-kubectl -n arkmanager exec -it arkmanager-0 -- nano /ark/island/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt
-kubectl -n arkmanager cp arkmanager-0:/ark/island/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt PlayersJoinNoCheckList.txt 
+kubectl -n arkmanager exec -it arkmanager-0 -- nano /ark/server/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt
+kubectl -n arkmanager cp arkmanager-0:/ark/server/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt PlayersJoinNoCheckList.txt 
 ```
 
 # Restore
@@ -132,10 +132,10 @@ mkdir -p /tmp/restore/
 tar -xvjf /tmp/backup.tar.bz2 -C /tmp/restore/
 
 #NOTE: cd to the restore files and clear existing save first!
-rm /ark/island/ShooterGame/Saved/ArkTheIslandSave/*
+rm /ark/server/ShooterGame/Saved/ArkTheIslandSave/*
 
 #copy files to save
-cp * /ark/island/ShooterGame/Saved/ArkTheIslandSave/
+cp * /ark/server/ShooterGame/Saved/ArkTheIslandSave/
 ```
 
 ## Graceful save+backup+restart
