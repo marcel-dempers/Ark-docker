@@ -37,6 +37,7 @@ spec:
     protocol: UDP
     name: clientrawudp2
     nodePort: 30780
+  # ABERRATION  
   - port: 30781
     protocol: UDP
     name: aberration-udp1
@@ -53,6 +54,7 @@ spec:
     protocol: UDP
     name: aberration-udp4
     nodePort: 30020
+  # EXTINCTION    
   - port: 30021
     protocol: UDP
     name: extinction-udp1
@@ -69,6 +71,7 @@ spec:
     protocol: UDP
     name: extinction-udp4
     nodePort: 30783
+  # GENESIS PART 1  
   - port: 30023
     protocol: UDP
     name: genesis-udp1
@@ -85,5 +88,39 @@ spec:
     protocol: UDP
     name: genesis-udp4
     nodePort: 30786
+  # GENESIS PART 2
+  - port: 30025
+    protocol: UDP
+    name: genesis2-udp1
+    nodePort: 30025
+  - port: 30026
+    protocol: UDP
+    name: genesis2-udp2
+    nodePort: 30026
+  - port: 30787
+    protocol: UDP
+    name: genesis2-udp3
+    nodePort: 30787
+  - port: 30788
+    protocol: UDP
+    name: genesis2-udp4
+    nodePort: 30788
+  # RAGNAROK ADVENTURE SERIES  
+  - port: 30027
+    protocol: UDP
+    name: ragnarok1-udp1
+    nodePort: 30027
+  - port: 30028
+    protocol: UDP
+    name: ragnarok1-udp2
+    nodePort: 30028
+  - port: 30789
+    protocol: UDP
+    name: ragnarok1-udp3
+    nodePort: 30789
+  - port: 30790
+    protocol: UDP
+    name: ragnarok1-udp4
+    nodePort: 30790
   selector:
     app: arkmanager
