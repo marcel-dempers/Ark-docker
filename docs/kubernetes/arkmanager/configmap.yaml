@@ -14,10 +14,13 @@ data:
     cp GameUserSettings.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/
     cp Game.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/
     cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
-    #instances
-    cp extinction.cfg /etc/arkmanager/instances/extinction.cfg
-    cp island.cfg /etc/arkmanager/instances/island.cfg
-    cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
+
+    ################paused instances###############################
+    #cp extinction.cfg /etc/arkmanager/instances/extinction.cfg
+    #cp island.cfg /etc/arkmanager/instances/island.cfg
+    #cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
+
+    ################active instances###############################
     cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
@@ -60,7 +63,6 @@ data:
     arkwarnminutes="60"                                                 # number of minutes to warn players when using update --warn
     arkBackupPreUpdate="false"                                          # set this to true if you want to perform a backup before updating
     arkMaxBackupSizeMB="500"                                            # Set to automatically remove old backups when size exceeds this limit
-    discordWebhookURL="${DISCORD_URL}"
   island.cfg: |+
     arkserverroot="/ark/server"                    # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/island"  		         # path to backup directory
@@ -86,6 +88,7 @@ data:
     ark_serverPVE=True
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
+    discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from The Island: {msg}"
     # ----- Mods ----- #
     ark_GameModIds="895711211,731604991"
@@ -114,6 +117,7 @@ data:
     ark_serverPVE=False
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
+    discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from Scorched Earth: {msg}"
     # ----- Mods ----- #
     ark_GameModIds="895711211,731604991"
@@ -142,6 +146,7 @@ data:
     ark_serverPVE=False
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
+    discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from Abberation: {msg}"
     # ----- Mods ----- #
     ark_GameModIds="895711211,731604991"
@@ -170,6 +175,7 @@ data:
     ark_serverPVE=True
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
+    discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from Extinction: {msg}"
     # ----- Mods ----- #
     ark_GameModIds="895711211,731604991"
@@ -196,7 +202,36 @@ data:
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
     ark_serverPVE=True
+    discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from Genesis 1: {msg}"
+  ragnarok1.cfg: |+
+    arkserverroot="/ark/server"                           # path of your ARK server files (default ~/ARK)
+    arkbackupdir="/ark/backup/ragnarok1"  		            # path to backup directory
+    arkStagingDir="/ark/staging/ragnarok1"  
+    # Port config 
+    ark_Port=30790                                        # ARK server port (default 7778)
+    ark_QueryPort=30027                                   # ARK query port (default 27016)
+    ark_RCONEnabled="True"                                # Enable RCON Protocol
+    ark_RCONPort="32336"
+    ark_AltSaveDirectoryName=ArkRagnarok1Save
+    serverMap=Ragnarok
+    ark_SessionName=ThatDevOpsAdventureSeasonOne
+    arkflag_NoTransferFromFiltering=True
+    ark_PreventDownloadSurvivors=True
+    ark_PreventDownloadItems=True
+    ark_PreventDownloadDinos=True
+    ark_PreventUploadSurvivors=True
+    ark_PreventUploadDinos=True
+    ark_PreventUploadItems=True
+    ark_noTributeDownloads=False
+    ark_serverPVE=False
+    # ----- Mods ----- #
+    # 1522327484 : ARK Additions: The Collection! 
+    # 2003934830 : Prehistoric Beasts
+    # 1373744537 : Additional Creatures 2: Wild Ark
+    ark_GameModIds="1373744537,1522327484,2003934830"
+    #discordWebhookURL="${DISCORD_URL}"
+    #notifyTemplate="Message from Adventure Season One: {msg}" 
   GameUserSettings.ini: |+
     [ServerSettings]
     AllowTekSuitPowersInGenesis=True
