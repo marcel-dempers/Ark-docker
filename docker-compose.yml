@@ -9,10 +9,10 @@ services:
     - /bin/sh 
     - -c 
     - |
-      mkdir -p /ark/island/ShooterGame/Saved/Config/LinuxServer/
+      mkdir -p /ark/server/ShooterGame/Saved/Config/LinuxServer/
       cd /conf
-      cp GameUserSettings.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
-      cp Game.ini /ark/island/ShooterGame/Saved/Config/LinuxServer/
+      cp GameUserSettings.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/
+      cp Game.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/
       #sleep 900s
     volumes:
     - ark:/ark
