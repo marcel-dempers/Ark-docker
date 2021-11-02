@@ -22,6 +22,7 @@ data:
 
     ################active instances###############################
     cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
+    cp ragnarok1.cfg /etc/arkmanager/instances/ragnarok1.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -230,10 +231,11 @@ data:
     # 2003934830 : Prehistoric Beasts
     # 1373744537 : Additional Creatures 2: Wild Ark
     ark_GameModIds="1373744537,1522327484,2003934830"
-    #discordWebhookURL="${DISCORD_URL}"
-    #notifyTemplate="Message from Adventure Season One: {msg}" 
+    discordWebhookURL="${DISCORD_URL}"
+    notifyTemplate="Message from Ragnarok Adventure Season One: {msg}" 
   GameUserSettings.ini: |+
     [ServerSettings]
+    MaxGateFrameOnSaddles=3
     AllowTekSuitPowersInGenesis=True
     StructurePickupTimeAfterPlacement=600.00
     RaidDinoCharacterFoodDrainMultiplier=0.001
