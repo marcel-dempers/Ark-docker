@@ -235,6 +235,7 @@ data:
     notifyTemplate="Message from Ragnarok Adventure Season One: {msg}" 
   GameUserSettings.ini: |+
     [ServerSettings]
+    PlatformSaddleBuildAreaBoundsMultiplier=2
     MaxGateFrameOnSaddles=3
     AllowTekSuitPowersInGenesis=True
     StructurePickupTimeAfterPlacement=600.00
