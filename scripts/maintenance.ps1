@@ -4,10 +4,10 @@ $ENV:REASON="updating server"
 
 . $PSScriptRoot\active_instances.ps1 
 
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify $i 'Automated routine server maintenance starting in $delayMinutes minutes.'" }
+
 # start all inactive servers for backups and wait for up countdown
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager start @all"
-
-foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify $i 'Automated routine server maintenance starting in $delayMinutes minutes.'" }
 
 while ($delayMinutes -gt 0)
 {
@@ -35,7 +35,7 @@ Write-Host "stop instances..."
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager stop @all" 
 
 Write-Host "updating instances..."
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager update @all --update-mods"
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager update @all --force --update-mods"
 
 Write-Host "starting active instances..."
 foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager start $i" }
