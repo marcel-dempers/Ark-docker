@@ -19,9 +19,8 @@ data:
     #cp extinction.cfg /etc/arkmanager/instances/extinction.cfg
     #cp island.cfg /etc/arkmanager/instances/island.cfg
     #cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
-
+    #cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
     ################active instances###############################
-    cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
     cp ragnarok1.cfg /etc/arkmanager/instances/ragnarok1.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
