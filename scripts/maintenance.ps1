@@ -7,7 +7,7 @@ $ENV:REASON="updating server"
 foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify $i 'Automated routine server maintenance starting in $delayMinutes minutes.'" }
 
 # start all inactive servers for backups and wait for up countdown
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager start @all"
+#kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager start @all"
 
 while ($delayMinutes -gt 0)
 {
@@ -21,21 +21,20 @@ while ($delayMinutes -gt 0)
   $delayMinutes -= 1
 }
 
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify @all 'Automated routine server maintenance. Will be up in 20 minutes'"
-
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager broadcast @all 'Server shutting down... Reason: $ENV:REASON'"
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify $i 'Automated routine server maintenance. Will be up in 20 minutes'" }
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager broadcast $i 'Server shutting down... Reason: $ENV:REASON'" }
 
 Write-Host "saving world..."
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager saveworld @all" 
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager saveworld $i" }
 
 Write-Host "running backup..."
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager backup @all" 
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager backup $i" }
 
 Write-Host "stop instances..."
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager stop @all" 
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager stop $i" }
 
 Write-Host "updating instances..."
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager update @all --force --update-mods"
+foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager update $i --force --update-mods" }
 
 Write-Host "starting active instances..."
 foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager start $i" }
