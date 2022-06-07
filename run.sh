@@ -18,12 +18,21 @@ cd /ark
 
 if [ ! -d "/ark/server/ShooterGame/Binaries/Linux" ]; then
   echo "Installing  files in /ark/server..."
-  arkmanager install @island
+
+  # get first instance & install if available
+  # only need one instance available to install the game
+  instance=$(su -p -c "arkmanager list-instances" steam | grep -o -P '(?<=@).*(?=:)' | head -n 1)
+  if [ -z "$instance" ]
+  then
+      echo "No instance configured, please configure instance and restart the container..."
+  else
+      arkmanager install "@$instance"
+  fi
   # mods
   #classic flyer
-  arkmanager installmod 895711211 @island
+  #arkmanager installmod 895711211 @island
   #s+
-  arkmanager installmod 731604991 @island
+  #arkmanager installmod 731604991 @island
 else 
   echo "installation already exists..."
 fi
