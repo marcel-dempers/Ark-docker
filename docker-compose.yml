@@ -4,7 +4,7 @@ volumes:
 services:
   init: 
     container_name: init
-    image: alpine 
+    image: alpine:latest
     command: 
     - /bin/sh 
     - -c 
