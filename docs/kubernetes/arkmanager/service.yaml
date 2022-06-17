@@ -122,5 +122,22 @@ spec:
     protocol: UDP
     name: ragnarok1-udp4
     nodePort: 30790
+  # FJORDUR  
+  - port: 30029
+    protocol: UDP
+    name: fjordur-udp1
+    nodePort: 30029
+  - port: 30030
+    protocol: UDP
+    name: fjordur-udp2
+    nodePort: 30030
+  - port: 30791
+    protocol: UDP
+    name: fjordur-udp3
+    nodePort: 30791
+  - port: 30792
+    protocol: UDP
+    name: fjordur-udp4
+    nodePort: 30792
   selector:
     app: arkmanager

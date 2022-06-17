@@ -20,8 +20,10 @@ data:
     #cp island.cfg /etc/arkmanager/instances/island.cfg
     #cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
     #cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
+    #cp ragnarok1.cfg /etc/arkmanager/instances/ragnarok1.cfg
+    #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
     ################active instances###############################
-    cp ragnarok1.cfg /etc/arkmanager/instances/ragnarok1.cfg
+    cp aberration.cfg /etc/arkmanager/instances/aberration.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -130,16 +132,16 @@ data:
     ark_QueryPort=30019                                   # ARK query port (default 27016)
     ark_RCONEnabled="True"                                # Enable RCON Protocol
     ark_RCONPort="32332"
-    ark_AltSaveDirectoryName=ArkAberrationSave
+    ark_AltSaveDirectoryName=ArkAberrationSave2
     serverMap=Aberration_P
-    ark_SessionName=ThatDevOpsArkAberration
+    ark_SessionName=ThatAberrationArk
     arkflag_NoTransferFromFiltering=True
     arkopt_clusterid=${CLUSTER_ID}
     arkopt_ClusterDirOverride=/ark/clusters
-    ark_PreventDownloadSurvivors=False
+    ark_PreventDownloadSurvivors=True
     ark_PreventDownloadItems=True
     ark_PreventDownloadDinos=True
-    ark_PreventUploadSurvivors=False
+    ark_PreventUploadSurvivors=True
     ark_PreventUploadDinos=True
     ark_PreventUploadItems=True
     ark_noTributeDownloads=False
@@ -147,9 +149,9 @@ data:
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
     discordWebhookURL="${DISCORD_URL}"
-    notifyTemplate="Message from Abberation: {msg}"
+    notifyTemplate="Message from Aberration: {msg}"
     # ----- Mods ----- #
-    ark_GameModIds="895711211,731604991"
+    #ark_GameModIds="895711211,731604991"
   extinction.cfg: |+
     arkserverroot="/ark/server"                           # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/extinction"  		            # path to backup directory
@@ -231,7 +233,32 @@ data:
     # 1373744537 : Additional Creatures 2: Wild Ark
     ark_GameModIds="1373744537,1522327484,2003934830"
     discordWebhookURL="${DISCORD_URL}"
-    notifyTemplate="Message from Ragnarok Adventure Season One: {msg}" 
+    notifyTemplate="Message from Ragnarok Adventure Season One: {msg}"
+  fjordur.cfg: |+
+    arkserverroot="/ark/server"                           # path of your ARK server files (default ~/ARK)
+    arkbackupdir="/ark/backup/fjordur"  		              # path to backup directory
+    arkStagingDir="/ark/staging/fjordur"  
+    # Port config 
+    ark_Port=30792                                        # ARK server port (default 7778)
+    ark_QueryPort=30030                                   # ARK query port (default 27016)
+    ark_RCONEnabled="True"                                # Enable RCON Protocol
+    ark_RCONPort="32337"
+    ark_AltSaveDirectoryName=ArkFjordurSave
+    serverMap=Fjordur
+    ark_SessionName=ThatFjordurArk
+    arkflag_NoTransferFromFiltering=True
+    ark_PreventDownloadSurvivors=True
+    ark_PreventDownloadItems=True
+    ark_PreventDownloadDinos=True
+    ark_PreventUploadSurvivors=True
+    ark_PreventUploadDinos=True
+    ark_PreventUploadItems=True
+    ark_noTributeDownloads=False
+    ark_serverPVE=False
+    # ----- Mods ----- #
+    #ark_GameModIds=""
+    discordWebhookURL="${DISCORD_URL}"
+    notifyTemplate="Message from Fjordur: {msg}"  
   GameUserSettings.ini: |+
     [ServerSettings]
     PlatformSaddleBuildAreaBoundsMultiplier=2

@@ -29,7 +29,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-server-tools:0.2.1
+        image: aimvector/ark-server-tools:0.2.2
         imagePullPolicy: Always
         env:
         - name: DISCORD_URL
@@ -117,7 +117,15 @@ spec:
           name: ragnarok1-udp3
         - containerPort: 30790
           name: ragnarok1-udp4
-
+        # FJORDUR
+        - containerPort: 30029
+          name: fjordur-udp1
+        - containerPort: 30030 
+          name: fjordur-udp2
+        - containerPort: 30791
+          name: fjordur-udp3
+        - containerPort: 30792
+          name: fjordur-udp4
         volumeMounts:
         - name: backup-secret
           mountPath: /s3cfg

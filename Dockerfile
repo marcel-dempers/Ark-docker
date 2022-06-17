@@ -17,6 +17,10 @@ ENV SESSIONNAME="Ark Docker" \
     TZ=UTC
 
 ## Install dependencies
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+RUN yum update -y
+
 RUN yum -y install glibc.i686 git lsof bzip2 cronie perl-Compress-Zlib \
  && yum clean all \
  && adduser -u $ARK_UID -s /bin/bash -U steam
