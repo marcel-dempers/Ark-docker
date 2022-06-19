@@ -263,6 +263,7 @@ data:
     [ServerSettings]
     PlatformSaddleBuildAreaBoundsMultiplier=2
     MaxGateFrameOnSaddles=3
+    PlayerCharacterWaterDrainMultiplier=0.5
     AllowTekSuitPowersInGenesis=True
     StructurePickupTimeAfterPlacement=600.00
     RaidDinoCharacterFoodDrainMultiplier=0.001
@@ -502,6 +503,7 @@ data:
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_GasCollector_C",LevelToAutoUnlock=40)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_MetalCliffPlatform_C",LevelToAutoUnlock=51)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ZiplineMotor_C",LevelToAutoUnlock=54)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ChainSaw_C",LevelToAutoUnlock=55)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_Glider_C",LevelToAutoUnlock=62)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_KarkinoSaddle_C",LevelToAutoUnlock=65)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_HazardSuit_Boots_C",LevelToAutoUnlock=68)
