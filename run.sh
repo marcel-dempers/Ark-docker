@@ -21,7 +21,7 @@ if [ ! -d "/ark/server/ShooterGame/Binaries/Linux" ]; then
 
   # get first instance & install if available
   # only need one instance available to install the game
-  instance=$(su -p -c "arkmanager list-instances" steam | grep -o -P '(?<=@).*(?=:)' | head -n 1)
+  instance=$(arkmanager list-instances | grep -o -P '(?<=@).*(?=:)' | head -n 1)
   if [ -z "$instance" ]
   then
       echo "No instance configured, please configure instance and restart the container..."
