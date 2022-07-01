@@ -490,6 +490,10 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_MetalIngot_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Silicon_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gasoline_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_PreservingSalt_C",LevelToAutoUnlock=5)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_FishingNet_C",LevelToAutoUnlock=6)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_Tent_C",LevelToAutoUnlock=7)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_Canoe_C",LevelToAutoUnlock=8)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_Glowstick_C",LevelToAutoUnlock=10)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_PortableRopeLadder_C",LevelToAutoUnlock=15)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_WoodElevatorPlatform_Small_C",LevelToAutoUnlock=20)
@@ -501,6 +505,7 @@ data:
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ClimbingPick_C",LevelToAutoUnlock=34)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_StoneCliffPlatform_C",LevelToAutoUnlock=37)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_GasCollector_C",LevelToAutoUnlock=40)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_NetGun_Ammo_C",LevelToAutoUnlock=43)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_MetalCliffPlatform_C",LevelToAutoUnlock=51)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ZiplineMotor_C",LevelToAutoUnlock=54)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ChainSaw_C",LevelToAutoUnlock=55)
@@ -513,7 +518,9 @@ data:
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_HazardSuit_Chest_C",LevelToAutoUnlock=68)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ChargeBattery_C",LevelToAutoUnlock=71)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_ChargeLantern_C",LevelToAutoUnlock=80)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_MiningDrill_C",LevelToAutoUnlock=80)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_BasiliskSaddle_C",LevelToAutoUnlock=85)
+    EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_EggIncubator_C",LevelToAutoUnlock=89)
     BabyImprintAmountMultiplier=2.0
     BabyCuddleIntervalMultiplier=0.8
     TamedDinoCharacterFoodDrainMultiplier=0.25
