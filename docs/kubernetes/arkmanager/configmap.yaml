@@ -528,7 +528,7 @@ data:
     HarvestXPMultiplier=2
     CraftXPMultiplier=2
     GenericXPMultiplier=2
-    FuelConsumptionIntervalMultiplier=0.5
+    FuelConsumptionIntervalMultiplier=2
     SupplyCrateLootQualityMultiplier=4
     MatingIntervalMultiplier=1.0
     EggHatchSpeedMultiplier=4
