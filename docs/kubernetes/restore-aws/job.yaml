@@ -4,17 +4,19 @@ kind: ConfigMap
 metadata:
   name: restore-job
 data:
-  island_backup_url: "s3://ark-backups/ark/backup/island/2021-07-08/arkmanager-island.2021-07-08_06.20.20.tar.bz2"
-  island_restore_path: "/ark/island/ShooterGame/Saved/ArkTheIslandSave/"
+  island_backup_url: "s3://ark-backups/ark/backup/island/2022-01-05/island.2022-01-05_23.51.37.tar.bz2"
+  island_restore_path: "/ark/server/ShooterGame/Saved/ArkTheIslandSave/"
 
-  se_backup_url: ""
-  se_restore_path: "/ark/scorchedearth/ShooterGame/Saved/ArkScorchedEarthSave/"
+  se_backup_url: "s3://ark-backups/ark/backup/scorchedearth/2022-01-05/scorchedearth.2022-01-05_23.55.59.tar.bz2"
+  se_restore_path: "/ark/server/ShooterGame/Saved/ArkScorchedEarthSave/"
 
   abby_backup_url: ""
   abby_restore_path: "/ark/aberration/ShooterGame/Saved/ArkAberrationSave/"
 
   ext_backup_url: "s3://ark-backups/ark/backup/extinction/2021-07-08/arkmanager-ext.2021-07-08_06.20.13.tar.bz2"
   ext_restore_path: "/ark/extinction/ShooterGame/Saved/ArkExtinctionSave/"
+  genesis_one_backup_url: "s3://ark-backups/ark/backup/genesis/2022-01-05/genesis.2022-01-05_23.47.15.tar.bz2"
+  genesis_one_restore_path: "/ark/server/ShooterGame/Saved/ArkGenesisOneSave"
   restore.sh: |
     #!/bin/sh
     yum install -y tree 
@@ -28,6 +30,7 @@ data:
     mkdir -p $se_restore_path
     mkdir -p $abby_restore_path
     mkdir -p $ext_restore_path
+    mkdir -p $genesis_one_restore_path
     
     echo "configuring s3..."
     #backups if exists 
@@ -53,6 +56,7 @@ data:
     if [ "$se_backup_url" == "" ]; then echo "";else download $se_backup_url "se" $se_restore_path;fi
     if [ "$abby_backup_url" == "" ]; then echo "";else download $abby_backup_url "abby" $abby_restore_path;fi
     if [ "$ext_backup_url" == "" ]; then echo "";else download $ext_backup_url "ext" $ext_restore_path;fi
+    if [ "$genesis_one_backup_url" == "" ]; then echo "";else download $genesis_one_backup_url "genesis_one" $genesis_one_restore_path;fi
     
     echo "passing ark ownership to steam user"
     chown -R steam:steam /ark
