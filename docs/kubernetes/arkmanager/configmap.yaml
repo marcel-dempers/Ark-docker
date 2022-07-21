@@ -485,10 +485,12 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Narcoberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Stimberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Tintoberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Hide_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Fibers_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_MetalIngot_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Silicon_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Hide_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Fibers_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_MetalIngot_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Silicon_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Polymer_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_ChitinPaste_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gasoline_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_PreservingSalt_C",LevelToAutoUnlock=5)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_FishingNet_C",LevelToAutoUnlock=6)
@@ -530,7 +532,7 @@ data:
     GenericXPMultiplier=2
     FuelConsumptionIntervalMultiplier=2
     SupplyCrateLootQualityMultiplier=4
-    MatingIntervalMultiplier=1.0
+    MatingIntervalMultiplier=0.5
     EggHatchSpeedMultiplier=4
     BabyMatureSpeedMultiplier=7
     BabyFoodConsumptionSpeedMultiplier=1
