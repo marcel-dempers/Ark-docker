@@ -523,6 +523,7 @@ data:
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_MiningDrill_C",LevelToAutoUnlock=80)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_BasiliskSaddle_C",LevelToAutoUnlock=85)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_EggIncubator_C",LevelToAutoUnlock=89)
+    bDisableFriendlyFire=True
     BabyImprintAmountMultiplier=2.0
     BabyCuddleIntervalMultiplier=0.8
     TamedDinoCharacterFoodDrainMultiplier=0.25
