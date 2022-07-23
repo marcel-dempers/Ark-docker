@@ -492,6 +492,8 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Polymer_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_ChitinPaste_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gasoline_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_FungalWood_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_ChitinOrKeratin_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_PreservingSalt_C",LevelToAutoUnlock=5)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_FishingNet_C",LevelToAutoUnlock=6)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_Tent_C",LevelToAutoUnlock=7)
