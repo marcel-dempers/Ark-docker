@@ -21,9 +21,10 @@ data:
     #cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
     #cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
     #cp ragnarok1.cfg /etc/arkmanager/instances/ragnarok1.cfg
-    #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
+    
     ################active instances###############################
     cp aberration.cfg /etc/arkmanager/instances/aberration.cfg
+    cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -145,7 +146,8 @@ data:
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
     ark_noTributeDownloads=False
-    ark_serverPVE=False
+    ark_serverPVE=True
+    ark_AllowFlyerCarryPvE=true
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
     discordWebhookURL="${DISCORD_URL}"
