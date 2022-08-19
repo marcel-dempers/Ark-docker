@@ -3,116 +3,80 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: restore-job
+  namespace: arkmanager
 data:
-  island_backup_url: "s3://ark-backups/ark/backup/island/2022-01-05/island.2022-01-05_23.51.37.tar.bz2"
-  island_restore_path: "/ark/server/ShooterGame/Saved/ArkTheIslandSave/"
-
-  se_backup_url: "s3://ark-backups/ark/backup/scorchedearth/2022-01-05/scorchedearth.2022-01-05_23.55.59.tar.bz2"
-  se_restore_path: "/ark/server/ShooterGame/Saved/ArkScorchedEarthSave/"
-
-  abby_backup_url: ""
-  abby_restore_path: "/ark/aberration/ShooterGame/Saved/ArkAberrationSave/"
-
-  ext_backup_url: "s3://ark-backups/ark/backup/extinction/2021-07-08/arkmanager-ext.2021-07-08_06.20.13.tar.bz2"
-  ext_restore_path: "/ark/extinction/ShooterGame/Saved/ArkExtinctionSave/"
-  genesis_one_backup_url: "s3://ark-backups/ark/backup/genesis/2022-01-05/genesis.2022-01-05_23.47.15.tar.bz2"
-  genesis_one_restore_path: "/ark/server/ShooterGame/Saved/ArkGenesisOneSave"
+  saveRootDirectory: "/ark/server/ShooterGame/Saved/"
+  backup.json: |
+    [
+      {
+        "backup": "s3://ark-backups/ark/backup/fjordur/2022-08-19/fjordur.2022-08-19_08.23.42.tar.bz2",
+        "restore": "ArkFjordurSave"
+      },
+      {
+        "backup": "s3://ark-backups/ark/backup/aberration/2022-08-19/aberration.2022-08-19_08.23.33.tar.bz2",
+        "restore": "ArkAberrationSave2"
+      }
+    ]
   restore.sh: |
     #!/bin/sh
-    yum install -y tree 
-    echo "creating saved directories..."
-    echo $island_restore_path
-    echo $se_restore_path
-    echo $abby_restore_path
-    echo $ext_restore_path
     
-    mkdir -p $island_restore_path
-    mkdir -p $se_restore_path
-    mkdir -p $abby_restore_path
-    mkdir -p $ext_restore_path
-    mkdir -p $genesis_one_restore_path
-    
+    yum install -y jq
+
     echo "configuring s3..."
-    #backups if exists 
     if test -f "/s3cfg/.s3cfg"; then
       cp /s3cfg/.s3cfg /root/.s3cfg
       echo "s3cmd configured"
     else
-      echo "s3cmd is not configured" 
+      echo "s3cmd is not configured"
+      exit 
     fi
+
     download(){    
-      echo "downloading backups to restore..."
-      mkdir -p /tmp/restore/$2/
-      s3cmd get $1 /tmp/restore/$2.tar.bz2
+      mkdir -p /tmp/restore/$3/
+      s3cmd --force get $2 /tmp/restore/$3.tar.bz2
 
-      echo "extracting backup..."
-      tar -xvjf /tmp/restore/$2.tar.bz2 -C /tmp/restore/$2/
-
-      for f in /tmp/restore/$2/*/*; do
-        cp -r "$f" $3
+      tar -xvjf /tmp/restore/$3.tar.bz2 -C /tmp/restore/$3/
+      mkdir -p ${1}${3}/
+      for f in /tmp/restore/$3/*/*; do
+        yes | cp -r "$f" ${1}${3}/
       done
     }
-    if [ "$island_backup_url" == "" ]; then echo "";else download $island_backup_url "island" $island_restore_path;fi
-    if [ "$se_backup_url" == "" ]; then echo "";else download $se_backup_url "se" $se_restore_path;fi
-    if [ "$abby_backup_url" == "" ]; then echo "";else download $abby_backup_url "abby" $abby_restore_path;fi
-    if [ "$ext_backup_url" == "" ]; then echo "";else download $ext_backup_url "ext" $ext_restore_path;fi
-    if [ "$genesis_one_backup_url" == "" ]; then echo "";else download $genesis_one_backup_url "genesis_one" $genesis_one_restore_path;fi
-    
+
+    for backupItem in $(cat /restore/backup.json | jq -c ".[]");
+    do
+      backup=$(echo $backupItem | jq ".backup"  | sed s/\"//g)
+      restore=$(echo $backupItem | jq ".restore"  | sed s/\"//g)
+      echo $backup
+      echo $restore
+
+      download $saveRootDirectory $backup $restore
+    done
+
     echo "passing ark ownership to steam user"
     chown -R steam:steam /ark
+
+    echo "done"
+    sleep 15m
+
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: restore
+  namespace: arkmanager
 spec:
   template:
     spec:
       containers:
       - name: restore
-        image: aimvector/ark-server-tools:0.2.0
+        image: aimvector/ark-server-tools:0.2.3
         command: ['/bin/sh', '-c', '. /restore/restore.sh']
         env:
-        - name: island_backup_url
+        - name: saveRootDirectory
           valueFrom:
             configMapKeyRef:
               name: restore-job
-              key: island_backup_url
-        - name: island_restore_path
-          valueFrom:
-            configMapKeyRef:
-              name: restore-job
-              key: island_restore_path
-        - name: se_backup_url
-          valueFrom:
-            configMapKeyRef:
-              name: restore-job
-              key: se_backup_url
-        - name: se_restore_path
-          valueFrom:
-            configMapKeyRef:
-              name: restore-job
-              key: se_restore_path
-        - name: abby_backup_url
-          valueFrom:
-            configMapKeyRef:
-              name: restore-job
-              key: abby_backup_url
-        - name: abby_restore_path
-          valueFrom:
-            configMapKeyRef:
-              name: restore-job
-              key: abby_restore_path
-        - name: ext_backup_url
-          valueFrom:
-            configMapKeyRef:
-              name: restore-job
-              key: ext_backup_url
-        - name: ext_restore_path
-          valueFrom:
-            configMapKeyRef:
-              name: restore-job
-              key: ext_restore_path
+              key: saveRootDirectory
         volumeMounts:
         - name: restore
           mountPath: /restore
