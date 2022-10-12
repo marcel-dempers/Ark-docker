@@ -21,9 +21,8 @@ data:
     #cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
     #cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
     #cp ragnarok1.cfg /etc/arkmanager/instances/ragnarok1.cfg
-    
+    #cp aberration.cfg /etc/arkmanager/instances/aberration.cfg
     ################active instances###############################
-    cp aberration.cfg /etc/arkmanager/instances/aberration.cfg
     cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
