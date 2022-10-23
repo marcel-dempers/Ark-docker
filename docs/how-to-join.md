@@ -39,7 +39,7 @@ STATUS: ⏸ (paused) ✅(up)
 ⏸  Scorched Earth: ark.marceldempers.dev:30017
 ⏸  Aberration:     ark.marceldempers.dev:30019
 ⏸  Genesis:        ark.marceldempers.dev:30023
-
+✅  Fjordur:        ark.marceldempers.dev:30030
 ```
 * Click on `FIND GAMES AT THIS ADDRESS`
 * Select the `ThatDevOpsArk` server by clicking on it once
