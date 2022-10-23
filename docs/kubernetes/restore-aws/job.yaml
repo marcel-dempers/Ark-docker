@@ -9,11 +9,11 @@ data:
   backup.json: |
     [
       {
-        "backup": "s3://ark-backups/ark/backup/fjordur/2022-08-19/fjordur.2022-08-19_08.23.42.tar.bz2",
+        "backup": "s3://ark-backups/ark/backup/fjordur/2022-10-22/fjordur.2022-10-22_22.59.44.tar.bz2",
         "restore": "ArkFjordurSave"
       },
-      {
-        "backup": "s3://ark-backups/ark/backup/aberration/2022-08-19/aberration.2022-08-19_08.23.33.tar.bz2",
+      { 
+        "backup": "s3://ark-backups/ark/backup/aberration/2022-10-12/aberration.2022-10-12_22.05.00.tar.bz2",
         "restore": "ArkAberrationSave2"
       }
     ]
