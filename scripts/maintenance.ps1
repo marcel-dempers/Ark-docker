@@ -1,4 +1,4 @@
-$ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-2-kubeconfig.yaml"
+$ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-3-kubeconfig.yaml"
 $delayMinutes = 20
 $ENV:REASON="updating server"
 
