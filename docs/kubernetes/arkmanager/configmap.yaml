@@ -475,6 +475,8 @@ data:
     SessionName=mytestserver
     [/Script/Engine.GameSession]
     MaxPlayers=70
+    [StructuresPlus]
+    DisableResourcePulling=true
   Game.ini: |+
     [/script/shootergame.shootergamemode]
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_PreservingSalt_C",Quantity=(MaxItemQuantity=35, bIgnoreMultiplier=true))
