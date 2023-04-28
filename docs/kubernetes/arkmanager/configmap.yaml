@@ -17,13 +17,13 @@ data:
 
     ################paused instances###############################
     #cp extinction.cfg /etc/arkmanager/instances/extinction.cfg
-    #cp island.cfg /etc/arkmanager/instances/island.cfg
+    cp island.cfg /etc/arkmanager/instances/island.cfg
     #cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
     #cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
     #cp ragnarok1.cfg /etc/arkmanager/instances/ragnarok1.cfg
     #cp aberration.cfg /etc/arkmanager/instances/aberration.cfg
     ################active instances###############################
-    cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
+    #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
@@ -76,7 +76,7 @@ data:
     ark_RCONPort="32330"
     ark_AltSaveDirectoryName=ArkTheIslandSave
     serverMap=TheIsland
-    ark_SessionName=ThatDevOpsArk
+    ark_SessionName=ThatIslandArk
     arkflag_NoTransferFromFiltering=True
     arkopt_clusterid=${CLUSTER_ID}
     arkopt_ClusterDirOverride=/ark/clusters

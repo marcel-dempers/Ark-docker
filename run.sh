@@ -28,11 +28,12 @@ if [ ! -d "/ark/server/ShooterGame/Binaries/Linux" ]; then
   else
       arkmanager install "@$instance"
   fi
+
+  echo "install done, installing enabled mods..."
   # mods
-  #classic flyer
-  #arkmanager installmod 895711211 @island
-  #s+
-  #arkmanager installmod 731604991 @island
+  arkmanager installmods @all
+  echo "install done"
+
 else 
   echo "installation already exists..."
 fi

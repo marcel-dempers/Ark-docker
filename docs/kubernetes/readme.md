@@ -118,6 +118,10 @@ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager rconcmd @arkm
 
 # see white listed players 
 kubectl -n arkmanager exec -it arkmanager-0 -- nano /ark/server/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt
+
+# add whitelist file to server 
+kubectl -n arkmanager cp -c ark ./PlayersJoinNoCheckList.txt arkmanager/arkmanager-0:/ark/server/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt
+
 kubectl -n arkmanager cp arkmanager-0:/ark/server/ShooterGame/Binaries/Linux/PlayersJoinNoCheckList.txt PlayersJoinNoCheckList.txt 
 ```
 

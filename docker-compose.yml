@@ -19,7 +19,7 @@ services:
     - ./docs/docker/configs/:/conf
   ark:
     container_name: ark
-    image: aimvector/ark-server-tools:0.2.3
+    image: aimvector/ark-server-tools:0.2.4
     environment:
     - SERVERPASSWORD=test
     - ADMINPASSWORD=testadmin
