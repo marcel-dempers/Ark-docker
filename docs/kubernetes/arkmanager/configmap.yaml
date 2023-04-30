@@ -479,6 +479,7 @@ data:
     DisableResourcePulling=true
   Game.ini: |+
     [/script/shootergame.shootergamemode]
+    NPCReplacements=(FromClassName="Ichthyornis_Character_BP_C",ToClassName="Dodo_Character_BP_C")
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_PreservingSalt_C",Quantity=(MaxItemQuantity=35, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_SweetVeggieCake_C",Quantity=(MaxItemQuantity=200, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Honey_C",Quantity=(MaxItemQuantity=5, bIgnoreMultiplier=true))
