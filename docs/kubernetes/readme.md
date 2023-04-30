@@ -43,13 +43,13 @@ kubectl create ns arkmanager
 ```
 # server secrets
 
-$ENV:ADMINPASSWORD="xxxxxxxxx"
-$ENV:SERVERPASSWORD="xxxxxxxxx"
-$ENV:CLUSTER_ID="xxxxxxxxx"
-$ENV:DISCORD_URL="xxxxxxxxx"
+export ADMINPASSWORD="xxxxxxxxx"
+export SERVERPASSWORD="xxxxxxxxx"
+export CLUSTER_ID="xxxxxxxxx"
+export DISCORD_URL="xxxxxxxxx"
 
 #secrets
-kubectl -n arkmanager create secret generic ark-secrets --from-literal=ADMINPASSWORD=$ENV:ADMINPASSWORD --from-literal=SERVERPASSWORD=$ENV:SERVERPASSWORD --from-literal=CLUSTER_ID=$ENV:CLUSTER_ID --from-literal=DISCORD_URL=$ENV:DISCORD_URL
+kubectl -n arkmanager create secret generic ark-secrets --from-literal=ADMINPASSWORD=${ADMINPASSWORD} --from-literal=SERVERPASSWORD=${SERVERPASSWORD} --from-literal=CLUSTER_ID=${CLUSTER_ID} --from-literal=DISCORD_URL=${DISCORD_URL}
 
 # optional s3 backup secrets
 
@@ -60,21 +60,21 @@ kubectl -n arkmanager create secret generic ark-backup --from-file=./.s3cfg
 
 ```
 #configuration
-kubectl apply -n arkmanager -f .\docs\kubernetes\arkmanager\configmap.yaml
+kubectl apply -n arkmanager -f docs/kubernetes/arkmanager/configmap.yaml
 
 ```
 
 ## Optional: Restore Server from S3 to filesystem
 
 ```
-kubectl apply -n arkmanager -f .\docs\kubernetes\restore-aws\job.yaml
+kubectl apply -n arkmanager -f docs/kubernetes/restore-aws/job.yaml
 kubectl -n arkmanager get pods
 ```
 
 ## Deployment
 
 ```
-kubectl apply -n arkmanager -f .\docs\kubernetes\arkmanager\statefulset.yaml
+kubectl apply -n arkmanager -f /docs/kubernetes/arkmanager/statefulset.yaml
 
 ```
 
@@ -82,7 +82,7 @@ kubectl apply -n arkmanager -f .\docs\kubernetes\arkmanager\statefulset.yaml
 
 ```
 # service
-kubectl apply -n arkmanager -f .\docs\kubernetes\arkmanager\service.yaml
+kubectl apply -n arkmanager -f /docs/kubernetes/arkmanager/service.yaml
 kubectl -n arkmanager get services
 ```
 
