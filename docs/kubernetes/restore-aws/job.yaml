@@ -9,12 +9,8 @@ data:
   backup.json: |
     [
       {
-        "backup": "s3://ark-backups/ark/backup/fjordur/2022-10-22/fjordur.2022-10-22_22.59.44.tar.bz2",
-        "restore": "ArkFjordurSave"
-      },
-      { 
-        "backup": "s3://ark-backups/ark/backup/aberration/2022-10-12/aberration.2022-10-12_22.05.00.tar.bz2",
-        "restore": "ArkAberrationSave2"
+        "backup": "s3://ark-backups/ark/backup/island/2023-05-19/island.2023-05-19_05.27.49.tar.bz2",
+        "restore": "ArkTheIslandSave"
       }
     ]
   restore.sh: |
@@ -67,9 +63,11 @@ metadata:
 spec:
   template:
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: lke77260-163041-6466e8b94006
       containers:
       - name: restore
-        image: aimvector/ark-server-tools:0.2.3
+        image: aimvector/ark-server-tools:0.2.4
         command: ['/bin/sh', '-c', '. /restore/restore.sh']
         env:
         - name: saveRootDirectory
