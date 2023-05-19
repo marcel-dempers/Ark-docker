@@ -1,3 +1,3 @@
 $instances = @(
-    '@fjordur'
+    '@island'
 )
