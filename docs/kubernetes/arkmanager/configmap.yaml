@@ -90,6 +90,8 @@ data:
     ark_serverPVE=True
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
+    ark_OverrideOfficialDifficulty=5.0
+    ark_DifficultyOffset=1.0
     discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from The Island: {msg}"
     # ----- Mods ----- #
@@ -479,7 +481,8 @@ data:
     DisableResourcePulling=true
   Game.ini: |+
     [/script/shootergame.shootergamemode]
-    NPCReplacements=(FromClassName="Ichthyornis_Character_BP_C",ToClassName="Dodo_Character_BP_C")
+    bDisableStructurePlacementCollision=true
+    NPCReplacements=(FromClassName="Ichthyornis_Character_BP_C",ToClassName="Dimorph_Character_BP_C")
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_PreservingSalt_C",Quantity=(MaxItemQuantity=35, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_SweetVeggieCake_C",Quantity=(MaxItemQuantity=200, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Honey_C",Quantity=(MaxItemQuantity=5, bIgnoreMultiplier=true))
