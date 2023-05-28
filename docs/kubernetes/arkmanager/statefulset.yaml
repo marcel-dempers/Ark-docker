@@ -13,6 +13,8 @@ spec:
       labels:
         app: arkmanager
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: lke77260-163041-6466e8b94006
       initContainers:
       - name: config
         image: busybox

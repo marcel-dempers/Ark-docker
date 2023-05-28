@@ -25,6 +25,7 @@ data:
     ################active instances###############################
     #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
+    #updated at:
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
     install_libexecdir="/usr/libexec/arkmanager"
@@ -539,8 +540,8 @@ data:
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_BasiliskSaddle_C",LevelToAutoUnlock=85)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_EggIncubator_C",LevelToAutoUnlock=89)
     bDisableFriendlyFire=True
-    BabyImprintAmountMultiplier=2.0
-    BabyCuddleIntervalMultiplier=0.8
+    BabyImprintAmountMultiplier=5.0
+    BabyCuddleIntervalMultiplier=0.3
     TamedDinoCharacterFoodDrainMultiplier=0.25
     KillXPMultiplier=2
     HarvestXPMultiplier=2
@@ -548,9 +549,9 @@ data:
     GenericXPMultiplier=2
     FuelConsumptionIntervalMultiplier=2
     SupplyCrateLootQualityMultiplier=4
-    MatingIntervalMultiplier=0.25
+    MatingIntervalMultiplier=0.10
     EggHatchSpeedMultiplier=4
-    BabyMatureSpeedMultiplier=9
+    BabyMatureSpeedMultiplier=12
     BabyFoodConsumptionSpeedMultiplier=1
     LayEggIntervalMultiplier=3
     ResourceNoReplenishRadiusPlayers=0.1
