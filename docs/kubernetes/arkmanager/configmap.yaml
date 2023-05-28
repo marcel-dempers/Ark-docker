@@ -25,7 +25,7 @@ data:
     ################active instances###############################
     #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
-    #updated at:
+    #updated at :
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
     install_libexecdir="/usr/libexec/arkmanager"
