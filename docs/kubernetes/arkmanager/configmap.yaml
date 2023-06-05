@@ -25,7 +25,7 @@ data:
     ################active instances###############################
     #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
-    #updated at :
+    #updated at : 06-03-2023_08_00_52
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
     install_libexecdir="/usr/libexec/arkmanager"
@@ -88,7 +88,7 @@ data:
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
     ark_noTributeDownloads=False
-    ark_serverPVE=True
+    ark_serverPVE=False
     ark_AllowFlyerCarryPvE=true
     ark_PvEAllowStructuresAtSupplyDrops=false
     ark_OverrideOfficialDifficulty=5.0
@@ -96,7 +96,7 @@ data:
     discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from The Island: {msg}"
     # ----- Mods ----- #
-    ark_GameModIds="895711211,731604991"
+    ark_GameModIds="895711211,731604991,1971287279"
   scorchedearth.cfg: |+
     arkserverroot="/ark/server"                           # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/scorchedearth"  		        # path to backup directory
@@ -275,7 +275,7 @@ data:
     RaidDinoCharacterFoodDrainMultiplier=0.001
     DisableStructureDecayPvE=True
     DisableDinoDecayPvE=True
-    EnablePvPGamma=False
+    EnablePvPGamma=True
     ResourcesRespawnPeriodMultiplier=0.5
     alwaysNotifyPlayerJoined=True
     alwaysNotifyPlayerLeft=True
@@ -495,19 +495,19 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Narcoberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Stimberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Berry_Tintoberry_C",Quantity=(MaxItemQuantity=500, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Hide_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Fibers_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_MetalIngot_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Silicon_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Polymer_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_ChitinPaste_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gasoline_C",Quantity=(MaxItemQuantity=600, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_FungalWood_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_ChitinOrKeratin_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Crystal_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gem_BioLum_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gas_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
-    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_FracturedGem_C",Quantity=(MaxItemQuantity=900, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Hide_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Fibers_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_MetalIngot_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Silicon_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Polymer_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_ChitinPaste_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gasoline_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_FungalWood_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_ChitinOrKeratin_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Crystal_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gem_BioLum_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gas_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_FracturedGem_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_PreservingSalt_C",LevelToAutoUnlock=5)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_FishingNet_C",LevelToAutoUnlock=6)
     EngramEntryAutoUnlocks=(EngramClassName="EngramEntry_Tent_C",LevelToAutoUnlock=7)

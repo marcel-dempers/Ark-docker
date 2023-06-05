@@ -1,16 +1,37 @@
 $ENV:KUBECONFIG="C:\Users\aimve\kube-tools\.kube\marceldempers.yaml"
 
 $timestamp = get-date -f MM-dd-yyyy_HH_mm_ss
-(Get-Content .\docs\kubernetes\arkmanager\configmap.yaml) -replace "#updated at: ", "$& $timestamp" | Set-Content .\docs\kubernetes\arkmanager\configmap.yaml
+$content = Get-Content .\docs\kubernetes\arkmanager\configmap.yaml
+
+for ($i = 0; $i -lt $content.count; $i++) {
+  $index = $content[$i].IndexOf("#updated")
+  if ($index -ne -1) {
+    $content[$i] = "    #updated at : " + $timestamp
+  }
+}
+Set-Content -Path .\docs\kubernetes\arkmanager\configmap.yaml -Value $content
+
+echo "applying config..."
 kubectl apply -n arkmanager -f .\docs\kubernetes\arkmanager\configmap.yaml
 
-while ($True)
+echo "waiting for configmap to propagate..."
+$continue = $True
+while ($continue)
 {
-  kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cat /conf/Game.ini | grep BabyCuddleIntervalMultiplier"
+  $current_config = (kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cat /conf/arkmanager.cfg | grep $timestamp")
+  
+  if ($current_config -ne $NULL) {
+    if ($current_config.Contains($timestamp)){
+      $continue = $False
+      $current_config
+
+      echo "configmap propagated"
+    }
+  }
+  
   Start-Sleep 2
 }
 
+echo "copying configs to game directory..."
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/*.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/"
-
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cat /ark/server/ShooterGame/Saved/Config/LinuxServer/Game.ini| grep bDisableStructurePlacementCollision"
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cat /ark/server/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini | grep EnableCryopodNerf"
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/island.cfg /etc/arkmanager/instances/"

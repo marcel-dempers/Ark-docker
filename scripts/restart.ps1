@@ -2,7 +2,7 @@
 . $PSScriptRoot\active_instances.ps1 
 
 $ENV:REASON="routine server restart"
-$ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-2-kubeconfig.yaml"
+$ENV:KUBECONFIG="C:\Users\aimve\kube-tools\.kube\marceldempers.yaml"
 $delayMinutes = 10
 
 foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify $i 'Automated routine server restart starting in $delayMinutes minutes'" }
