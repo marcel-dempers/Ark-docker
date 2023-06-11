@@ -16,16 +16,17 @@ data:
     cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
 
     ################paused instances###############################
-    #cp extinction.cfg /etc/arkmanager/instances/extinction.cfg
     cp island.cfg /etc/arkmanager/instances/island.cfg
     #cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
+
+    #cp extinction.cfg /etc/arkmanager/instances/extinction.cfg
     #cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
     #cp ragnarok1.cfg /etc/arkmanager/instances/ragnarok1.cfg
     #cp aberration.cfg /etc/arkmanager/instances/aberration.cfg
     ################active instances###############################
     #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
-    #updated at : 06-03-2023_08_00_52
+    #updated at : 06-12-2023_07_37_57
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
     install_libexecdir="/usr/libexec/arkmanager"
@@ -108,16 +109,16 @@ data:
     ark_RCONPort="32331"
     ark_AltSaveDirectoryName=ArkScorchedEarthSave
     serverMap=ScorchedEarth_P
-    ark_SessionName=ThatDevOpsArkScorchedEarth
+    ark_SessionName=ThatArkScorchedEarth
     arkflag_NoTransferFromFiltering=True
     arkopt_clusterid=${CLUSTER_ID}
     arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
-    ark_PreventDownloadItems=True
-    ark_PreventDownloadDinos=True
+    ark_PreventDownloadItems=False
+    ark_PreventDownloadDinos=False
     ark_PreventUploadSurvivors=False
-    ark_PreventUploadDinos=True
-    ark_PreventUploadItems=True
+    ark_PreventUploadDinos=False
+    ark_PreventUploadItems=False
     ark_noTributeDownloads=False
     ark_serverPVE=False
     ark_OverrideOfficialDifficulty=5.0
@@ -125,7 +126,7 @@ data:
     discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from Scorched Earth: {msg}"
     # ----- Mods ----- #
-    ark_GameModIds="895711211,731604991"
+    ark_GameModIds="895711211,731604991,1971287279"
   aberration.cfg: |+
     arkserverroot="/ark/server"                       # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/aberration"  		            # path to backup directory
@@ -267,6 +268,8 @@ data:
     notifyTemplate="Message from Fjordur: {msg}"  
   GameUserSettings.ini: |+
     [ServerSettings]
+    DisableWeatherFog=True
+    NightTimeSpeedScale=3.0
     PlatformSaddleBuildAreaBoundsMultiplier=2
     MaxGateFrameOnSaddles=3
     PlayerCharacterWaterDrainMultiplier=0.5
@@ -549,7 +552,7 @@ data:
     GenericXPMultiplier=2
     FuelConsumptionIntervalMultiplier=2
     SupplyCrateLootQualityMultiplier=4
-    MatingIntervalMultiplier=0.10
+    MatingIntervalMultiplier=0.07
     EggHatchSpeedMultiplier=4
     BabyMatureSpeedMultiplier=12
     BabyFoodConsumptionSpeedMultiplier=1
