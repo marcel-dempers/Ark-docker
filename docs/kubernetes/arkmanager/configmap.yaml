@@ -26,7 +26,7 @@ data:
     ################active instances###############################
     #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
-    #updated at : 06-12-2023_07_37_57
+    #updated at : 06-16-2023_15_42_31
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
     install_libexecdir="/usr/libexec/arkmanager"
@@ -269,7 +269,7 @@ data:
   GameUserSettings.ini: |+
     [ServerSettings]
     DisableWeatherFog=True
-    NightTimeSpeedScale=3.0
+    NightTimeSpeedScale=6.0
     PlatformSaddleBuildAreaBoundsMultiplier=2
     MaxGateFrameOnSaddles=3
     PlayerCharacterWaterDrainMultiplier=0.5
@@ -485,6 +485,7 @@ data:
     DisableResourcePulling=true
   Game.ini: |+
     [/script/shootergame.shootergamemode]
+    bAllowUnlimitedRespecs=true
     bDisableStructurePlacementCollision=true
     NPCReplacements=(FromClassName="Ichthyornis_Character_BP_C",ToClassName="Dimorph_Character_BP_C")
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_PreservingSalt_C",Quantity=(MaxItemQuantity=35, bIgnoreMultiplier=true))
@@ -552,8 +553,8 @@ data:
     GenericXPMultiplier=2
     FuelConsumptionIntervalMultiplier=2
     SupplyCrateLootQualityMultiplier=4
-    MatingIntervalMultiplier=0.07
-    EggHatchSpeedMultiplier=4
+    MatingIntervalMultiplier=0.03
+    EggHatchSpeedMultiplier=12
     BabyMatureSpeedMultiplier=12
     BabyFoodConsumptionSpeedMultiplier=1
     LayEggIntervalMultiplier=3
