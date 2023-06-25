@@ -26,7 +26,7 @@ data:
     ################active instances###############################
     #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
-    #updated at : 06-16-2023_15_42_31
+    #updated at : 06-22-2023_09_43_35
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
     install_libexecdir="/usr/libexec/arkmanager"
@@ -274,7 +274,7 @@ data:
     MaxGateFrameOnSaddles=3
     PlayerCharacterWaterDrainMultiplier=0.5
     AllowTekSuitPowersInGenesis=True
-    StructurePickupTimeAfterPlacement=600.00
+    AlwaysAllowStructurePickup=True
     RaidDinoCharacterFoodDrainMultiplier=0.001
     DisableStructureDecayPvE=True
     DisableDinoDecayPvE=True
