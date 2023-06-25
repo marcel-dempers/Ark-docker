@@ -1,4 +1,4 @@
-$ENV:KUBECONFIG="C:\Users\aimve\Downloads\marceldempers-dev-2-kubeconfig.yaml"
+$ENV:KUBECONFIG="C:\Users\aimve\kube-tools\.kube\marceldempers.yaml"
 
 Write-Host "starting instances..."
 

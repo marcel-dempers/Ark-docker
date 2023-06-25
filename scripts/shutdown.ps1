@@ -1,4 +1,4 @@
-$ENV:REASON="server maintenance"
+$ENV:REASON="automated server maintenance"
 $ENV:KUBECONFIG="C:\Users\aimve\kube-tools\.kube\marceldempers.yaml"
 
 . $PSScriptRoot\active_instances.ps1 
