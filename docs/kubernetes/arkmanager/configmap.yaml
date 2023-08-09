@@ -17,7 +17,7 @@ data:
 
     ################paused instances###############################
     cp island.cfg /etc/arkmanager/instances/island.cfg
-    #cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
+    cp scorchedearth.cfg /etc/arkmanager/instances/scorchedearth.cfg
 
     #cp extinction.cfg /etc/arkmanager/instances/extinction.cfg
     #cp genesis.cfg /etc/arkmanager/instances/genesis.cfg
@@ -26,7 +26,7 @@ data:
     ################active instances###############################
     #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
-    #updated at : 07-09-2023_15_17_10
+    #updated at : 07-29-2023_08_24_27
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
     install_libexecdir="/usr/libexec/arkmanager"
@@ -114,8 +114,8 @@ data:
     arkopt_clusterid=${CLUSTER_ID}
     arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
-    ark_PreventDownloadItems=False
-    ark_PreventDownloadDinos=False
+    ark_PreventDownloadItems=True
+    ark_PreventDownloadDinos=True
     ark_PreventUploadSurvivors=False
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
@@ -482,7 +482,7 @@ data:
     [/Script/Engine.GameSession]
     MaxPlayers=70
     [StructuresPlus]
-    DisableResourcePulling=true
+    DisableResourcePulling=false
   Game.ini: |+
     [/script/shootergame.shootergamemode]
     bAllowUnlimitedRespecs=true
