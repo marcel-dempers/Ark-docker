@@ -26,7 +26,7 @@ data:
     ################active instances###############################
     #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
-    #updated at : 07-29-2023_08_24_27
+    #updated at : 09-10-2023_09_45_46
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
     install_libexecdir="/usr/libexec/arkmanager"
@@ -97,7 +97,7 @@ data:
     discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from The Island: {msg}"
     # ----- Mods ----- #
-    ark_GameModIds="895711211,731604991,1971287279"
+    ark_GameModIds="895711211,731604991,1971287279,1564926019"
   scorchedearth.cfg: |+
     arkserverroot="/ark/server"                           # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/scorchedearth"  		        # path to backup directory
@@ -114,8 +114,8 @@ data:
     arkopt_clusterid=${CLUSTER_ID}
     arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
-    ark_PreventDownloadItems=True
-    ark_PreventDownloadDinos=True
+    ark_PreventDownloadItems=False
+    ark_PreventDownloadDinos=False
     ark_PreventUploadSurvivors=False
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
@@ -126,7 +126,7 @@ data:
     discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from Scorched Earth: {msg}"
     # ----- Mods ----- #
-    ark_GameModIds="895711211,731604991,1971287279"
+    ark_GameModIds="895711211,731604991,1971287279,1564926019"
   aberration.cfg: |+
     arkserverroot="/ark/server"                       # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/aberration"  		            # path to backup directory
@@ -136,27 +136,26 @@ data:
     ark_QueryPort=30019                                   # ARK query port (default 27016)
     ark_RCONEnabled="True"                                # Enable RCON Protocol
     ark_RCONPort="32332"
-    ark_AltSaveDirectoryName=ArkAberrationSave2
+    ark_AltSaveDirectoryName=ArkAberrationSave
     serverMap=Aberration_P
     ark_SessionName=ThatAberrationArk
     arkflag_NoTransferFromFiltering=True
     arkopt_clusterid=${CLUSTER_ID}
     arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
-    ark_PreventDownloadItems=False
-    ark_PreventDownloadDinos=False
+    ark_PreventDownloadItems=True
+    ark_PreventDownloadDinos=True
     ark_PreventUploadSurvivors=False
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False
     ark_noTributeDownloads=False
-    ark_serverPVE=True
-    ark_AllowFlyerCarryPvE=true
+    ark_serverPVE=False
     ark_OverrideOfficialDifficulty=5.0
     ark_DifficultyOffset=1.0
     discordWebhookURL="${DISCORD_URL}"
     notifyTemplate="Message from Aberration: {msg}"
     # ----- Mods ----- #
-    #ark_GameModIds="895711211,731604991"
+    #ark_GameModIds="895711211,731604991,1971287279,1564926019"
   extinction.cfg: |+
     arkserverroot="/ark/server"                           # path of your ARK server files (default ~/ARK)
     arkbackupdir="/ark/backup/extinction"  		            # path to backup directory

@@ -3,7 +3,7 @@ $ENV:KUBECONFIG="C:\Users\aimve\kube-tools\.kube\marceldempers.yaml"
 
 . $PSScriptRoot\active_instances.ps1 
 
-$delayMinutes = 20
+$delayMinutes = 5
 
 foreach ( $i in $instances ){ kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "arkmanager notify $i 'Automated routine server maintenance starting in $delayMinutes minutes'" }
 
