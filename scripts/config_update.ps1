@@ -34,5 +34,6 @@ while ($continue)
 
 echo "copying configs to game directory..."
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/*.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/"
-#kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/island.cfg /etc/arkmanager/instances/"
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/island.cfg /etc/arkmanager/instances/"
 kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/scorchedearth.cfg /etc/arkmanager/instances/"
+kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/aberration.cfg /etc/arkmanager/instances/"
