@@ -25,7 +25,7 @@ data:
     ################active instances###############################
     #cp fjordur.cfg /etc/arkmanager/instances/fjordur.cfg
   arkmanager.cfg: |+
-    #updated at : 09-16-2023_08_35_14
+    #updated at : 10-28-2023_15_59_03
     arkstChannel=master                                                 # change it to a different branch to get non-stable versions
     install_bindir="/usr/bin"
     install_libexecdir="/usr/libexec/arkmanager"
@@ -142,8 +142,8 @@ data:
     arkopt_clusterid=${CLUSTER_ID}
     arkopt_ClusterDirOverride=/ark/clusters
     ark_PreventDownloadSurvivors=False
-    ark_PreventDownloadItems=True
-    ark_PreventDownloadDinos=True
+    ark_PreventDownloadItems=False
+    ark_PreventDownloadDinos=False
     ark_PreventUploadSurvivors=False
     ark_PreventUploadDinos=False
     ark_PreventUploadItems=False

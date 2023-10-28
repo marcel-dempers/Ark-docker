@@ -18,7 +18,7 @@ echo "waiting for configmap to propagate..."
 $continue = $True
 while ($continue)
 {
-  $current_config = (kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cat /conf/arkmanager.cfg | grep $timestamp")
+  $current_config = (kubectl -n arkmanager exec -it arkmanager-0 -c ark -- bash -c "cat /conf/arkmanager.cfg | grep $timestamp")
   
   if ($current_config -ne $NULL) {
     if ($current_config.Contains($timestamp)){
@@ -33,7 +33,7 @@ while ($continue)
 }
 
 echo "copying configs to game directory..."
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/*.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/"
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/island.cfg /etc/arkmanager/instances/"
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/scorchedearth.cfg /etc/arkmanager/instances/"
-kubectl -n arkmanager exec -it arkmanager-0 -- bash -c "cp /conf/aberration.cfg /etc/arkmanager/instances/"
+kubectl -n arkmanager exec -it arkmanager-0 -c ark -- bash -c "cp /conf/*.ini /ark/server/ShooterGame/Saved/Config/LinuxServer/"
+kubectl -n arkmanager exec -it arkmanager-0 -c ark -- bash -c "cp /conf/island.cfg /etc/arkmanager/instances/"
+kubectl -n arkmanager exec -it arkmanager-0 -c ark -- bash -c "cp /conf/scorchedearth.cfg /etc/arkmanager/instances/"
+kubectl -n arkmanager exec -it arkmanager-0 -c ark -- bash -c "cp /conf/aberration.cfg /etc/arkmanager/instances/"

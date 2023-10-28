@@ -8,9 +8,17 @@ data:
   saveRootDirectory: "/ark/server/ShooterGame/Saved/"
   backup.json: |
     [
-      {
-        "backup": "s3://ark-backups/ark/backup/island/2023-05-19/island.2023-05-19_05.27.49.tar.bz2",
+      { 
+        "backup": "s3://ark-backups/ark/backup/island/2023-09-27/island.2023-09-27_22.56.57.tar.bz2",
         "restore": "ArkTheIslandSave"
+      },
+      {
+        "backup" : "s3://ark-backups/ark/backup/scorchedearth/2023-10-28/scorchedearth.2023-10-28_05.38.57.tar.bz2",
+        "restore" : "ArkScorchedEarthSave"
+      },
+      {
+        "backup" : "s3://ark-backups/ark/backup/aberration/2023-10-28/aberration.2023-10-28_05.40.10.tar.bz2",
+        "restore" : "ArkAberrationSave"
       }
     ]
   restore.sh: |

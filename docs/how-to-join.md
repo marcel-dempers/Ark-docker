@@ -34,7 +34,7 @@ Move on to the next step
 ```
 STATUS: ⏸ (paused) ✅(up) 
 
-✅  The Island:     ark.marceldempers.dev:30015
+⏸  The Island:     ark.marceldempers.dev:30015
 ⏸  Extinction:     ark.marceldempers.dev:30021
 ⏸  Scorched Earth: ark.marceldempers.dev:30017
 ⏸  Aberration:     ark.marceldempers.dev:30019
