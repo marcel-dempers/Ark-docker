@@ -1,0 +1,156 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: arkmanager
+spec:
+  serviceName: arkmanager
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arkmanager
+  template:
+    metadata:
+      labels:
+        app: arkmanager
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: lke77260-163041-6466e8b94006
+      initContainers:
+      - name: config
+        image: busybox
+        command: ['/bin/sh', '-c', './conf/update-configs.sh']
+        volumeMounts:
+        - name: conf
+          mountPath: /conf
+        - name: arkmanager
+          mountPath: /etc/arkmanager/
+        - name: ark
+          mountPath: /ark
+          readOnly: false
+      imagePullSecrets:
+      - name: docker-registry
+      containers:
+      - name: ark
+        image: aimvector/ark-server-tools:0.2.4
+        imagePullPolicy: Always
+        env:
+        - name: DISCORD_URL
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: DISCORD_URL
+        - name: SERVERPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: SERVERPASSWORD
+        - name: ADMINPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: ADMINPASSWORD
+        - name: BACKUPONSTOP
+          value: "1"
+        - name: BACKUPONSTART
+          value: "0"
+        - name: WARNONSTOP
+          value: "0"
+        - name: CLUSTER_ID
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: CLUSTER_ID
+        ports:
+        - containerPort: 30777
+          name: clientudp
+        - containerPort: 30779
+          name: clientudp2
+        - containerPort: 30778
+          name: clientrawudp
+        - containerPort: 30780
+          name: clientrawudp2
+        - containerPort: 30015
+          name: queryportudp
+        - containerPort: 30016
+          name: queryportudp2
+        - containerPort: 30017
+          name: queryportudp3
+        - containerPort: 30018
+          name: queryportudp4
+        - containerPort: 30781
+          name: aberration-udp1
+        - containerPort: 30782
+          name: aberration-udp2
+        - containerPort: 30019
+          name: aberration-udp3
+        - containerPort: 30020
+          name: aberration-udp4
+        - containerPort: 30021
+          name: extinction-udp1
+        - containerPort: 30022
+          name: extinction-udp2
+        - containerPort: 30783
+          name: extinction-udp4
+        - containerPort: 30784
+          name: extinction-udp3
+        - containerPort: 30023
+          name: genesis-udp1
+        - containerPort: 30024
+          name: genesis-udp2
+        - containerPort: 30785
+          name: genesis-udp3
+        - containerPort: 30786
+          name: genesis-udp4
+        # GENESIS PART 2
+        - containerPort: 30025
+          name: genesis2-udp1
+        - containerPort: 30026
+          name: genesis2-udp2
+        - containerPort: 30787
+          name: genesis2-udp3
+        - containerPort: 30788
+          name: genesis2-udp4
+        # RAGNAROK ADVENTURE SERIES
+        - containerPort: 30027
+          name: ragnarok1-udp1
+        - containerPort: 30028 
+          name: ragnarok1-udp2
+        - containerPort: 30789
+          name: ragnarok1-udp3
+        - containerPort: 30790
+          name: ragnarok1-udp4
+        # FJORDUR
+        - containerPort: 30029
+          name: fjordur-udp1
+        - containerPort: 30030 
+          name: fjordur-udp2
+        - containerPort: 30791
+          name: fjordur-udp3
+        - containerPort: 30792
+          name: fjordur-udp4
+        volumeMounts:
+        - name: backup-secret
+          mountPath: /s3cfg
+          readOnly: false
+        - name: conf
+          mountPath: /conf
+          readOnly: false
+        - name: arkmanager
+          mountPath: /etc/arkmanager/
+        - name: ark
+          mountPath: /ark
+          readOnly: false
+      volumes:
+      - name: backup-secret
+        secret:
+          secretName: ark-backup
+      - name: conf
+        configMap:
+          name: ark-configuration
+          defaultMode: 0755
+      - name: arkmanager 
+        emptyDir: {}
+      - name: ark
+        hostPath:
+          path: /arkmanager
+---

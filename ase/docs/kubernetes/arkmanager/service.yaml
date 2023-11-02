@@ -1,0 +1,143 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkmanager
+spec:
+  type: NodePort
+  ports:
+  - port: 30015
+    protocol: UDP
+    name: queryportudp1
+    nodePort: 30015
+  - port: 30016
+    protocol: UDP
+    name: queryportudp2
+    nodePort: 30016
+  - port: 30017
+    protocol: UDP
+    name: queryportudp3
+    nodePort: 30017
+  - port: 30018
+    protocol: UDP
+    name: queryportudp4
+    nodePort: 30018
+  - port: 30777
+    protocol: UDP
+    name: clientudp
+    nodePort: 30777
+  - port: 30778
+    protocol: UDP
+    name: clientrawudp
+    nodePort: 30778
+  - port: 30779
+    protocol: UDP
+    name: clientudp2
+    nodePort: 30779
+  - port: 30780
+    protocol: UDP
+    name: clientrawudp2
+    nodePort: 30780
+  # ABERRATION  
+  - port: 30781
+    protocol: UDP
+    name: aberration-udp1
+    nodePort: 30781
+  - port: 30782
+    protocol: UDP
+    name: aberration-udp2
+    nodePort: 30782
+  - port: 30019
+    protocol: UDP
+    name: aberration-udp3
+    nodePort: 30019
+  - port: 30020
+    protocol: UDP
+    name: aberration-udp4
+    nodePort: 30020
+  # EXTINCTION    
+  - port: 30021
+    protocol: UDP
+    name: extinction-udp1
+    nodePort: 30021
+  - port: 30022
+    protocol: UDP
+    name: extinction-udp2
+    nodePort: 30022
+  - port: 30784
+    protocol: UDP
+    name: extinction-udp3
+    nodePort: 30784
+  - port: 30783
+    protocol: UDP
+    name: extinction-udp4
+    nodePort: 30783
+  # GENESIS PART 1  
+  - port: 30023
+    protocol: UDP
+    name: genesis-udp1
+    nodePort: 30023
+  - port: 30024
+    protocol: UDP
+    name: genesis-udp2
+    nodePort: 30024
+  - port: 30785
+    protocol: UDP
+    name: genesis-udp3
+    nodePort: 30785
+  - port: 30786
+    protocol: UDP
+    name: genesis-udp4
+    nodePort: 30786
+  # GENESIS PART 2
+  - port: 30025
+    protocol: UDP
+    name: genesis2-udp1
+    nodePort: 30025
+  - port: 30026
+    protocol: UDP
+    name: genesis2-udp2
+    nodePort: 30026
+  - port: 30787
+    protocol: UDP
+    name: genesis2-udp3
+    nodePort: 30787
+  - port: 30788
+    protocol: UDP
+    name: genesis2-udp4
+    nodePort: 30788
+  # RAGNAROK ADVENTURE SERIES  
+  - port: 30027
+    protocol: UDP
+    name: ragnarok1-udp1
+    nodePort: 30027
+  - port: 30028
+    protocol: UDP
+    name: ragnarok1-udp2
+    nodePort: 30028
+  - port: 30789
+    protocol: UDP
+    name: ragnarok1-udp3
+    nodePort: 30789
+  - port: 30790
+    protocol: UDP
+    name: ragnarok1-udp4
+    nodePort: 30790
+  # FJORDUR  
+  - port: 30029
+    protocol: UDP
+    name: fjordur-udp1
+    nodePort: 30029
+  - port: 30030
+    protocol: UDP
+    name: fjordur-udp2
+    nodePort: 30030
+  - port: 30791
+    protocol: UDP
+    name: fjordur-udp3
+    nodePort: 30791
+  - port: 30792
+    protocol: UDP
+    name: fjordur-udp4
+    nodePort: 30792
+  selector:
+    app: arkmanager

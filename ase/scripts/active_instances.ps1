@@ -1,0 +1,5 @@
+$instances = @(
+    '@island',
+    '@scorchedearth',
+    '@aberration'
+)
