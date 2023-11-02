@@ -1,13 +1,13 @@
-# ARK: Survival Evolved - That DevOps Ark
+# ARK: Survival
 
-Docker build for managing an ARK: Survival Evolved server.
-Kubernetes deployment for running ARK server manager on Kubernetes
+Docker build for managing an ARK: Survival Evolved and Ascended server.
 
-## How to join
+## Ark Survival Evolved [legacy]
 
-Checkout the [Joining instructions](./docs/how-to-join.md) on how to join.
+Checkout the [readme](./ase/README.md) for more details
 
-## Server configuration
+## Ark Survival Ascended
 
-See [Kubernetes Docs](./docs/kubernetes/arkmanager/readme.md) for more details on how to run it on k8s. <br/>
-See [That DevOps Ark Configuration](./docs/kubernetes/arkmanager/configmap.yaml) for more details on all the configuration values. <br/>
+![alt text](https://ark.wiki.gg/images/thumb/0/0a/ASA_Logo_transparent.png/630px-ASA_Logo_transparent.png)
+
+See [Readme](./asa/README.md) for more details. <br/>

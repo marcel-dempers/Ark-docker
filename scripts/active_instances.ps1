@@ -1,5 +1,0 @@
-$instances = @(
-    '@island',
-    '@scorchedearth',
-    '@aberration'
-)
