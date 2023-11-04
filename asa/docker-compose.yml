@@ -1,0 +1,43 @@
+version: "3.4"
+volumes: 
+  ark:
+services:
+  init: 
+    container_name: init
+    image: alpine:latest
+    command: 
+    - /bin/sh 
+    - -c 
+    - |
+      mkdir -p /ark/ShooterGame/Saved/Config/WindowsServer/
+      cd /configs
+      cp GameUserSettings.ini /ark/ShooterGame/Saved/Config/WindowsServer/
+      cp Game.ini /ark/ShooterGame/Saved/Config/WindowsServer/
+    volumes:
+    - F:\ark\.data/:/ark
+    - ./configs/:/configs
+  ark-asa:
+    build:
+      dockerfile: dockerfile
+    container_name: ark-asa
+    image: aimvector/ark-asa-server:0.0.3
+    environment:
+    - SESSION_NAME=ThatDevOpsASA
+    - SERVERPASSWORD=test
+    - ADMINPASSWORD=testadmin
+    - SERVER_PORT=30778
+    - QUERY_PORT=30015
+    - RCON_PORT=27020
+    - BACKUP_DIR=/ark/backups
+    - ARK_DIR=/ark
+    volumes:
+    - F:\ark\.data/:/ark
+    - .s3cfg:/home/steam/.s3cfg
+    ports:
+    #map 1 island
+    - 30777:30777/udp 
+    - 30778:30778/udp
+    - 30015:30015/udp
+    - 30016:30016/udp
+    - 30777:30777/tcp 
+    - 30778:30778/tcp

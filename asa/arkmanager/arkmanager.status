@@ -1,0 +1,44 @@
+#!/bin/bash
+
+RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
+
+instance=$1
+
+if [ -z "$instance" ]
+then
+      echo "must supply instance, e.g @island"
+      exit
+fi
+
+instance="${instance:1}"
+
+# Get PID
+ark_pid=$(pgrep -f ".*proton.*ArkAscendedServer.exe")
+if [[ -z $ark_pid ]]; then
+    echo "Server PID not found (server offline?)"
+    return
+fi
+
+echo "Server PID $ark_pid"
+
+ark_port=$(ss -tupln | grep "GameThread" | grep -oP '(?<=:)\d+')
+if [[ -z $ark_port ]]; then
+    echo "Server not listening"
+    return
+fi
+
+echo "Server listening on port $ark_port"
+
+# Check number of players
+out=$(${RCON_CMDLINE} ListPlayers 2>/dev/null)
+res=$?
+if [[ $res == 0 ]]; then
+    echo "Server is up"
+    num_players=0
+    if [[ "$out" != "No Players"* ]]; then
+        num_players=$(echo -n "$out" | wc -l)
+    fi
+    echo "$num_players players connected"
+else
+    echo "Server is down"
+fi

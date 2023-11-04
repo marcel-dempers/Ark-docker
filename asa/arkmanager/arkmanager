@@ -1,0 +1,82 @@
+#!/bin/bash
+RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
+
+start() {
+
+  instance=$2
+
+  if [ -z "$instance" ]
+  then
+        echo "must supply instance, e.g @island"
+        exit
+  fi
+
+  echo "clearing logs ..."
+  rm ${ARK_DIR}/ShooterGame/Saved/Logs/*.log
+  instance="${instance:1}"
+  echo "starting ${instance} ..."
+
+  nohup bash /usr/local/bin/arkmanager.start >/dev/null 2>&1 &
+  sleep 3
+  echo "Server should be up in a few minutes"
+}
+
+backup() {
+  /usr/local/bin/arkmanager.backup $2
+}
+
+status() {
+  /usr/local/bin/arkmanager.status $2
+}
+
+stop() {
+  /usr/local/bin/arkmanager.stop $2  
+}
+
+restore() {
+  /usr/local/bin/arkmanager.restore $2 $3
+}
+
+saveworld() {
+    echo "Saving world..."
+    out=$(${RCON_CMDLINE} SaveWorld 2>/dev/null)
+    res=$?
+    if [[ $res == 0 && "$out" == "World Saved" ]]; then
+        echo "Success!"
+    else
+        echo "Failed."
+    fi
+}
+
+display_help() {
+    echo 'Usage arkmanager [subcommand] --option <argument>'
+	  echo 'SUBCOMMANDS:'
+ 	  echo 'start @serverName'
+    echo 'saveworld @serverName'
+    echo 'status @serverName'
+    echo 'stop @serverName'
+}
+
+case $1 in
+start )      
+        start $@
+        ;;
+status )                
+        status $@
+        ;; 
+backup )                
+        backup $@
+        ;;
+stop )                
+        stop $@
+        ;;
+saveworld )                
+        saveworld $@
+        ;;
+restore )                
+        restore $@
+        ;;
+-h | --help )           display_help
+                        ;;
+* )                     display_help
+esac

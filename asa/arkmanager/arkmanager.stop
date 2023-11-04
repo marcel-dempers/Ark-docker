@@ -1,0 +1,54 @@
+#!/bin/bash
+
+RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
+SHUTDOWN_TIMEOUT=30
+
+instance=$1
+
+if [ -z "$instance" ]
+then
+      echo "must supply instance, e.g @island"
+      exit
+fi
+
+instance="${instance:1}"
+
+ark_pid=$(pgrep -f ".*proton.*ArkAscendedServer.exe")
+if [[ -z $ark_pid ]]; then
+    echo "Server PID not found (server offline?)"
+    return
+fi
+
+echo "stopping server gracefully..."
+
+# Check number of players
+out=$(${RCON_CMDLINE} DoExit 2>/dev/null)
+res=$?
+force=false
+if [[ $res == 0  && "$out" == "Exiting..." ]]; then
+    echo "Waiting ${SHUTDOWN_TIMEOUT}s for the server to stop"
+    timeout $SHUTDOWN_TIMEOUT tail --pid=$ark_pid -f /dev/null
+    res=$?
+
+    # Timeout occurred
+    if [[ "$res" == 124 ]]; then
+        echo "Server still running after $SHUTDOWN_TIMEOUT seconds"
+        force=true
+    fi
+else
+    force=true
+fi
+
+if [[ "$force" == true ]]; then
+    echo "Forcing server shutdown"
+    kill -INT $ark_pid
+
+    timeout $SHUTDOWN_TIMEOUT tail --pid=$ark_pid -f /dev/null
+    res=$?
+    # Timeout occurred
+    if [[ "$res" == 124 ]]; then
+        kill -9 $ark_pid
+    fi
+fi
+
+echo "-------- SERVER STOPPED --------"

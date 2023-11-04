@@ -1,0 +1,38 @@
+#!/bin/bash
+
+instance=$1
+restore_from=$2
+
+if [ -z "$instance" ]
+then
+      echo "must supply instance, e.g @island"
+      exit
+fi
+
+if [ -z "$restore_from" ]
+then
+      echo "must supply S3 url to restore from"
+      exit
+fi
+
+instance="${instance:1}"
+
+echo "restoring instance ${instance} ..."
+
+if [ -d "${HOME}/restore/${instance}" ]; then
+  rm -rf ${HOME}/restore/${instance}
+fi 
+
+mkdir -p ${HOME}/tmp/restore/${instance}
+s3cmd --force get ${restore_from} ${HOME}/tmp/restore/${instance}.tar.bz2
+tar -xvjf ${HOME}/tmp/restore/${instance}.tar.bz2 -C ${HOME}/tmp/restore/${instance}
+
+echo 'extracted ...'
+ls ${HOME}/tmp/restore/${instance}/*/*
+
+echo 'moving restore to current working directory ...'
+mv ${HOME}/tmp/restore/${instance}/*/* .
+
+echo "restore complete ..."
+
+

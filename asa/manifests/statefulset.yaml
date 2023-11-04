@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: arkmanager
+spec:
+  serviceName: arkmanager
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arkmanager
+  template:
+    metadata:
+      labels:
+        app: arkmanager
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: lke77260-163041-6466e8b94006
+      initContainers:
+      - name: config
+        image: busybox
+        command: ['/bin/sh', '-c', './conf/update-configs.sh']
+        volumeMounts:
+        - name: conf
+          mountPath: /conf
+        - name: ark
+          mountPath: /ark
+          readOnly: false
+      imagePullSecrets:
+      - name: docker-registry
+      containers:
+      - name: ark
+        image: aimvector/ark-asa-server:0.0.3
+        imagePullPolicy: Always
+        env:
+        - name: SESSION_NAME
+          value: ThatDevOpsASA
+        - name: SERVER_PORT
+          value: "30778"
+        - name: QUERY_PORT
+          value: "30015"
+        - name: RCON_PORT
+          value: "27020"
+        - name: BACKUP_DIR
+          value: "/ark/backups"
+        - name: ARK_DIR
+          value: "/ark"
+        - name: DISCORD_URL
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: DISCORD_URL
+        - name: SERVERPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: SERVERPASSWORD
+        - name: ADMINPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: ADMINPASSWORD
+        - name: CLUSTER_ID
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: CLUSTER_ID
+        ports:
+        - containerPort: 30777
+          name: clientudp1
+        - containerPort: 30778
+          name: clientudp2
+        - containerPort: 30015
+          name: queryportudp1
+        - containerPort: 30016
+          name: queryportudp2
+        volumeMounts:
+        - name: backup-secret
+          mountPath: /s3cfg
+          readOnly: false
+        - name: conf
+          mountPath: /conf
+          readOnly: false
+        - name: ark
+          mountPath: /ark
+          readOnly: false
+      volumes:
+      - name: backup-secret
+        secret:
+          secretName: ark-backup
+      - name: conf
+        configMap:
+          name: ark-configuration
+          defaultMode: 0755
+      - name: ark
+        hostPath:
+          path: /ark
+---

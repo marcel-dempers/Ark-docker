@@ -1,0 +1,3 @@
+#!/bin/bash
+
+proton run ${ARK_DIR}/ShooterGame/Binaries/Win64/ArkAscendedServer.exe TheIsland_WP?listen?SessionName=\"${SESSION_NAME}\"?ServerPassword=${SERVERPASSWORD}?ServerAdminPassword=\"${ADMINPASSWORD}\"?Port=${SERVER_PORT}?QueryPort=${QUERY_PORT}?RCONEnabled=True?RCONPort=${RCON_PORT} -exclusivejoin

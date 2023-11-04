@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ark-configuration
+data:
+  update-configs.sh: |
+    #!/bin/sh
+    cd /conf 
+    mkdir -p /ark/ShooterGame/Saved/Config/WindowsServer/
+    
+    cp GameUserSettings.ini /ark/ShooterGame/Saved/Config/WindowsServer/
+    cp Game.ini /ark/ShooterGame/Saved/Config/WindowsServer/
+ 
+  GameUserSettings.ini: |+
+    [ServerSettings]
+    ShowMapPlayerLocation=True
+    AllowThirdPersonPlayer=True
+    ServerCrosshair=True
+    OverrideOfficialDifficulty=5.0
+    DifficultyOffset=1.0
+    AdminLogging=false
+    PerPlatformMaxStructuresMultiplier=10.00000
+    MaxPlatformSaddleStructureLimit=100
+    ResourcesRespawnPeriodMultiplier=0.5
+    TamingSpeedMultiplier=2
+  Game.ini: |+
+    [/script/shootergame.shootergamemode]
+    BabyMatureSpeedMultiplier=3
+---
