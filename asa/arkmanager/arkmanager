@@ -13,6 +13,7 @@ start() {
 
   echo "clearing logs ..."
   rm ${ARK_DIR}/ShooterGame/Saved/Logs/*.log
+  
   instance="${instance:1}"
   echo "starting ${instance} ..."
 
@@ -31,6 +32,10 @@ status() {
 
 stop() {
   /usr/local/bin/arkmanager.stop $2  
+}
+
+logs() {
+  /usr/local/bin/arkmanager.logs $2  
 }
 
 restore() {
@@ -66,6 +71,9 @@ status )
         ;; 
 backup )                
         backup $@
+        ;;
+logs )                
+        logs $@
         ;;
 stop )                
         stop $@

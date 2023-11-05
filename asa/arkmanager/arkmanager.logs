@@ -1,0 +1,14 @@
+#!/bin/bash
+
+instance=$1
+
+if [ -z "$instance" ]
+then
+      echo "must supply instance, e.g @island"
+      exit
+fi
+
+instance="${instance:1}"
+
+echo "tailing logs for instance ${instance} ..."
+tail -f ${ARK_DIR}/ShooterGame/Saved/Logs/ShooterGame.log
