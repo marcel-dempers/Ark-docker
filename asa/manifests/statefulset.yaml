@@ -29,11 +29,11 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.4
+        image: aimvector/ark-asa-server:0.0.5
         imagePullPolicy: Always
         env:
         - name: SESSION_NAME
-          value: ThatDevOpsASA
+          value: ThatLocalDevOpsASA
         - name: SERVER_PORT
           value: "30778"
         - name: QUERY_PORT

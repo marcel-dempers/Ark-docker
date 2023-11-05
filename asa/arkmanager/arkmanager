@@ -53,6 +53,10 @@ saveworld() {
     fi
 }
 
+update(){
+  /usr/local/bin/arkmanager.update $2  
+}
+
 display_help() {
     echo 'Usage arkmanager [subcommand] --option <argument>'
 	  echo 'SUBCOMMANDS:'
@@ -83,6 +87,9 @@ saveworld )
         ;;
 restore )                
         restore $@
+        ;;
+update )                
+        update $@
         ;;
 -h | --help )           display_help
                         ;;

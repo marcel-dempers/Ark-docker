@@ -1,0 +1,17 @@
+#!/bin/bash
+
+instance=$1
+
+if [ -z "$instance" ]
+then
+      echo "must supply instance, e.g @island"
+      exit
+fi
+
+instance="${instance:1}"
+
+echo "updating ${instance} ..."
+
+/home/steam/steamcmd/steamcmd.sh +force_install_dir ${ARK_DIR} +login anonymous +app_update 2430930 +quit
+
+echo "updated"
