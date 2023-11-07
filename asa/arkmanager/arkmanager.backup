@@ -12,11 +12,26 @@ instance="${instance:1}"
 
 datestamp="$(date +"%Y-%m-%d_%H.%M.%S")"
 backupdir="${BACKUP_DIR}/${instance}-${datestamp}"
-saverootdir="${ARK_DIR}/ShooterGame/Saved/SavedArks/TheIsland_WP"
+saverootdir="${ARK_DIR}/ShooterGame/Saved/SavedArks/${MAP_NAME}"
 
 echo "creating backup ${instance}... ${backupdir}"
 mkdir -p ${backupdir}
-cp -r ${saverootdir}/* ${backupdir}
+
+echo "copying profiles ..."
+cp -r ${saverootdir}/*.arkprofile ${backupdir}
+cp -r ${saverootdir}/*.profilebak ${backupdir}
+
+echo "copying tribe data ..."
+cp -r ${saverootdir}/*.arktribe ${backupdir}
+cp -r ${saverootdir}/*.tribebak ${backupdir}
+
+echo "copying map data ..."
+cp -r ${saverootdir}/${MAP_NAME}.ark ${backupdir}
+echo "copying bak files ..."
+cp -r ${saverootdir}/*.bak ${backupdir}
+
+echo "files copied: "
+ls -la ${backupdir}
 
 backupfile="${backupdir}.bz2"
 echo "compressing backup... ${backupfile}"

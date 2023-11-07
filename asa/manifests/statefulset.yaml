@@ -29,11 +29,11 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.5
+        image: aimvector/ark-asa-server:0.0.6
         imagePullPolicy: Always
         env:
         - name: SESSION_NAME
-          value: ThatLocalDevOpsASA
+          value: ThatDevOpsASA
         - name: SERVER_PORT
           value: "30778"
         - name: QUERY_PORT
@@ -44,6 +44,8 @@ spec:
           value: "/ark/backups"
         - name: ARK_DIR
           value: "/ark"
+        - name: MAP_NAME
+          value: TheIsland_WP
         - name: DISCORD_URL
           valueFrom:
             secretKeyRef:

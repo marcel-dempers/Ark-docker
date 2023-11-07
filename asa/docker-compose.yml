@@ -20,9 +20,9 @@ services:
     build:
       dockerfile: dockerfile
     container_name: ark-asa
-    image: aimvector/ark-asa-server:0.0.5
+    image: aimvector/ark-asa-server:0.0.6
     environment:
-    - SESSION_NAME=ThatDevOpsASA
+    - SESSION_NAME=ThatLocalDevOpsASA
     - SERVERPASSWORD=test
     - ADMINPASSWORD=testadmin
     - SERVER_PORT=30778
@@ -30,6 +30,7 @@ services:
     - RCON_PORT=27020
     - BACKUP_DIR=/ark/backups
     - ARK_DIR=/ark
+    - MAP_NAME=TheIsland_WP
     volumes:
     - F:\ark\.data/:/ark
     - .s3cfg:/home/steam/.s3cfg
