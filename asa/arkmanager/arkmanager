@@ -26,6 +26,10 @@ backup() {
   /usr/local/bin/arkmanager.backup $2
 }
 
+rcon() {
+  /usr/local/bin/arkmanager.rcon $2 $3
+}
+
 status() {
   /usr/local/bin/arkmanager.status $2
 }
@@ -60,10 +64,13 @@ update(){
 display_help() {
     echo 'Usage arkmanager [subcommand] --option <argument>'
 	  echo 'SUBCOMMANDS:'
+    echo 'backup @serverName'
  	  echo 'start @serverName'
     echo 'saveworld @serverName'
     echo 'status @serverName'
     echo 'stop @serverName'
+    echo 'rcon @serverName <command>'
+    echo 'restore @serverName <s3://url>'
 }
 
 case $1 in
@@ -87,6 +94,9 @@ saveworld )
         ;;
 restore )                
         restore $@
+        ;;
+rcon )                
+        rcon $@
         ;;
 update )                
         update $@
