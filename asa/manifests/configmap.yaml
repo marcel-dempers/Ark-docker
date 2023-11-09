@@ -32,4 +32,6 @@ data:
   Game.ini: |+
     [/script/shootergame.shootergamemode]
     BabyMatureSpeedMultiplier=3
+    TamedDinoCharacterFoodDrainMultiplier=0.25
+    FuelConsumptionIntervalMultiplier=2
 ---
