@@ -20,7 +20,7 @@ services:
     build:
       dockerfile: dockerfile
     container_name: ark-asa
-    image: aimvector/ark-asa-server:0.0.6
+    image: aimvector/ark-asa-server:0.0.7
     environment:
     - SESSION_NAME=ThatLocalDevOpsASA
     - SERVERPASSWORD=test
