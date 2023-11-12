@@ -1,7 +1,10 @@
 #!/bin/bash
 
-echo 'starting server ... '
-arkmanager start @all
+if [ -z "${DISABLE_START_MAPS_ON_BOOT}" ]
+then
+  echo 'starting server ... '
+  arkmanager start @all
+fi 
 
 # Stop server in case of signal INT or TERM
 echo "Waiting..."
