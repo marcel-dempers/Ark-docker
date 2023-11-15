@@ -20,6 +20,9 @@ spec:
         image: busybox
         command: ['/bin/sh', '-c', './conf/update-configs.sh']
         volumeMounts:
+        - name: backup-secret
+          mountPath: /s3cfg
+          readOnly: false
         - name: conf
           mountPath: /conf
         - name: ark
