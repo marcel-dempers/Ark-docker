@@ -47,14 +47,7 @@ restore() {
 }
 
 saveworld() {
-    echo "Saving world..."
-    out=$(${RCON_CMDLINE} SaveWorld 2>/dev/null)
-    res=$?
-    if [[ $res == 0 && "$out" == "World Saved" ]]; then
-        echo "Success!"
-    else
-        echo "Failed."
-    fi
+    /usr/local/bin/arkmanager.saveworld $2
 }
 
 update(){
