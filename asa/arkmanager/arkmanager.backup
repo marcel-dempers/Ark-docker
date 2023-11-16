@@ -37,9 +37,9 @@ backupfile="${backupdir}.bz2"
 echo "compressing backup... ${backupfile}"
 tar -jcf "${backupfile}" -C "${BACKUP_DIR}" "${instance}-${datestamp}"
 
-if test -f /${HOME}/.s3cfg; then
+if test -f /etc/s3cfg/.s3cfg; then
   echo "s3cmd configured, uploading to S3 ..."
-  s3cmd put ${backupfile} "s3://ark-backups/${instance}/${instance}-latest.bz2"
+  s3cmd --config /etc/s3cfg/.s3cfg put ${backupfile} "s3://ark-backups/${instance}/${instance}-latest.bz2"
 
-  s3cmd put ${backupfile} "s3://ark-backups/${instance}/timestamped/${instance}-${datestamp}.bz2"
+  s3cmd --config /etc/s3cfg/.s3cfg put ${backupfile} "s3://ark-backups/${instance}/timestamped/${instance}-${datestamp}.bz2"
 fi

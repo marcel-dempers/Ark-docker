@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: arkmanager
+  namespace: arkmanager
 spec:
   serviceName: arkmanager
   replicas: 1
@@ -21,7 +22,7 @@ spec:
         command: ['/bin/sh', '-c', './conf/update-configs.sh']
         volumeMounts:
         - name: backup-secret
-          mountPath: /s3cfg
+          mountPath: /etc/s3cfg/
           readOnly: false
         - name: conf
           mountPath: /conf
@@ -32,7 +33,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.8
+        image: aimvector/ark-asa-server:0.0.10
         imagePullPolicy: Always
         env:
         - name: SESSION_NAME
@@ -80,7 +81,7 @@ spec:
           name: queryportudp2
         volumeMounts:
         - name: backup-secret
-          mountPath: /s3cfg
+          mountPath: /etc/s3cfg/
           readOnly: false
         - name: conf
           mountPath: /conf

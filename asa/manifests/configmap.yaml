@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ark-configuration
+  namespace: arkmanager
 data:
   update-configs.sh: |
     #!/bin/sh
@@ -12,11 +13,6 @@ data:
     cp GameUserSettings.ini /ark/ShooterGame/Saved/Config/WindowsServer/
     cp Game.ini /ark/ShooterGame/Saved/Config/WindowsServer/
 
-    if test -f /s3cfg/.s3cfg; then
-      echo "s3cmd found at /s3cfg, copying to user directory ..."
-      cp /s3cfg/.s3cfg /home/steam/.s3cfg
-    fi 
- 
   GameUserSettings.ini: |+
     [ServerSettings]
     ShowMapPlayerLocation=True
