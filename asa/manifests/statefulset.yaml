@@ -26,6 +26,8 @@ spec:
           readOnly: false
         - name: conf
           mountPath: /conf
+        - name: arkmanager
+          mountPath: /etc/arkmanager/
         - name: ark
           mountPath: /ark
           readOnly: false
@@ -33,7 +35,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.10
+        image: aimvector/ark-asa-server:0.0.11
         imagePullPolicy: Always
         env:
         - name: SESSION_NAME
@@ -83,6 +85,8 @@ spec:
         - name: backup-secret
           mountPath: /etc/s3cfg/
           readOnly: false
+        - name: arkmanager
+          mountPath: /etc/arkmanager/
         - name: conf
           mountPath: /conf
           readOnly: false
@@ -97,6 +101,8 @@ spec:
         configMap:
           name: ark-configuration
           defaultMode: 0755
+      - name: arkmanager 
+        emptyDir: {}
       - name: ark
         hostPath:
           path: /ark

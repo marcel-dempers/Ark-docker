@@ -4,14 +4,6 @@ RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
 
 instance=$1
 
-if [ -z "$instance" ]
-then
-      echo "must supply instance, e.g @island"
-      exit
-fi
-
-instance="${instance:1}"
-
 # Get PID
 ark_pid=$(pgrep -f ".*proton.*ArkAscendedServer.exe")
 if [[ -z $ark_pid ]]; then

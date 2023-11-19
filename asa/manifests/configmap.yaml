@@ -9,10 +9,14 @@ data:
     #!/bin/sh
     cd /conf 
     mkdir -p /ark/ShooterGame/Saved/Config/WindowsServer/
+    mkdir -p /etc/arkmanager/instances/
     
     cp GameUserSettings.ini /ark/ShooterGame/Saved/Config/WindowsServer/
     cp Game.ini /ark/ShooterGame/Saved/Config/WindowsServer/
+    cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
 
+    cp island.cfg /etc/arkmanager/instances/island.cfg
+    
   GameUserSettings.ini: |+
     [ServerSettings]
     ShowMapPlayerLocation=True
@@ -30,4 +34,13 @@ data:
     BabyMatureSpeedMultiplier=3
     TamedDinoCharacterFoodDrainMultiplier=0.25
     FuelConsumptionIntervalMultiplier=2
+    bDisableStructurePlacementCollision=true
+  arkmanager.cfg: |+
+    BACKUP_DIR=/ark/backups
+    ARK_DIR=/ark
+  island.cfg: |+
+    SESSION_NAME=ThatDevOpsASA
+    SERVER_PORT=30778
+    QUERY_PORT=30015
+    RCON_PORT=27020
 ---

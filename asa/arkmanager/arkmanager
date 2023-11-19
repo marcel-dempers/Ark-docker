@@ -1,6 +1,10 @@
 #!/bin/bash
 RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
 
+# command handler for sourcing instance CFGs and running 
+# commands on each instance
+source /usr/local/bin/arkmanager.command 
+
 start() {
 
   instance=$2
@@ -27,43 +31,43 @@ backup() {
 }
 
 rcon() {
-  /usr/local/bin/arkmanager.rcon $2 $3
+  runCommandOnInstance rcon $2 $3
 }
 
 status() {
-  /usr/local/bin/arkmanager.status $2
+  runCommandOnInstance status $2
 }
 
 stop() {
-  /usr/local/bin/arkmanager.stop $2  
+  runCommandOnInstance stop $2 
 }
 
 logs() {
-  /usr/local/bin/arkmanager.logs $2  
+  runCommandOnInstance logs $2 
 }
 
 restore() {
-  /usr/local/bin/arkmanager.restore $2 $3
+  runCommandOnInstance restore $2 $3
 }
 
 saveworld() {
-    /usr/local/bin/arkmanager.saveworld $2
+  runCommandOnInstance saveworld $2
 }
 
 update(){
-  /usr/local/bin/arkmanager.update $2  
+  runCommandOnInstance update $2  
 }
 
 display_help() {
     echo 'Usage arkmanager [subcommand] --option <argument>'
 	  echo 'SUBCOMMANDS:'
-    echo 'backup @serverName'
- 	  echo 'start @serverName'
-    echo 'saveworld @serverName'
-    echo 'status @serverName'
-    echo 'stop @serverName'
-    echo 'rcon @serverName <command>'
-    echo 'restore @serverName <s3://url>'
+    echo 'backup @instanceName'
+    echo 'rcon @instanceName <command> , example: rcon @island ListPlayers'
+    echo 'restore @instanceName <s3://url>'
+ 	  echo 'start @instanceName'
+    echo 'saveworld @instanceName'
+    echo 'status @instanceName'
+    echo 'stop @instanceName'
 }
 
 case $1 in
