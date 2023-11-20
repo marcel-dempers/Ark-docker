@@ -17,10 +17,9 @@ runCommand() {
   instance=$2
   params=$3
 
-  echo "params: $params"
   if [ -f "/etc/arkmanager/instances/${instance}.cfg" ]; then
-    echo "running command ${cmd} on ${instance}"
-    /usr/local/bin/arkmanager.${cmd} ${instance}
+    echo "running command ${cmd} on ${instance} with params: ${params}"
+    /usr/local/bin/arkmanager.${cmd} ${instance} ${params}
   else
     echo "instance ${instance} does not exist"
   fi

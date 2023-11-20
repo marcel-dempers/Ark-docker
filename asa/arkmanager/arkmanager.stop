@@ -5,14 +5,6 @@ SHUTDOWN_TIMEOUT=60
 
 instance=$1
 
-if [ -z "$instance" ]
-then
-      echo "must supply instance, e.g @island"
-      exit
-fi
-
-instance="${instance:1}"
-
 ark_pid=$(pgrep -f ".*proton.*ArkAscendedServer.exe")
 if [[ -z $ark_pid ]]; then
     echo "Server PID not found (server offline?)"

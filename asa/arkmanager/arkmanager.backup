@@ -2,14 +2,6 @@
 
 instance=$1
 
-if [ -z "$instance" ]
-then
-      echo "must supply instance, e.g @island"
-      exit
-fi
-
-instance="${instance:1}"
-
 datestamp="$(date +"%Y-%m-%d_%H.%M.%S")"
 backupdir="${BACKUP_DIR}/${instance}-${datestamp}"
 saverootdir="${ARK_DIR}/ShooterGame/Saved/SavedArks/${MAP_NAME}"

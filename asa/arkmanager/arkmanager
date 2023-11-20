@@ -27,7 +27,7 @@ start() {
 }
 
 backup() {
-  /usr/local/bin/arkmanager.backup $2
+  runCommandOnInstance backup $2
 }
 
 rcon() {

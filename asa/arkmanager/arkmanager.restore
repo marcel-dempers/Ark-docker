@@ -3,19 +3,11 @@
 instance=$1
 restore_from=$2
 
-if [ -z "$instance" ]
-then
-      echo "must supply instance, e.g @island"
-      exit
-fi
-
 if [ -z "$restore_from" ]
 then
-      echo "must supply S3 url to restore from"
-      exit
+      restore_from="s3://ark-backups/${instance}/${instance}-latest.bz2"
+      echo "did not supply backup URL, defaulting to latest:"
 fi
-
-instance="${instance:1}"
 
 # is s3cmd configured ?
 if test ! -f /etc/s3cfg/.s3cfg; then
