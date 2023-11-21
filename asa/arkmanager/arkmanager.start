@@ -1,3 +1,17 @@
 #!/bin/bash
 
-proton run ${ARK_DIR}/ShooterGame/Binaries/Win64/ArkAscendedServer.exe ${MAP_NAME}?listen?SessionName=\"${SESSION_NAME}\"?ServerPassword=${SERVERPASSWORD}?ServerAdminPassword=\"${ADMINPASSWORD}\"?Port=${SERVER_PORT}?QueryPort=${QUERY_PORT}?RCONEnabled=True?RCONPort=${RCON_PORT}
+instance=$1
+
+echo "clearing logs ..."
+rm ${ARK_DIR}/ShooterGame/Saved/Logs/*.log
+
+echo "starting ${instance} ..."
+echo "map name: ${MAP_NAME}"
+echo "session name: ${SESSION_NAME}"
+echo "server port: ${SERVER_PORT}"
+echo "query port: ${QUERY_PORT}" 
+echo "rcon port: ${RCON_PORT}"
+
+nohup bash /usr/local/bin/arkmanager.start-instance >/dev/null 2>&1 &
+sleep 3
+echo "Server should be up in a few minutes"

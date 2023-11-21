@@ -6,24 +6,7 @@ RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
 source /usr/local/bin/arkmanager.command 
 
 start() {
-
-  instance=$2
-
-  if [ -z "$instance" ]
-  then
-        echo "must supply instance, e.g @island"
-        exit
-  fi
-
-  echo "clearing logs ..."
-  rm ${ARK_DIR}/ShooterGame/Saved/Logs/*.log
-  
-  instance="${instance:1}"
-  echo "starting ${instance} ..."
-
-  nohup bash /usr/local/bin/arkmanager.start >/dev/null 2>&1 &
-  sleep 3
-  echo "Server should be up in a few minutes"
+  runCommandOnInstance start $2
 }
 
 backup() {
