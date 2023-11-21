@@ -42,6 +42,10 @@ stop() {
   runCommandOnInstance stop $2 
 }
 
+list() {
+  for n in $(getAllInstanceNames); do ( echo "@${n}";);done 
+}
+
 logs() {
   runCommandOnInstance logs $2 
 }
@@ -59,15 +63,19 @@ update(){
 }
 
 display_help() {
-    echo 'Usage arkmanager [subcommand] --option <argument>'
-	  echo 'SUBCOMMANDS:'
-    echo 'backup @instanceName'
-    echo 'rcon @instanceName <command> , example: rcon @island ListPlayers'
-    echo 'restore @instanceName <s3://url>'
- 	  echo 'start @instanceName'
-    echo 'saveworld @instanceName'
-    echo 'status @instanceName'
-    echo 'stop @instanceName'
+  echo -e "Usage arkmanager [command] --option <argument>\n"
+  cat <<-EOE
+	  COMMANDS:
+    backup @instanceName            Takes a backup of the Maps SavedArks directory and compresses it. Optionally uploads to S3
+    list                            Lists available configured instances
+    logs @instanceName              Tails the logs of given instance
+    rcon @instanceName <command>    Runs RCON command against the instance, Example: rcon @island ListPlayers
+    restore @instanceName           Restores latest or given backup to the current directory. Optional paramter: <s3://url>
+ 	  start @instanceName             Starts a given instance
+    saveworld @instanceName         Runs an RCON command to save the given instance world
+    status @instanceName            Gets status of given instance
+    stop @instanceName              Gracefully stops given instance
+EOE
 }
 
 case $1 in
@@ -79,6 +87,9 @@ status )
         ;; 
 backup )                
         backup $@
+        ;;
+list )                
+        list
         ;;
 logs )                
         logs $@
