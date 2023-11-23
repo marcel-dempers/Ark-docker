@@ -18,6 +18,10 @@ runCommand() {
   params=$3
 
   if [ -f "/etc/arkmanager/instances/${instance}.cfg" ]; then
+    set -o allexport
+    source "/etc/arkmanager/instances/${instance}.cfg"
+    set +o allexport
+    
     echo "running command ${cmd} on ${instance} with params: ${params}"
     /usr/local/bin/arkmanager.${cmd} ${instance} ${params}
   else

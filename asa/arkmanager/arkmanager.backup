@@ -2,9 +2,16 @@
 
 instance=$1
 
+if [ -z "${arkoption_AltSaveDirectoryName}" ]; then
+  #default dir
+  saverootdir="${ARK_DIR}/ShooterGame/Saved/SavedArks/${MAP_NAME}"
+else
+  #alt dir
+  saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}/${MAP_NAME}"
+fi
+
 datestamp="$(date +"%Y-%m-%d_%H.%M.%S")"
 backupdir="${BACKUP_DIR}/${instance}-${datestamp}"
-saverootdir="${ARK_DIR}/ShooterGame/Saved/SavedArks/${MAP_NAME}"
 
 echo "creating backup ${instance}... ${backupdir}"
 mkdir -p ${backupdir}

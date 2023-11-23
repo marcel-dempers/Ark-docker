@@ -28,8 +28,19 @@ tar -xvjf ${HOME}/tmp/restore/${instance}.tar.bz2 -C ${HOME}/tmp/restore/${insta
 echo 'extracted ...'
 ls ${HOME}/tmp/restore/${instance}/*/*
 
-echo 'moving restore to current working directory ...'
-mv ${HOME}/tmp/restore/${instance}/*/* .
+echo 'moving restore to save directory ...'
+if [ -z "${arkoption_AltSaveDirectoryName}" ]; then
+  #default dir
+  saverootdir="${ARK_DIR}/ShooterGame/Saved/SavedArks/${MAP_NAME}"
+else
+  #alt dir
+  saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}/${MAP_NAME}"
+fi
+
+echo "save directory: ${saverootdir}"
+mkdir -p ${saverootdir}
+
+mv ${HOME}/tmp/restore/${instance}/*/* ${saverootdir}
 
 echo "restore complete ..."
 

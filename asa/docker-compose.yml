@@ -20,18 +20,13 @@ services:
     build:
       dockerfile: dockerfile
     container_name: ark-asa
-    image: aimvector/ark-asa-server:0.0.14
+    image: aimvector/ark-asa-server:0.0.15
     environment:
     - DISABLE_START_MAPS_ON_BOOT=true
-    - SESSION_NAME=ThatLocalDevOpsASA
     - SERVERPASSWORD=test
     - ADMINPASSWORD=testadmin
-    - SERVER_PORT=30778
-    - QUERY_PORT=30015
-    - RCON_PORT=27020
     - BACKUP_DIR=/ark/backups
     - ARK_DIR=/ark
-    - MAP_NAME=TheIsland_WP
     volumes:
     - F:\ark\.data/:/ark
     - ./configs/instances/:/etc/arkmanager/instances/

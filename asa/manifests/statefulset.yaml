@@ -35,28 +35,13 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.14
+        image: aimvector/ark-asa-server:0.0.15
         imagePullPolicy: Always
         env:
-        - name: SESSION_NAME
-          value: ThatDevOpsASA
-        - name: SERVER_PORT
-          value: "30778"
-        - name: QUERY_PORT
-          value: "30015"
-        - name: RCON_PORT
-          value: "27020"
         - name: BACKUP_DIR
           value: "/ark/backups"
         - name: ARK_DIR
           value: "/ark"
-        - name: MAP_NAME
-          value: TheIsland_WP
-        - name: DISCORD_URL
-          valueFrom:
-            secretKeyRef:
-              name: ark-secrets
-              key: DISCORD_URL
         - name: SERVERPASSWORD
           valueFrom:
             secretKeyRef:
@@ -67,11 +52,6 @@ spec:
             secretKeyRef:
               name: ark-secrets
               key: ADMINPASSWORD
-        - name: CLUSTER_ID
-          valueFrom:
-            secretKeyRef:
-              name: ark-secrets
-              key: CLUSTER_ID
         ports:
         - containerPort: 30777
           name: clientudp1
