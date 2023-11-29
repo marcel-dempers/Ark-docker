@@ -34,7 +34,7 @@ data:
     TamedDinoCharacterFoodDrainMultiplier=0.25
     FuelConsumptionIntervalMultiplier=2
     bDisableStructurePlacementCollision=true
-    MatingIntervalMultiplier=0.03
+    MatingIntervalMultiplier=0.09
     EggHatchSpeedMultiplier=12
     BabyMatureSpeedMultiplier=6
   arkmanager.cfg: |+
