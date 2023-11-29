@@ -11,6 +11,9 @@ else
 fi
 
 datestamp="$(date +"%Y-%m-%d_%H.%M.%S")"
+yearstamp="$(date +"%Y")"
+monthstamp="$(date +"%m")"
+
 backupdir="${BACKUP_DIR}/${instance}-${datestamp}"
 
 echo "creating backup from: ${saverootdir}"
@@ -40,6 +43,5 @@ tar -jcf "${backupfile}" -C "${BACKUP_DIR}" "${instance}-${datestamp}"
 if test -f /etc/s3cfg/.s3cfg; then
   echo "s3cmd configured, uploading to S3 ..."
   s3cmd --config /etc/s3cfg/.s3cfg put ${backupfile} "s3://ark-backups/${instance}/${instance}-latest.bz2"
-
-  s3cmd --config /etc/s3cfg/.s3cfg put ${backupfile} "s3://ark-backups/${instance}/timestamped/${instance}-${datestamp}.bz2"
+  s3cmd --config /etc/s3cfg/.s3cfg put ${backupfile} "s3://ark-backups/${instance}/timestamped/${yearstamp}/${monthstamp}/${instance}-${datestamp}.bz2"
 fi
