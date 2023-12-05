@@ -14,23 +14,26 @@ services:
       cp GameUserSettings.ini /ark/ShooterGame/Saved/Config/WindowsServer/
       cp Game.ini /ark/ShooterGame/Saved/Config/WindowsServer/
     volumes:
-    - F:\ark\.data/:/ark
+    - ./.data/:/ark
     - ./configs/:/configs
+    #- F:\ark\.data/:/ark
   ark-asa:
     build:
       dockerfile: dockerfile
     container_name: ark-asa
-    image: aimvector/ark-asa-server:0.0.16
+    image: aimvector/ark-asa-server:0.0.17
     environment:
+    - DISABLE_INSTALL_ON_BOOT=true
     - DISABLE_START_MAPS_ON_BOOT=true
     - SERVERPASSWORD=test
     - ADMINPASSWORD=testadmin
     - BACKUP_DIR=/ark/backups
     - ARK_DIR=/ark
     volumes:
-    - F:\ark\.data/:/ark
+    - ./.data/:/ark
     - ./configs/instances/:/etc/arkmanager/instances/
     - .s3cfg:/etc/s3cfg/.s3cfg
+    #- F:\ark\.data/:/ark
     ports:
     #map 1 island
     - 30777:30777/udp 
