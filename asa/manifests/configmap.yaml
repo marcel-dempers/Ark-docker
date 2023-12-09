@@ -36,7 +36,7 @@ data:
     bDisableStructurePlacementCollision=true
     MatingIntervalMultiplier=0.2
     EggHatchSpeedMultiplier=12
-    BabyMatureSpeedMultiplier=6
+    BabyMatureSpeedMultiplier=9
   arkmanager.cfg: |+
     BACKUP_DIR=/ark/backups
     ARK_DIR=/ark
