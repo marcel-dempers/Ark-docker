@@ -37,6 +37,8 @@ data:
     MatingIntervalMultiplier=0.2
     EggHatchSpeedMultiplier=12
     BabyMatureSpeedMultiplier=9
+    BabyImprintAmountMultiplier=5.0
+    BabyCuddleIntervalMultiplier=0.3
   arkmanager.cfg: |+
     BACKUP_DIR=/ark/backups
     ARK_DIR=/ark
@@ -47,4 +49,5 @@ data:
     QUERY_PORT=30015
     RCON_PORT=27020
     arkoption_AltSaveDirectoryName=TheIsland_WP
+    arkoption_ShowFloatingDamageText=True
 ---

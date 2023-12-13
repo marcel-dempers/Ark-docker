@@ -21,14 +21,14 @@ services:
     build:
       dockerfile: dockerfile
     container_name: ark-asa
-    image: aimvector/ark-asa-server:0.0.17
+    image: aimvector/ark-asa-server:0.0.18
     environment:
-    - DISABLE_INSTALL_ON_BOOT=true
     - DISABLE_START_MAPS_ON_BOOT=true
     - SERVERPASSWORD=test
     - ADMINPASSWORD=testadmin
     - BACKUP_DIR=/ark/backups
     - ARK_DIR=/ark
+    #- DISABLE_INSTALL_ON_BOOT=true
     volumes:
     - ./.data/:/ark
     - ./configs/instances/:/etc/arkmanager/instances/

@@ -23,6 +23,23 @@ done
 echo "setting arkoptions: ${arkoptions}"
 export arkoptions=${arkoptions}
 
+echo "sourcing arkflags..."
+arkflags=
+for arkflag in "${!arkflag_@}"; do
+  arkflagvalue=${!arkflag}
+  arkflag="${arkflag:8}"
+  if [ -z "${arkflagvalue}" ]; then
+    arkflags="${arkflags} -${arkflag}"
+  else
+    arkflags="${arkflags} -${arkflag}=${arkflagvalue}"
+  fi
+done
+
+echo "setting arkflags: ${arkflags}"
+export arkflags=${arkflags}
+
+echo "proton run ${ARK_DIR}/ShooterGame/Binaries/Win64/ArkAscendedServer.exe ${MAP_NAME}?listen?SessionName=\"${SESSION_NAME}\"?ServerPassword=REDACTED?ServerAdminPassword=\"REDACTED\"?Port=${SERVER_PORT}?QueryPort=${QUERY_PORT}?RCONEnabled=True?RCONPort=${RCON_PORT}${arkoptions}${arkflags}"
+
 nohup bash /usr/local/bin/arkmanager.start-instance >/dev/null 2>&1 &
 sleep 3
 echo "Server should be up in a few minutes"
