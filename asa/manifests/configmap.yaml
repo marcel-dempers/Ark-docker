@@ -46,7 +46,6 @@ data:
     SESSION_NAME=ThatDevOpsASA
     MAP_NAME=TheIsland_WP
     SERVER_PORT=30778
-    QUERY_PORT=30015
     RCON_PORT=27020
     arkoption_AltSaveDirectoryName=TheIsland_WP
     arkoption_ShowFloatingDamageText=True

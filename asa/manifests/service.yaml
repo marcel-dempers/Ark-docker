@@ -6,14 +6,6 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 30015
-    protocol: UDP
-    name: queryportudp1
-    nodePort: 30015
-  - port: 30016
-    protocol: UDP
-    name: queryportudp2
-    nodePort: 30016
   - port: 30777
     protocol: UDP
     name: clientudp1

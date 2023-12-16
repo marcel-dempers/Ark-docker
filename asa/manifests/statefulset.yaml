@@ -35,7 +35,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.18
+        image: aimvector/ark-asa-server:0.0.19
         imagePullPolicy: Always
         env:
         - name: BACKUP_DIR
@@ -57,10 +57,6 @@ spec:
           name: clientudp1
         - containerPort: 30778
           name: clientudp2
-        - containerPort: 30015
-          name: queryportudp1
-        - containerPort: 30016
-          name: queryportudp2
         volumeMounts:
         - name: backup-secret
           mountPath: /etc/s3cfg/
