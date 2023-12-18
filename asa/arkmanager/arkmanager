@@ -48,13 +48,18 @@ update(){
 display_help() {
   echo -e "Usage arkmanager [command] --option <argument>\n"
   cat <<-EOE
+    arkmanager allows you to manager ark instances.
+    Each instance is a config file, for example, @island could be /etc/arkmanager/instances/island.cfg
+
 	  COMMANDS:
     backup @instanceName            Takes a backup of the Maps SavedArks directory and compresses it. Optionally uploads to S3
+                                    Example: arkmanager backup @island
     list                            Lists available configured instances
     logs @instanceName              Tails the logs of given instance
+                                    Example: arkmanager logs @island
     rcon @instanceName <command>    Runs RCON command against the instance, Example: rcon @island ListPlayers
     restore @instanceName           Restores latest or given backup to the current directory. Optional paramter: <s3://url>
- 	  start @instanceName             Starts a given instance
+    start @instanceName             Starts a given instance
     saveworld @instanceName         Runs an RCON command to save the given instance world
     status @instanceName            Gets status of given instance
     stop @instanceName              Gracefully stops given instance
