@@ -29,7 +29,7 @@ services:
     - ARK_DIR=/ark
     #- DISABLE_INSTALL_ON_BOOT=true
     volumes:
-    - ./.data/:/ark
+    - ark:/ark
     - ./configs/instances/:/etc/arkmanager/instances/
     - .s3cfg:/etc/s3cfg/.s3cfg
     ports:
