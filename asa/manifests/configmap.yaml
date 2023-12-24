@@ -29,6 +29,9 @@ data:
     MaxPlatformSaddleStructureLimit=100
     ResourcesRespawnPeriodMultiplier=0.5
     TamingSpeedMultiplier=2
+    DisableCryopodEnemyCheck=True
+    AllowCryoFridgeOnSaddle=True
+    DisableCryopodFridgeRequirement=True
   Game.ini: |+
     [/script/shootergame.shootergamemode]
     TamedDinoCharacterFoodDrainMultiplier=0.25
