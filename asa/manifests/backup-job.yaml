@@ -38,7 +38,7 @@ metadata:
   name: ark-backup
   namespace: arkmanager
 spec:
-  schedule: "0 8,22 * * *"
+  schedule: "0 13,23 * * *"
   timeZone: "Australia/Melbourne"
   jobTemplate:
     spec:
