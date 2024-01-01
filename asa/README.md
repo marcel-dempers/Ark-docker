@@ -52,6 +52,14 @@ arkmanager restore @island
 
 You should see new files using `ls` if restore is complete.
 
+## Cleanup backups
+
+After testing latest backups locally, you can purge old backups with `s3cmd`:
+```
+# example delete old folder:
+s3cmd del -r s3://ark-backups/island/timestamped/2023
+```
+
 ## Using Swap memory for low cost cloud machines
 
 Ark runs reasonably well on SWAP memory for small server tribes.
