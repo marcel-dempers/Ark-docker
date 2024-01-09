@@ -46,11 +46,24 @@ arkmanager stop @island
 example: cd /ark/ShooterGame/Saved/TheIsland_WP/TheIsland_WP/
 rm * 
 
-su steam
 arkmanager restore @island
+
+# restart your container
 ```
 
 You should see new files using `ls` if restore is complete.
+
+### Restoring to a new Kubernetes cluster
+
+You can automate the restore process using a job:
+
+```
+kind create cluster --name ark
+kubectl create namespace arkmanager
+kubectl create secret generic ark-backup --from-file=./asa/.s3cfg --namespace arkmanager
+kubectl apply -f asa/manifests/configmap.yaml
+kubectl apply -f asa/manifests/restore/restore-job.yaml
+```
 
 ## Cleanup backups
 

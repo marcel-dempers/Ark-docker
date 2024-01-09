@@ -4,52 +4,22 @@ kind: ConfigMap
 metadata:
   name: restore-job
   namespace: arkmanager
-data:
-  saveRootDirectory: "/ark/ShooterGame/Saved/"
-  restore.json: |
-    [
-      { 
-        "instance": "@island"
-      }
-    ]
+data:  
   restore.sh: |
     #!/bin/sh
     
-    apt-get install -y jq
+    cd /conf 
+    mkdir -p /etc/arkmanager/
+    cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
+    mkdir -p /etc/arkmanager/instances/
+    cp island.cfg /etc/arkmanager/instances/island.cfg
 
-    echo "configuring s3..."
-    if test -f "/etc/s3cfg/.s3cfg"; then
-      echo "s3cmd configured, continuing..."
-    else
-      echo "s3cmd is not configured!"
-      exit 
-    fi
+    cd /ark 
+    echo "starting restore job"
+    arkmanager restore @all 
 
-    download(){    
-      mkdir -p /tmp/restore/$3/
-      s3cmd --force get $2 /tmp/restore/$3.tar.bz2
+    tree 
 
-      tar -xvjf /tmp/restore/$3.tar.bz2 -C /tmp/restore/$3/
-      mkdir -p ${1}${3}/
-      for f in /tmp/restore/$3/*/*; do
-        yes | cp -r "$f" ${1}${3}/
-      done
-    }
-
-    for backupItem in $(cat /restore/backup.json | jq -c ".[]");
-    do
-      backup=$(echo $backupItem | jq ".backup"  | sed s/\"//g)
-      restore=$(echo $backupItem | jq ".restore"  | sed s/\"//g)
-      echo $backup
-      echo $restore
-
-      download $saveRootDirectory $backup $restore
-    done
-
-    echo "passing ark ownership to steam user"
-    chown -R steam:steam /ark
-
-    echo "done"
     sleep 15m
 
 ---
@@ -61,18 +31,12 @@ metadata:
 spec:
   template:
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: lke77260-163041-6466e8b94006
+      # nodeSelector:
+      #   kubernetes.io/hostname: lke77260-163041-6466e8b94006
       containers:
       - name: restore
-        image: aimvector/ark-asa-server:0.0.19
+        image: aimvector/ark-asa-server:0.0.20
         command: ['/bin/sh', '-c', '. /restore/restore.sh']
-        env:
-        - name: saveRootDirectory
-          valueFrom:
-            configMapKeyRef:
-              name: restore-job
-              key: saveRootDirectory
         volumeMounts:
         - name: restore
           mountPath: /restore
@@ -83,6 +47,8 @@ spec:
         - name: ark
           mountPath: /ark
           readOnly: false
+        - name: arkmanager
+          mountPath: /conf
       restartPolicy: Never
       volumes:
       - name: backup-secret
@@ -92,6 +58,10 @@ spec:
         configMap:
           name: restore-job
           defaultMode: 075
+      - name: arkmanager
+        configMap:
+          name: ark-configuration
+          defaultMode: 0755
       - name: ark
         hostPath:
           path: /ark
