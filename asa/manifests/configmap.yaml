@@ -42,6 +42,7 @@ data:
     BabyMatureSpeedMultiplier=9
     BabyImprintAmountMultiplier=5.0
     BabyCuddleIntervalMultiplier=0.3
+    bAllowUnlimitedRespecs=true
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemConsumable_Honey_C",Quantity=(MaxItemQuantity=5, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Gasoline_C",Quantity=(MaxItemQuantity=5000, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Hide_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
