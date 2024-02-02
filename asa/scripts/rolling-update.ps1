@@ -1,4 +1,4 @@
-$ENV:KUBECONFIG="C:\Users\aimve\kube-tools\.kube\marceldempers.yaml"
+$ENV:KUBECONFIG="C:\Users\aimve\kube-tools\.kube\marceldempers-v1.yaml"
 
 .${PWD}\asa\scripts\backup.ps1
 .${PWD}\asa\scripts\stop.ps1

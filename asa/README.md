@@ -27,9 +27,9 @@ kubectl -n arkmanager create secret generic ark-secrets --from-literal=ADMINPASS
 kubectl -n arkmanager create secret generic ark-backup --from-file=./.s3cfg
 
 
-kubectl -n arkmanager apply -f .\asa\manifests\configmap.yaml
-kubectl -n arkmanager apply -f .\asa\manifests\service.yaml
-kubectl -n arkmanager apply -f .\asa\manifests\statefulset.yaml
+kubectl -n arkmanager apply -f asa/manifests/configmap.yaml
+kubectl -n arkmanager apply -f asa/manifests/service.yaml
+kubectl -n arkmanager apply -f asa/manifests/statefulset.yaml
 
 ```
 
@@ -78,11 +78,28 @@ s3cmd del -r s3://ark-backups/island/timestamped/2023
 Ark runs reasonably well on SWAP memory for small server tribes.
 SSH to your instance as root and setup SWAP memory:
 
+### Enable SWAP in Kubernetes (1.28)
+
+Need to tell k8s to utilise SWAP memory. Introduced in 1.28:
+```
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+failSwapOn: false
+featureGates:
+  NodeSwap: true
+memorySwap:
+  swapBehavior: LimitedSwap
+```
+
+Then setup SWAP on the node
+
 ```
 ####################################################
 
 #set failSwapOn: false (kubelet will not start with swap on!)
+kubelet config locations :
 nano /var/lib/kubelet/config.yaml
+nano /etc/kubernetes/kubelet.conf
 
 dd if=/dev/zero of=/swapfile count=32384 bs=1MiB
 ls -lh /swapfile
@@ -99,7 +116,7 @@ cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
 ####################################################
 
-# turn off swap
+# how to turn off swap
 swapoff -v /swapfile
 rm -rf /swapfile
 

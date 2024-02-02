@@ -14,8 +14,12 @@ spec:
       labels:
         app: arkmanager
     spec:
+      tolerations:
+      - key: "node.kubernetes.io/memory-pressure"
+        operator: "Exists"
+        effect: "NoSchedule"
       nodeSelector:
-        kubernetes.io/hostname: lke77260-163041-6466e8b94006
+        kubernetes.io/hostname: pool-g1ami3jeb-ofiyo
       initContainers:
       - name: config
         image: busybox
