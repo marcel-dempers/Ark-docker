@@ -20,7 +20,7 @@ services:
     build:
       dockerfile: dockerfile
     container_name: ark-asa
-    image: aimvector/ark-asa-server:0.0.20
+    image: aimvector/ark-asa-server:0.0.21
     environment:
     - DISABLE_START_MAPS_ON_BOOT=true
     - SERVERPASSWORD=test
@@ -33,6 +33,5 @@ services:
     - ./configs/instances/:/etc/arkmanager/instances/
     - .s3cfg:/etc/s3cfg/.s3cfg
     ports:
-    #map 1 island
-    - 30777:30777/udp 
-    - 30778:30778/udp
+    - 30778:30778/udp #island
+    - 30779:30779/udp #svartalfheim
