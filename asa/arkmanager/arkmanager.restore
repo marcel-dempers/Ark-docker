@@ -34,7 +34,8 @@ if [ -z "${arkoption_AltSaveDirectoryName}" ]; then
   saverootdir="${ARK_DIR}/ShooterGame/Saved/SavedArks/${MAP_NAME}"
 else
   #alt dir
-  saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}/${MAP_NAME}"
+  saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}"
+  saverootdir=$(ls -d ${saverootdir}/* | head -1)
 fi
 
 echo "save directory: ${saverootdir}"
