@@ -5,7 +5,7 @@ RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
 instance=$1
 
 # Get PID
-ark_pid=$(pgrep -f ".*proton.*ArkAscendedServer.exe")
+ark_pid=$(cat "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid")
 if [[ -z $ark_pid ]]; then
     echo "Server PID not found (server offline?)"
     return
