@@ -2,13 +2,22 @@
 
 instance=$1
 
+# the game and mod maps determine the exact save directory location
+# saverootdir sometimes has subfolder which cannot be assumed to be map_name 
+echo "resolving save directory location ..."
 if [ -z "${arkoption_AltSaveDirectoryName}" ]; then
   #default dir
   saverootdir="${ARK_DIR}/ShooterGame/Saved/SavedArks/${MAP_NAME}"
 else
-  #alt dir
-  saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}"
-  saverootdir=$(ls -d ${saverootdir}/* | head -1)
+  
+  if [ -z "$AltSaveDirectorySubfolderName" ]
+  then
+    #default alt dir
+    saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}/${MAP_NAME}"
+  else
+    #AltSaveDirectorySubfolderName used for when maps do not respect <AltSaveDirectoryName/Map_name>
+    saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}/${AltSaveDirectorySubfolderName}"
+  fi
 fi
 
 datestamp="$(date +"%Y-%m-%d_%H.%M.%S")"

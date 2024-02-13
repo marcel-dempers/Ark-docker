@@ -9,7 +9,6 @@ if test ! -f /etc/s3cfg/.s3cfg; then
   exit 
 fi
 
-# make sure game is installed and save directory exists.
 # the game and mod maps determine the exact save directory location
 # saverootdir sometimes has subfolder which cannot be assumed to be map_name 
 echo "resolving save directory location ..."
@@ -26,7 +25,6 @@ else
     #AltSaveDirectorySubfolderName used for when maps do not respect <AltSaveDirectoryName/Map_name>
     saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}/${AltSaveDirectorySubfolderName}"
   fi
-  
 fi
 
 if [ -z "$restore_from" ]
