@@ -20,7 +20,7 @@ services:
     build:
       dockerfile: dockerfile
     container_name: ark-asa
-    image: aimvector/ark-asa-server:0.0.21
+    image: aimvector/ark-asa-server:0.0.22
     environment:
     - DISABLE_START_MAPS_ON_BOOT=true
     - SERVERPASSWORD=test
