@@ -1,0 +1,58 @@
+#!/bin/bash
+
+instance=$1
+restore_from=$2
+
+# is s3cmd configured - exit if not
+if test ! -f /etc/s3cfg/.s3cfg; then
+  echo "s3cmd is not configured in /etc/s3cfg/.s3cfg"
+  exit 
+fi
+
+# make sure game is installed and save directory exists.
+# the game and mod maps determine the exact save directory location
+# saverootdir sometimes has subfolder which cannot be assumed to be map_name 
+echo "resolving save directory location ..."
+if [ -z "${arkoption_AltSaveDirectoryName}" ]; then
+  #default dir
+  saverootdir="${ARK_DIR}/ShooterGame/Saved/SavedArks/${MAP_NAME}"
+else
+  
+  if [ -z "$AltSaveDirectorySubfolderName" ]
+  then
+    #default alt dir
+    saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}/${MAP_NAME}"
+  else
+    #AltSaveDirectorySubfolderName used for when maps do not respect <AltSaveDirectoryName/Map_name>
+    saverootdir="${ARK_DIR}/ShooterGame/Saved/${arkoption_AltSaveDirectoryName}/${AltSaveDirectorySubfolderName}"
+  fi
+  
+fi
+
+if [ -z "$restore_from" ]
+then
+      restore_from="s3://ark-backups/${instance}/${instance}-latest.bz2"
+      echo "did not supply backup URL, defaulting to latest:"
+fi
+
+echo "restoring instance ${instance} ..."
+
+if [ -d "${HOME}/restore/${instance}" ]; then
+  rm -rf ${HOME}/restore/${instance}
+fi 
+
+mkdir -p ${HOME}/tmp/restore/${instance}
+s3cmd --config /etc/s3cfg/.s3cfg --force get ${restore_from} ${HOME}/tmp/restore/${instance}.tar.bz2
+tar -xvjf ${HOME}/tmp/restore/${instance}.tar.bz2 -C ${HOME}/tmp/restore/${instance}
+
+echo 'extracted ...'
+ls ${HOME}/tmp/restore/${instance}/*/*
+
+echo "moving restore to save directory ${saverootdir} ..."
+mkdir -p ${saverootdir}
+
+mv ${HOME}/tmp/restore/${instance}/*/* ${saverootdir}
+
+echo "restore complete ..."
+
+
