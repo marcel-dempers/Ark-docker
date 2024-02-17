@@ -20,26 +20,11 @@ spec:
         effect: "NoSchedule"
       nodeSelector:
         kubernetes.io/hostname: pool-g1ami3jeb-ofiyo
-      initContainers:
-      - name: config
-        image: busybox
-        command: ['/bin/sh', '-c', './conf/update-configs.sh']
-        volumeMounts:
-        - name: backup-secret
-          mountPath: /etc/s3cfg/
-          readOnly: false
-        - name: conf
-          mountPath: /conf
-        - name: arkmanager
-          mountPath: /etc/arkmanager/
-        - name: ark
-          mountPath: /ark
-          readOnly: false
       imagePullSecrets:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.22
+        image: aimvector/ark-asa-server:0.0.23
         imagePullPolicy: Always
         env:
         - name: BACKUP_DIR
@@ -65,11 +50,10 @@ spec:
         - name: backup-secret
           mountPath: /etc/s3cfg/
           readOnly: false
-        - name: arkmanager
-          mountPath: /etc/arkmanager/
-        - name: conf
-          mountPath: /conf
-          readOnly: false
+        - name: ark-instances
+          mountPath: /etc/arkmanager/instances
+        - name: ark-ini
+          mountPath: /etc/arkmanager/ini
         - name: ark
           mountPath: /ark
           readOnly: false
@@ -77,12 +61,14 @@ spec:
       - name: backup-secret
         secret:
           secretName: ark-backup
-      - name: conf
+      - name: ark-instances
         configMap:
-          name: ark-configuration
+          name: ark-instances
           defaultMode: 0755
-      - name: arkmanager 
-        emptyDir: {}
+      - name: ark-ini
+        configMap:
+          name: ark-ini
+          defaultMode: 0755
       - name: ark
         hostPath:
           path: /ark

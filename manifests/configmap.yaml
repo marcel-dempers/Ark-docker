@@ -2,21 +2,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ark-configuration
+  name: ark-ini
   namespace: arkmanager
 data:
-  update-configs.sh: |
-    #!/bin/sh
-    cd /conf 
-    mkdir -p /ark/ShooterGame/Saved/Config/WindowsServer/
-    mkdir -p /etc/arkmanager/instances/
-    
-    cp GameUserSettings.ini /ark/ShooterGame/Saved/Config/WindowsServer/
-    cp Game.ini /ark/ShooterGame/Saved/Config/WindowsServer/
-    cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
-
-    cp island.cfg /etc/arkmanager/instances/island.cfg
-    
   GameUserSettings.ini: |+
     [ServerSettings]
     ShowMapPlayerLocation=True
@@ -37,8 +25,8 @@ data:
     TamedDinoCharacterFoodDrainMultiplier=0.25
     FuelConsumptionIntervalMultiplier=2
     bDisableStructurePlacementCollision=true
-    MatingIntervalMultiplier=0.2
-    EggHatchSpeedMultiplier=12
+    MatingIntervalMultiplier=0.001
+    EggHatchSpeedMultiplier=40
     BabyMatureSpeedMultiplier=9
     BabyImprintAmountMultiplier=5.0
     BabyCuddleIntervalMultiplier=0.3
@@ -51,9 +39,13 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_ChitinPaste_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Polymer_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Polymer_Organic_C",Quantity=(MaxItemQuantity=50, bIgnoreMultiplier=true))
-  arkmanager.cfg: |+
-    BACKUP_DIR=/ark/backups
-    ARK_DIR=/ark
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ark-instances
+  namespace: arkmanager
+data:
   island.cfg: |+
     SESSION_NAME=ThatDevOpsASAv2
     MAP_NAME=TheIsland_WP
@@ -61,4 +53,3 @@ data:
     RCON_PORT=27020
     arkoption_AltSaveDirectoryName=TheIsland_WP
     arkoption_ShowFloatingDamageText=True
----
