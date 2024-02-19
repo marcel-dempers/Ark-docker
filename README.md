@@ -9,6 +9,35 @@ docker compose build
 docker compose up ark-asa
 ```
 
+This will run the container with `arkmanager` commands available. </br>
+You can then start your maps by running:
+
+```
+docker exec -it ark-asa bash
+
+#start all maps
+arkmanager start @all 
+
+#or
+
+arkmanager start @island
+arkmanager start @svartalfheim
+```
+
+Other commands
+
+```
+arkmanager stop @island
+arkmanager update @island
+arkmanager start @island
+arkmanager backup @island
+```
+
+To backup maps you can use `arkmanager backup @island`
+You will need to mount `.s3cfg` for your S3 bucket to backup to.
+
+You can restore latest backup with `arkmanager stop @island` , then `arkmanager restore @island`
+
 # Kubernetes 
 
 See Virtual Memory section below if you need more memory on Kubernetes clusters or Cloud VMs with low memory
