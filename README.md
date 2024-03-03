@@ -101,7 +101,8 @@ kubectl apply -f manifests/restore/restore-job.yaml
 After testing latest backups locally, you can purge old backups with `s3cmd`:
 ```
 # example delete old folder:
-s3cmd del -r s3://ark-backups/island/timestamped/2023
+
+s3cmd --config /etc/s3cfg/.s3cfg del -r s3://ark-backups/island/timestamped/2024/01
 ```
 
 ## Using Swap memory for low cost cloud machines
