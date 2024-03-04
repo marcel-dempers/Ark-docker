@@ -8,12 +8,13 @@ services:
     container_name: ark-asa
     image: aimvector/ark-asa-server:0.0.23
     environment:
-    - DISABLE_START_MAPS_ON_BOOT=true
     - SERVERPASSWORD=test
     - ADMINPASSWORD=testadmin
     - BACKUP_DIR=/ark/backups
     - ARK_DIR=/ark
-    - DISABLE_INSTALL_ON_BOOT=true
+    # below for development purposes only
+    - DISABLE_INSTALL_ON_BOOT=false #disable installing the game on boot
+    - DISABLE_START_MAPS_ON_BOOT=false #disable starting the maps on boot
     volumes:
     - ark:/ark
     - ./configs/instances:/etc/arkmanager/instances

@@ -1,7 +1,10 @@
 #!/bin/bash
 
-if [ -z "${DISABLE_START_MAPS_ON_BOOT}" ]
-then
+echo "starting entrypoint as $(whoami) ..."
+
+if [[ "${DISABLE_START_MAPS_ON_BOOT,,}" == "true" ]] || [[ "${DISABLE_START_MAPS_ON_BOOT,,}" == "yes" ]] || [[ "${DISABLE_START_MAPS_ON_BOOT}" == "1" ]]; then
+  echo "DISABLE_START_MAPS_ON_BOOT is set, not starting maps!"
+else
   echo 'starting server ... '
   arkmanager start @all
 fi 

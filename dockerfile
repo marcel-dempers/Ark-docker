@@ -33,8 +33,8 @@ RUN set -ex; \
 # install helpers 
 RUN apt-get install -y jq tree 
 
-COPY entrypoint.sh /home/steam/entrypoint.sh
-RUN chmod +x /home/steam/entrypoint.sh
+COPY entrypoint-root.sh /home/steam/entrypoint-root.sh
+RUN chmod +x /home/steam/entrypoint-root.sh
 COPY entrypoint-steam.sh /home/steam/entrypoint-steam.sh
 RUN chmod +x /home/steam/entrypoint-steam.sh
 
@@ -53,7 +53,7 @@ RUN mkdir /ark && chown -R steam:steam /ark /home/steam
 VOLUME  /ark
 WORKDIR /ark
 
-ENTRYPOINT ["/home/steam/entrypoint.sh"]
+ENTRYPOINT ["/home/steam/entrypoint-root.sh"]
 
 # docker build . -t asa
 # docker run -it -v ${PWD}/.data/:/ark --entrypoint bash asa
