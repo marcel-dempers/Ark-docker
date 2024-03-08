@@ -24,7 +24,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.23
+        image: aimvector/ark-asa-server:0.0.24
         imagePullPolicy: Always
         env:
         - name: BACKUP_DIR
