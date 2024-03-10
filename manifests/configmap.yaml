@@ -16,10 +16,14 @@ data:
     PerPlatformMaxStructuresMultiplier=10.00000
     MaxPlatformSaddleStructureLimit=100
     ResourcesRespawnPeriodMultiplier=0.5
+    HarvestAmountMultiplier=2
     TamingSpeedMultiplier=2
     DisableCryopodEnemyCheck=True
     AllowCryoFridgeOnSaddle=True
     DisableCryopodFridgeRequirement=True
+    [MessageOfTheDay]
+    Duration=60
+    Message=Welcome to the Home server. Please keep the server clean. Pick up traps. Abandoned structures will be destroyed.
   Game.ini: |+
     [/script/shootergame.shootergamemode]
     TamedDinoCharacterFoodDrainMultiplier=0.25
