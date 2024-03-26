@@ -9,16 +9,20 @@ docker compose build
 docker compose up ark-asa
 ```
 
-This will run the container with `arkmanager` commands available. </br>
-You can then start your maps by running:
+This will automatically start `arkmanager` and run `arkmanager start @all` unless you have disabled the server with `DISABLE_INSTALL_ON_BOOT` or `DISABLE_START_MAPS_ON_BOOT` </br>
+
+`arkmanager` will start any configured instances in the `configs/instances` folder that are not `DISABLED`. </br>
+
+You can configure more instances with a new `.cfg` file. </br>
+
 
 ```
 docker exec -it ark-asa bash
 
-#start all maps
+# start all maps
 arkmanager start @all 
 
-#or
+# or
 
 arkmanager start @island
 arkmanager start @svartalfheim
