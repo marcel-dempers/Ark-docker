@@ -57,3 +57,4 @@ data:
     RCON_PORT=27020
     arkoption_AltSaveDirectoryName=TheIsland_WP
     arkoption_ShowFloatingDamageText=True
+    arkflag_EasterColors=
