@@ -37,7 +37,17 @@ done
 echo "setting arkflags: ${arkflags}"
 export arkflags=${arkflags}
 
-echo "proton run ${ARK_DIR}/ShooterGame/Binaries/Win64/ArkAscendedServer.exe ${MAP_NAME}?SessionName=\"${SESSION_NAME}\"?ServerPassword=REDACTED?ServerAdminPassword=\"REDACTED\"?Port=${SERVER_PORT}?RCONEnabled=True?RCONPort=${RCON_PORT}${arkoptions}${arkflags}"
+_cluster_id=""
+if [ -z "$CLUSTER_ID" ]; then
+  echo "no cluster id set"
+else
+  _cluster_id=" -clusterid=${CLUSTER_ID}"
+fi
+
+export _cluster_id=${_cluster_id}
+echo "clusterid: ${_cluster_id}"
+
+echo "proton run ${ARK_DIR}/ShooterGame/Binaries/Win64/ArkAscendedServer.exe ${MAP_NAME}?SessionName=\"${SESSION_NAME}\"?ServerPassword=REDACTED?ServerAdminPassword=\"REDACTED\"?Port=${SERVER_PORT}?RCONEnabled=True?RCONPort=${RCON_PORT}${arkoptions}${_cluster_id}${arkflags}"
 
 nohup bash /usr/local/bin/arkmanager.start-instance >/dev/null 2>&1 &
 sleep 3
