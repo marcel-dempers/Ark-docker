@@ -41,11 +41,18 @@ spec:
             secretKeyRef:
               name: ark-secrets
               key: ADMINPASSWORD
+        - name: CLUSTER_ID
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: CLUSTER_ID
         ports:
         - containerPort: 30777
           name: clientudp1
         - containerPort: 30778
           name: clientudp2
+        - containerPort: 30779
+          name: scorchedearth
         volumeMounts:
         - name: backup-secret
           mountPath: /etc/s3cfg/

@@ -57,4 +57,13 @@ data:
     RCON_PORT=27020
     arkoption_AltSaveDirectoryName=TheIsland_WP
     arkoption_ShowFloatingDamageText=True
+    arkflag_ClusterDirOverride=/ark/clusters
     arkflag_EasterColors=
+  se.cfg: |+
+    SESSION_NAME=ThatDevOpsScorchedEarth
+    MAP_NAME=ScorchedEarth_WP
+    SERVER_PORT=30779
+    RCON_PORT=27021
+    arkoption_AltSaveDirectoryName=ScorchedEarth_WP
+    arkoption_ShowFloatingDamageText=True
+    arkflag_ClusterDirOverride=/ark/clusters
