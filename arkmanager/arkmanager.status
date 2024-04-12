@@ -7,30 +7,33 @@ instance=$1
 # Get PID
 ark_pid=$(cat "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid")
 if [[ -z $ark_pid ]]; then
-    echo "Server PID not found (server offline?)"
-    return
+  echo "Instance: @${instance} : server PID not found (server offline?)"
+else
+  echo "Instance: @${instance} - pid: $ark_pid"
+  if ps -p ${ark_pid} > /dev/null; then 
+    echo "Instance: @${instance} is already running"
+  else
+    echo "Instance: @${instance} is not running"
+  fi
 fi
 
-echo "Server PID $ark_pid"
 
-ark_port=$(ss -tupln | grep "GameThread" | grep -oP '(?<=:)\d+')
-if [[ -z $ark_port ]]; then
-    echo "Server not listening"
-    return
+if ! ss -tunl | grep -q ":${SERVER_PORT} "; then
+  echo "Instance: @${instance} : port ${SERVER_PORT} is closed and not listening"
+else 
+  echo "Instance: @${instance} : port ${SERVER_PORT} is open and listening"
 fi
-
-echo "Server listening on port $ark_port"
 
 # Check number of players
 out=$(${RCON_CMDLINE} ListPlayers 2>/dev/null)
 res=$?
 if [[ $res == 0 ]]; then
-    echo "Server is up"
+    echo "Instance: @${instance} is up"
     num_players=0
     if [[ "$out" != "No Players"* ]]; then
-        num_players=$(echo -n "$out" | wc -l)
+        num_players=$(echo "$out" | wc -l)
     fi
-    echo "$num_players players connected"
+    echo "Instance: @${instance} has $num_players players connected"
 else
-    echo "Server is down"
+    echo "Instance: @${instance} is down"
 fi

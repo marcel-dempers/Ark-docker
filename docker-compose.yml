@@ -6,7 +6,7 @@ services:
     build:
       dockerfile: dockerfile
     container_name: ark-asa
-    image: aimvector/ark-asa-server:0.0.26
+    image: aimvector/ark-asa-server:0.0.27
     environment:
     - SERVERPASSWORD=test
     - ADMINPASSWORD=testadmin
