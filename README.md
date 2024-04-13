@@ -2,31 +2,66 @@
 
 For Ark Survival evolved, checkout the [readme](./ase/README.md) for more details. <br/>
 
-To start a server in Docker, apply appropriate mounts in the `docker-compose.yaml` file and run:
+To start a server in Docker, run:
 
 ```
-docker compose build
 docker compose up ark-asa
 ```
 
-This will automatically start `arkmanager` and run `arkmanager start @all` unless you have disabled the server with `DISABLE_INSTALL_ON_BOOT` or `DISABLE_START_MAPS_ON_BOOT` </br>
+The container is configured in the `docker-compose.yml` file.
 
-`arkmanager` will start any configured instances in the `configs/instances` folder that are not `DISABLED`. </br>
+### Volumes
+
+* The server is installed inside a volume called `ark` and inside the container mounted at `/ark` </br>
+* The `Game.ini` and `GameUserSettings.ini` are defined in `configs/ini` folder and mounted into the container at `/etc/arkmanager/ini` </br>
+* When the container starts, it will copy the `ini` files into the server directory and marks it as Read-Only for server to use </br>
+* The `ini` files are currently shared by all instances. </br>
+
+### Instances 
+
+To setup a map, you need an instance `cfg` config file. </br>
+Each map instance is configured under `configs/instances`
+
+When the container starts, it will automatically run `arkmanager start @all` which will start all instances that are not disabled. </br> 
+* You can disable an instance server with `DISABLED=true` in the `.cfg` file </br>
+* You can prevent the game server from installing with env variable: `DISABLE_INSTALL_ON_BOOT` in the compose file</br>
+* You can prevent starting maps by setting env variable `DISABLE_START_MAPS_ON_BOOT` in the compose file </br>
+
 
 You can configure more instances with a new `.cfg` file. </br>
 
+Examples: 
+
+* SESSION_NAME=NameOfServer [which is the name of the server]
+* MAP_NAME=TheIsland_WP [which is the name of the map]
+* SERVER_PORT=30778 [UDP port to connect to the map] Ensure ports of maps do not conflict
+* RCON_PORT=27020 [TCP port to remote admin] Ensure ports of maps do not conflict
+* `arkoption_<KEY>=<VALUE>` is the `?Key=Value` option when launching
+* `arkflag_<KEY>=<VALUE>` is the `-Key=Value` option when launching
+* Example: `arkoption_AltSaveDirectoryName=TheIsland_WP` will result in `?AltSaveDirectoryName=TheIsland_WP` during launch
+* Example: `arkflag_EasterColors=` will result in `-EasterColors`
+* Example: `arkflag_mods=123,456` will result in `-mods=123,456`
+
+
+## Management & Commands
+
+To Access the server container:
 
 ```
 docker exec -it ark-asa bash
-
-# start all maps
-arkmanager start @all 
-
-# or
-
-arkmanager start @island
-arkmanager start @svartalfheim
 ```
+ 
+ start all maps:
+`arkmanager start @all`
+
+or start individual maps:
+
+```
+arkmanager start @island
+arkmanager start @se
+
+```
+
 
 Other commands
 
