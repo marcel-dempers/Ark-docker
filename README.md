@@ -141,7 +141,8 @@ After testing latest backups locally, you can purge old backups with `s3cmd`:
 ```
 # example delete old folder:
 
-s3cmd --config /etc/s3cfg/.s3cfg del -r s3://ark-backups/island/timestamped/2024/01
+s3cmd --config /etc/s3cfg/.s3cfg del -r s3://ark-backups/island/timestamped/2024/03
+s3cmd --config /etc/s3cfg/.s3cfg del -r s3://ark-backups/se/timestamped/2024/03
 ```
 
 ## Using Swap memory for low cost cloud machines
