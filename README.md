@@ -2,13 +2,17 @@
 
 For Ark Survival evolved, checkout the [readme](./ase/README.md) for more details. <br/>
 
-To start a server in Docker, run:
+To start all the ark servers (configured in `configs/instances`) in Docker, run:
 
 ```
 docker compose up ark-asa
 ```
 
 The container is configured in the `docker-compose.yml` file.
+
+Note that if your instances are not starting you could be running out of memory. </br>
+Each instance will use roughly 8-10GB, so configure virtual memory if you dont have enough. </br>
+You can configure or disable instances, see the Instances section  below.
 
 ### Volumes
 
