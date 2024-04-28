@@ -97,9 +97,9 @@ kubectl -n arkmanager create secret generic ark-secrets --from-literal=ADMINPASS
 kubectl -n arkmanager create secret generic ark-backup --from-file=./.s3cfg
 
 
-kubectl -n arkmanager apply -f manifests/configmap.yaml
-kubectl -n arkmanager apply -f manifests/service.yaml
-kubectl -n arkmanager apply -f manifests/statefulset.yaml
+kubectl -n arkmanager apply -f kubernetes/manifests/configmap.yaml
+kubectl -n arkmanager apply -f kubernetes/manifests/service.yaml
+kubectl -n arkmanager apply -f kubernetes/manifests/statefulset.yaml
 
 ```
 
@@ -131,8 +131,8 @@ You can automate the restore process using a job:
 kind create cluster --name ark
 kubectl create namespace arkmanager
 kubectl create secret generic ark-backup --from-file=./.s3cfg --namespace arkmanager
-kubectl apply -f manifests/configmap.yaml
-kubectl apply -f manifests/restore/restore-job.yaml
+kubectl apply -f kubernetes/manifests/configmap.yaml
+kubectl apply -f kubernetes/manifests/restore/restore-job.yaml
 ```
 
 ## Cleanup backups
