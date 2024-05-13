@@ -59,6 +59,8 @@ data:
     arkoption_ShowFloatingDamageText=True
     arkflag_ClusterDirOverride=/ark/clusters
     arkflag_EasterColors=
+    # Easy Transferable Element (994715)
+    arkflag_mods=994715
   se.cfg: |+
     SESSION_NAME=ThatDevOpsScorchedEarth
     MAP_NAME=ScorchedEarth_WP
@@ -67,3 +69,5 @@ data:
     arkoption_AltSaveDirectoryName=ScorchedEarth_WP
     arkoption_ShowFloatingDamageText=True
     arkflag_ClusterDirOverride=/ark/clusters
+    # Easy Transferable Element (994715)
+    arkflag_mods=994715
