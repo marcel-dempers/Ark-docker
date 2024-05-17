@@ -35,7 +35,7 @@ spec:
       #   kubernetes.io/hostname: lke77260-163041-6466e8b94006
       containers:
       - name: restore
-        image: aimvector/ark-asa-server:0.0.28
+        image: aimvector/ark-asa-server:0.0.29
         command: ['/bin/sh', '-c', '. /restore/restore.sh']
         volumeMounts:
         - name: restore
