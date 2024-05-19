@@ -18,13 +18,22 @@ spec:
       - key: "node.kubernetes.io/memory-pressure"
         operator: "Exists"
         effect: "NoSchedule"
+      - key: "node.kubernetes.io/memory-pressure"
+        operator: "Exists"
+        effect: "NoExecute"
+      - key: "node.kubernetes.io/disk-pressure"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "node.kubernetes.io/disk-pressure"
+        operator: "Exists"
+        effect: "NoExecute"
       nodeSelector:
         kubernetes.io/hostname: pool-g1ami3jeb-ofiyo
       imagePullSecrets:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.29
+        image: aimvector/ark-asa-server:0.0.30
         imagePullPolicy: Always
         env:
         - name: BACKUP_DIR
