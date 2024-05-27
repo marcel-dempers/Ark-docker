@@ -14,8 +14,8 @@ services:
     - ARK_DIR=/ark
     - CLUSTER_ID=9e722058d7c5d88f9df56cce
     # below for development purposes only
-    - DISABLE_INSTALL_ON_BOOT=true #disable installing the game on boot
-    - DISABLE_START_MAPS_ON_BOOT=true #disable starting the maps on boot
+    - DISABLE_INSTALL_ON_BOOT=false #disable installing the game on boot
+    - DISABLE_START_MAPS_ON_BOOT=false #disable starting the maps on boot
     volumes:
     - ark:/ark
     - ./configs/instances:/etc/arkmanager/instances
@@ -23,4 +23,4 @@ services:
     - .s3cfg:/etc/s3cfg/.s3cfg
     ports:
     - 30778:30778/udp #island
-    - 30779:30779/udp #svartalfheim
+    - 30779:30779/udp #scorched earth

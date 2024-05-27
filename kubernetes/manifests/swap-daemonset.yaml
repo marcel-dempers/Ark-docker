@@ -1,0 +1,138 @@
+# kind create cluster --name demo --image kindest/node:v1.28.0
+# kubectl apply -f .\kubernetes\manifests\swap-daemonset.yaml
+# kubectl logs -l name=swap-checker
+# kubectl delete pods --all
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: swap-checker
+data:
+  app.py: |
+    import time
+    import os
+    import yaml
+    import psutil
+    
+    kubelet_location = os.environ['KUBELET_LOCATION']
+    if [ ! -f "$KUBELET_LOCATION" ]; then
+      echo "kubelet config file not found at $KUBELET_LOCATION"
+      exit 1
+    fi
+
+    def is_swap_enabled():
+      swap = psutil.swap_memory()
+      print("swap:", swap, flush=True)
+      os.system("free -h")
+      return swap.total > 0
+
+    print("starting swap checker...", flush=True)
+      
+    changed = False
+    while True:
+      if is_swap_enabled():
+        print("swap is already enabled", flush=True)
+      else:
+        print("swap is not enabled", flush=True)
+        
+        if os.environ['SETUP_SWAP_OS'] == "true":
+          print("setting up swap...", flush=True)
+          os.system("dd if=/dev/zero of=/host/swapfile count=32384 bs=1MiB")
+          os.system("ls -lh /host/swapfile")
+          os.system("chmod 600 /host/swapfile")
+          os.system("ls -lh /host/swapfile")
+          os.system("mkswap /host/swapfile")
+          os.system("swapon /host/swapfile")
+          os.system("swapon --show")
+          os.system("free -h")
+          os.system("cp /etc/fstab /etc/fstab.bak")
+          os.system("echo '/host/swapfile none swap sw 0 0' | tee -a /etc/fstab")
+          print("swap setup complete", flush=True)
+          changed = True
+
+      print("reading kubelet config...", flush=True)
+      with open(kubelet_location, 'r') as f:
+        config = yaml.safe_load(f)
+
+        if "failSwapOn" not in config:
+          print("failSwapOn not set, setting it", flush=True)
+          config['failSwapOn'] = False
+          changed = True
+
+        if config['failSwapOn'] == True:
+          print("failSwapOn is True, turning it off...", flush=True)
+          config['failSwapOn'] = False
+          changed = True
+        else:
+            print("failSwapOn set to false", flush=True)
+        
+        if "memorySwap" in config:
+          if "swapBehavior" not in config["memorySwap"]:
+            print("swapBehavior not set, setting it", flush=True)
+            config["memorySwap"] = { "swapBehavior": "LimitedSwap" }
+            changed = True
+        else:
+          print("memorySwap is not present, setting it", flush=True)
+          config["memorySwap"] = { "swapBehavior": "LimitedSwap" } 
+          changed = True
+
+        if "featureGates" in config:
+          print("featureGates is present", flush=True)
+          if "NodeSwap" in config["featureGates"]:
+            print("NodeSwap is present", flush=True)
+          else:
+            print("NodeSwap is not present, setting it", flush=True)
+            config["featureGates"]["NodeSwap"] = True
+            changed = True
+        else:
+          print("featureGates is not present, setting it", flush=True)
+          config["featureGates"] = { "NodeSwap": True }
+          changed = True
+        
+        if changed:
+          print("writing swap configuration to kubelet config...", flush=True)
+          with open(kubelet_location, 'w') as f:
+            yaml.dump(config, f)
+          changed = False
+          print("restarting kubelet...", flush=True)
+          os.system('systemctl restart kubelet')
+
+      time.sleep(60)
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: swap-checker
+spec:
+  selector:
+    matchLabels:
+      name: swap-checker
+  template:
+    metadata:
+      labels:
+        name: swap-checker
+    spec:
+      containers:
+      - name: swap-checker
+        image: python:3.7-slim
+        env:
+        - name: SETUP_SWAP_OS
+          value: "true"
+        - name: KUBELET_LOCATION
+          value: "/host/etc/kubernetes/kubelet.conf"
+        command: ["/bin/bash", "-c"]
+        args:
+        - apt-get update && apt-get install -y procps && pip install pyyaml psutil && python /app/app.py
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: host
+          mountPath: /host
+        - name: app-volume
+          mountPath: /app
+      volumes:
+      - name: host
+        hostPath:
+          path: /
+      - name: app-volume
+        configMap:
+          name: swap-checker
