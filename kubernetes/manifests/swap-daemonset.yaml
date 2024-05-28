@@ -16,7 +16,7 @@ data:
     kubelet_location = os.environ['KUBELET_LOCATION']
 
     if not os.path.isfile(kubelet_location):
-      print(f"File {KUBELET_LOCATION} not found.", flush=True)
+      print(f"kubelet file not found at: {kubelet_location}", flush=True)
       sys.exit(1)
 
     def is_swap_os_enabled():
