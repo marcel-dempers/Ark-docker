@@ -51,6 +51,18 @@ mkdir -p ${saverootdir}
 
 mv ${HOME}/tmp/restore/${instance}/*/* ${saverootdir}
 
+echo "checking restore file ownership..."
+
+if [ "$(id -u)" -eq 0 ]; then
+    if id -u steam >/dev/null 2>&1; then
+        echo "changing ownership of all files in ${saverootdir} to steam user..."
+        chown -R steam:steam ${saverootdir}
+    else
+        echo "error! steam user does not exist!"
+        exit 1
+    fi
+fi
+
 echo "restore complete ..."
 
 
