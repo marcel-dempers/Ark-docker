@@ -18,7 +18,7 @@ rcon() {
 }
 
 status() {
-  runCommandOnInstance status $2
+  runCommandOnInstance status $2 $3
 }
 
 stop() {

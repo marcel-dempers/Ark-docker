@@ -3,37 +3,69 @@
 RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
 
 instance=$1
+watch=$2 
 
-# Get PID
-ark_pid=$(cat "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid")
-if [[ -z $ark_pid ]]; then
-  echo "Instance: @${instance} : server PID not found (server offline?)"
-else
-  echo "Instance: @${instance} - pid: $ark_pid"
-  if ps -p ${ark_pid} > /dev/null; then 
-    echo "Instance: @${instance} is already running"
+pid_status=-1
+port_status=-1
+rcon_status=-1
+
+while true; do
+
+  ark_pid=$(cat "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid")   
+  if [[ -z $ark_pid ]]; then
+    echo "instance: @${instance} : server PID not found (server offline?)"
+    pid_status=0
   else
-    echo "Instance: @${instance} is not running"
-  fi
-fi
-
-
-if ! ss -tunl | grep -q ":${SERVER_PORT} "; then
-  echo "Instance: @${instance} : port ${SERVER_PORT} is closed and not listening"
-else 
-  echo "Instance: @${instance} : port ${SERVER_PORT} is open and listening"
-fi
-
-# Check number of players
-out=$(${RCON_CMDLINE} ListPlayers 2>/dev/null)
-res=$?
-if [[ $res == 0 ]]; then
-    echo "Instance: @${instance} is up"
-    num_players=0
-    if [[ "$out" != "No Players"* ]]; then
-        num_players=$(echo "$out" | wc -l)
+     
+    if ps -p ${ark_pid} > /dev/null; then
+      if [[ ${pid_status} -ne 1 ]]; then #only print this once  
+        echo "instance: @${instance} is already running"
+        pid_status=1
+      fi
+    else
+      if [[ ${pid_status} -ne 0 ]]; then
+        echo "instance: @${instance} is not running"
+        pid_status=0
+      fi
     fi
-    echo "Instance: @${instance} has $num_players players connected"
-else
-    echo "Instance: @${instance} is down"
-fi
+  fi
+
+
+  if ! ss -tunl | grep -q ":${SERVER_PORT} "; then
+    if [[ ${port_status} -ne 0 ]]; then
+      echo "instance: @${instance} : port ${SERVER_PORT} is closed and not listening"
+      port_status=0
+    fi
+  else 
+    if [[ ${port_status} -ne 1 ]]; then
+      echo "instance: @${instance} : port ${SERVER_PORT} is open and listening"
+      port_status=1
+    fi
+  fi
+
+  # Check number of players
+  out=$(${RCON_CMDLINE} ListPlayers 2>/dev/null)
+  res=$?
+  if [[ $res == 0 ]]; then
+      
+      num_players=0
+      if [[ "$out" != "No Players"* ]]; then
+          num_players=$(echo "$out" | wc -l)
+      fi
+      if [[ ${rcon_status} -ne 1 ]]; then
+        echo "instance: @${instance} is up with $num_players players connected"
+        rcon_status=1
+      fi
+  else
+      if [[ ${rcon_status} -ne 0 ]]; then
+        echo "instance: @${instance} is down"
+        rcon_status=0
+      fi
+  fi
+
+  if [[ ${watch} != "--watch" ]]; then
+    break
+  fi
+
+  sleep 10 
+done
