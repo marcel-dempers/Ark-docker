@@ -28,12 +28,12 @@ spec:
         operator: "Exists"
         effect: "NoExecute"
       nodeSelector:
-        kubernetes.io/hostname: pool-g1ami3jeb-ofiyo
+        kubernetes.io/hostname: pool-3fdipuk9o-rx7xl
       imagePullSecrets:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.31
+        image: aimvector/ark-asa-server:0.0.32
         imagePullPolicy: Always
         env:
         - name: BACKUP_DIR
