@@ -47,6 +47,10 @@ data:
       with open(kubelet_location, 'r') as f:
         config = yaml.safe_load(f)
 
+        if 'evictionHard' in config and 'memory.available' in config['evictionHard']:
+          print("evictionHard for memory.available is present, removing...", flush=True)
+          del config['evictionHard']['memory.available']
+          kubeletUpdated = True
         if "failSwapOn" not in config:
           print("failSwapOn not set, setting it", flush=True)
           config['failSwapOn'] = False
@@ -126,8 +130,10 @@ spec:
           value: "64"
         - name: SETUP_SWAP_OS
           value: "true"
-        - name: KUBELET_LOCATION
-          value: "/host/etc/kubernetes/kubelet.conf"
+        - name: KUBELET_LOCATION   # kind
+          value: "/host/var/lib/kubelet/config.yaml"  
+        # - name: KUBELET_LOCATION
+        #   value: "/host/etc/kubernetes/kubelet.conf"
         command: ["/bin/bash", "-c"]
         args:
         - apt-get update && apt-get install -y procps && pip install pyyaml psutil && python /app/app.py
