@@ -24,3 +24,4 @@ services:
     ports:
     - 30778:30778/udp #island
     - 30779:30779/udp #scorched earth
+    - 30780:30780/udp #the center

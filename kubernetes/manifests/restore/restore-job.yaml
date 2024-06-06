@@ -8,16 +8,8 @@ data:
   restore.sh: |
     #!/bin/sh
     
-    cd /conf 
-    mkdir -p /etc/arkmanager/
-    cp arkmanager.cfg /etc/arkmanager/arkmanager.cfg
-    mkdir -p /etc/arkmanager/instances/
-    cp island.cfg /etc/arkmanager/instances/island.cfg
-
-    cd /ark 
     echo "starting restore job"
-    arkmanager restore @all 
-
+    arkmanager restore @all
     tree 
 
     sleep 15m
@@ -32,7 +24,7 @@ spec:
   template:
     spec:
       # nodeSelector:
-      #   kubernetes.io/hostname: lke77260-163041-6466e8b94006
+      #   kubernetes.io/hostname: pool-e4pb1255q-ry244
       containers:
       - name: restore
         image: aimvector/ark-asa-server:0.0.31
@@ -47,8 +39,10 @@ spec:
         - name: ark
           mountPath: /ark
           readOnly: false
-        - name: arkmanager
-          mountPath: /conf
+        - name: ark-instances
+          mountPath: /etc/arkmanager/instances
+        - name: ark-ini
+          mountPath: /etc/arkmanager/ini
       restartPolicy: Never
       volumes:
       - name: backup-secret
@@ -58,9 +52,13 @@ spec:
         configMap:
           name: restore-job
           defaultMode: 075
-      - name: arkmanager
+      - name: ark-instances
         configMap:
-          name: ark-configuration
+          name: ark-instances
+          defaultMode: 0755
+      - name: ark-ini
+        configMap:
+          name: ark-ini
           defaultMode: 0755
       - name: ark
         hostPath:

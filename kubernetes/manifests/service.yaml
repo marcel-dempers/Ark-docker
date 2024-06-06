@@ -18,5 +18,9 @@ spec:
     protocol: UDP
     name: scorchedearth
     nodePort: 30779
+  - port: 30780
+    protocol: UDP
+    name: center
+    nodePort: 30780
   selector:
     app: arkmanager

@@ -14,6 +14,7 @@ data:
     import psutil
     
     kubelet_location = os.environ['KUBELET_LOCATION']
+    swap_size = os.environ['SWAP_SIZE_GB']
 
     if not os.path.isfile(kubelet_location):
       print(f"kubelet file not found at: {kubelet_location}", flush=True)
@@ -28,7 +29,7 @@ data:
     def set_swap_os():
       if os.environ['SETUP_SWAP_OS'] == "true":
         print("setting up swap...", flush=True)
-        os.system("dd if=/host/dev/zero of=/host/swapfile count=32384 bs=1MiB")
+        os.system("dd if=/host/dev/zero of=/host/swapfile count=" + swap_size + " bs=1G")
         os.system("ls -lh /host/swapfile")
         os.system("chmod 600 /host/swapfile")
         os.system("ls -lh /host/swapfile")
@@ -86,8 +87,8 @@ data:
           with open(kubelet_location, 'w') as f:
             yaml.dump(config, f)
        
-          print("restarting kubelet...", flush=True)
-          os.system('systemctl restart kubelet')
+          print("kubelet requires restart!", flush=True)
+          #os.system('systemctl restart kubelet')
         
       return kubeletUpdated
 
@@ -121,6 +122,8 @@ spec:
       - name: swap-checker
         image: python:3.7-slim
         env:
+        - name: SWAP_SIZE_GB
+          value: "64"
         - name: SETUP_SWAP_OS
           value: "true"
         - name: KUBELET_LOCATION

@@ -71,3 +71,13 @@ data:
     arkflag_ClusterDirOverride=/ark/clusters
     # Easy Transferable Element (994715)
     arkflag_mods=994715
+  center.cfg: |+
+    SESSION_NAME=ThatDevOpsCenter
+    MAP_NAME=TheCenter_WP
+    SERVER_PORT=30780
+    RCON_PORT=27022
+    arkoption_AltSaveDirectoryName=TheCenter_WP
+    arkoption_ShowFloatingDamageText=True
+    arkflag_ClusterDirOverride=/ark/clusters
+    # Easy Transferable Element (994715)
+    arkflag_mods=994715

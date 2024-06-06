@@ -164,10 +164,10 @@ failSwapOn: false
 featureGates:
   NodeSwap: true
 memorySwap:
-  swapBehavior: LimitedSwap
+  swapBehavior: UnlimitedSwap
 ```
 
-Then setup SWAP on the node
+Then setup SWAP on your Kubernetes node or Virtual Machine
 
 ```
 ####################################################
@@ -196,4 +196,14 @@ echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
 swapoff -v /swapfile
 rm -rf /swapfile
 
+```
+
+This is also all automated with a Daemonset:
+
+```
+#can be tested with kind-> kind create cluster --name ark --image kindest/node:v1.30.0
+kubectl create ns arkmanager
+kubectl -n arkmanager apply -f ./kubernetes/manifests/swap-daemonset.yaml
+
+kubectl -n arkmanager logs -l name=swap-checker -f 
 ```

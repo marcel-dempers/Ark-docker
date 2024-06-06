@@ -62,6 +62,8 @@ spec:
           name: clientudp2
         - containerPort: 30779
           name: scorchedearth
+        - containerPort: 30780
+          name: center
         volumeMounts:
         - name: backup-secret
           mountPath: /etc/s3cfg/
