@@ -1,2 +1,2 @@
-$ENV:KUBECONFIG="C:\Users\aimve\kube-tools\.kube\marceldempers-v2.yaml"
+$ENV:KUBECONFIG="C:\Users\aimve\kube-tools\.kube\marceldempers-v3"
 kubectl -n arkmanager delete po arkmanager-0

@@ -28,7 +28,7 @@ spec:
         operator: "Exists"
         effect: "NoExecute"
       nodeSelector:
-        kubernetes.io/hostname: pool-3fdipuk9o-rx7xl
+        kubernetes.io/hostname: aimveck8s
       imagePullSecrets:
       - name: docker-registry
       containers:
@@ -89,5 +89,5 @@ spec:
           defaultMode: 0755
       - name: ark
         hostPath:
-          path: /ark
+          path: /disk/ark
 ---
