@@ -13,18 +13,18 @@ while true; do
 
   ark_pid=$(cat "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid")   
   if [[ -z $ark_pid ]]; then
-    echo "instance: @${instance} : server PID not found (server offline?)"
+    echo "instance: ❌ @${instance} : server PID not found (server offline?)"
     pid_status=0
   else
      
     if ps -p ${ark_pid} > /dev/null; then
       if [[ ${pid_status} -ne 1 ]]; then #only print this once  
-        echo "instance: @${instance} is already running"
+        echo "instance: ✅ @${instance} is already running"
         pid_status=1
       fi
     else
       if [[ ${pid_status} -ne 0 ]]; then
-        echo "instance: @${instance} is not running"
+        echo "instance: ❌ @${instance} is not running"
         pid_status=0
       fi
     fi
@@ -33,12 +33,12 @@ while true; do
 
   if ! ss -tunl | grep -q ":${SERVER_PORT} "; then
     if [[ ${port_status} -ne 0 ]]; then
-      echo "instance: @${instance} : port ${SERVER_PORT} is closed and not listening"
+      echo "instance: ❌ @${instance} : port ${SERVER_PORT} is closed and not listening"
       port_status=0
     fi
   else 
     if [[ ${port_status} -ne 1 ]]; then
-      echo "instance: @${instance} : port ${SERVER_PORT} is open and listening"
+      echo "instance: ✅ @${instance} : port ${SERVER_PORT} is open and listening"
       port_status=1
     fi
   fi
@@ -53,12 +53,12 @@ while true; do
           num_players=$(echo "$out" | wc -l)
       fi
       if [[ ${rcon_status} -ne 1 ]]; then
-        echo "instance: @${instance} is up with $num_players players connected"
+        echo "instance: ✅ @${instance} is up with $num_players players connected"
         rcon_status=1
       fi
   else
       if [[ ${rcon_status} -ne 0 ]]; then
-        echo "instance: @${instance} is down"
+        echo "instance: ❌ @${instance} is down"
         rcon_status=0
       fi
   fi
