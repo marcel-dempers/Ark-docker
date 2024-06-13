@@ -35,6 +35,9 @@ spec:
       - name: ark
         image: aimvector/ark-asa-server:0.0.33
         imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "25Gi"
         env:
         - name: BACKUP_DIR
           value: "/ark/backups"
