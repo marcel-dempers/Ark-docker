@@ -22,6 +22,6 @@ services:
     - ./configs/ini:/etc/arkmanager/ini
     - .s3cfg:/etc/s3cfg/.s3cfg
     ports:
-    - 30778:30778/udp #island
-    - 30779:30779/udp #scorched earth
-    - 30780:30780/udp #the center
+    - 20778:20778/udp #island
+    - 20779:20779/udp #scorched earth
+    - 20780:20780/udp #the center
