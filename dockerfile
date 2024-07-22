@@ -54,7 +54,3 @@ VOLUME  /ark
 WORKDIR /ark
 
 ENTRYPOINT ["/home/steam/entrypoint-root.sh"]
-
-# docker build . -t asa
-# docker run -it -v ${PWD}/.data/:/ark --entrypoint bash asa
-# /home/steam/entrypoint.sh
