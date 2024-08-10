@@ -43,6 +43,7 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_ChitinPaste_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Polymer_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Polymer_Organic_C",Quantity=(MaxItemQuantity=50, bIgnoreMultiplier=true))
+    ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_SnailPaste_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
 ---
 apiVersion: v1
 kind: ConfigMap
