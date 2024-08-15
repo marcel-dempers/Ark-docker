@@ -23,7 +23,7 @@ data:
     DisableCryopodFridgeRequirement=True
     [MessageOfTheDay]
     Duration=60
-    Message=Welcome to the Home server. Please keep the server clean. Pick up traps. Abandoned structures will be destroyed.
+    Message=Please keep the server clean. Pick up traps. Abandoned structures will be destroyed.
   Game.ini: |+
     [/script/shootergame.shootergamemode]
     TamedDinoCharacterFoodDrainMultiplier=0.25
