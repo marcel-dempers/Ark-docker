@@ -5,24 +5,8 @@ RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
 # commands on each instance
 source /usr/local/bin/arkmanager.command 
 
-start() {
-  runCommandOnInstance start $2
-}
-
 backup() {
   runCommandOnInstance backup $2
-}
-
-rcon() {
-  runCommandOnInstance rcon $2 $3
-}
-
-status() {
-  runCommandOnInstance status $2 $3
-}
-
-stop() {
-  runCommandOnInstance stop $2 
 }
 
 list() {
@@ -37,8 +21,24 @@ restore() {
   runCommandOnInstance restore $2 $3
 }
 
+rcon() {
+  runCommandOnInstance rcon $2 "$3"
+}
+
 saveworld() {
   runCommandOnInstance saveworld $2
+}
+
+start() {
+  runCommandOnInstance start $2
+}
+
+status() {
+  runCommandOnInstance status $2 $3
+}
+
+stop() {
+  runCommandOnInstance stop $2 
 }
 
 update(){
@@ -92,7 +92,7 @@ restore )
         restore $@
         ;;
 rcon )                
-        rcon $@
+        rcon "$@"
         ;;
 update )                
         update $@

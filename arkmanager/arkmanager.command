@@ -28,7 +28,7 @@ runCommand() {
     fi
 
     echo "running command ${cmd} on ${instance} with params: ${params}"
-    /usr/local/bin/arkmanager.${cmd} ${instance} ${params}
+    /usr/local/bin/arkmanager.${cmd} ${instance} "${params}"
   else
     echo "instance ${instance} does not exist"
   fi
@@ -56,10 +56,10 @@ runCommandOnInstance() {
   if [ "$instance" = "all" ]; then
     for n in $(getAllInstanceNames); do
     (
-      runCommand ${cmd} ${n} ${params}
+      runCommand ${cmd} ${n} "${params}"
     )
     done
   else
-    runCommand ${cmd} ${instance} ${params}
+    runCommand ${cmd} ${instance} "${params}"
   fi
 }
