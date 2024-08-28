@@ -59,14 +59,14 @@ spec:
               name: ark-secrets
               key: CLUSTER_ID
         ports:
-        - containerPort: 30777
-          name: clientudp1
         - containerPort: 30778
           name: clientudp2
         - containerPort: 30779
           name: scorchedearth
         - containerPort: 30780
           name: center
+        - containerPort: 30781
+          name: aberration
         volumeMounts:
         - name: backup-secret
           mountPath: /etc/s3cfg/
