@@ -60,9 +60,6 @@ data:
     arkoption_AltSaveDirectoryName=TheIsland_WP
     arkoption_ShowFloatingDamageText=True
     arkflag_ClusterDirOverride=/ark/clusters
-    arkflag_EasterColors=
-    # Easy Transferable Element (994715)
-    #arkflag_mods=994715
   se.cfg: |+
     SESSION_NAME=ThatDevOpsScorchedEarth
     MAP_NAME=ScorchedEarth_WP
@@ -71,8 +68,6 @@ data:
     arkoption_AltSaveDirectoryName=ScorchedEarth_WP
     arkoption_ShowFloatingDamageText=True
     arkflag_ClusterDirOverride=/ark/clusters
-    # Easy Transferable Element (994715)
-    #arkflag_mods=994715
   center.cfg: |+
     SESSION_NAME=ThatDevOpsCenter
     MAP_NAME=TheCenter_WP
@@ -81,5 +76,20 @@ data:
     arkoption_AltSaveDirectoryName=TheCenter_WP
     arkoption_ShowFloatingDamageText=True
     arkflag_ClusterDirOverride=/ark/clusters
-    # Easy Transferable Element (994715)
-    #arkflag_mods=994715
+  aberration.cfg: |+
+    SESSION_NAME=ThatDevOpsAberration
+    MAP_NAME=Aberration_WP
+    DISABLED=true
+    SERVER_PORT=30781
+    RCON_PORT=27023
+    arkoption_AltSaveDirectoryName=Aberration_WP
+    arkoption_ShowFloatingDamageText=True
+    arkflag_ClusterDirOverride=/ark/clusters
+    # transfering 
+    arkoption_PreventDownloadSurvivors=False
+    arkoption_PreventDownloadItems=True
+    arkoption_PreventDownloadDinos=True
+    arkoption_PreventUploadSurvivors=False 
+    arkoption_PreventUploadItems=False
+    arkoption_PreventUploadDinos=False
+  

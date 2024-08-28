@@ -6,10 +6,6 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 30777
-    protocol: UDP
-    name: clientudp1
-    nodePort: 30777
   - port: 30778
     protocol: UDP
     name: clientudp2
@@ -22,5 +18,9 @@ spec:
     protocol: UDP
     name: center
     nodePort: 30780
+  - port: 30781
+    protocol: UDP
+    name: aberration
+    nodePort: 30781
   selector:
     app: arkmanager
