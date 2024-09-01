@@ -11,7 +11,9 @@ rcon_status=-1
 
 while true; do
 
-  ark_pid=$(cat "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid")   
+  source ${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid
+  ark_pid=$PID_ID
+  ark_ip=$PID_IP
   if [[ -z $ark_pid ]]; then
     echo "instance: ❌ @${instance} : server PID not found (server offline?)"
     pid_status=0
@@ -19,7 +21,7 @@ while true; do
      
     if ps -p ${ark_pid} > /dev/null; then
       if [[ ${pid_status} -ne 1 ]]; then #only print this once  
-        echo "instance: ✅ @${instance} is already running"
+        echo "instance: ✅ @${instance} is already running on IP: ${ark_ip}"
         pid_status=1
       fi
     else

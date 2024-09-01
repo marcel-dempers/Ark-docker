@@ -56,6 +56,11 @@ if [ -f "${ARK_DIR}/.arkmanager/arkmanager.${instance}.log" ]; then
     rm "${ARK_DIR}/.arkmanager/arkmanager.${instance}.log"
 fi
 
+if [ -f "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid" ]; then
+    echo "removing old instance pid file ..."
+    rm "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid"
+fi
+
 nohup bash /usr/local/bin/arkmanager.start-instance > ${ARK_DIR}/.arkmanager/arkmanager.${instance}.log 2>&1 &
 sleep 3
 
@@ -67,6 +72,8 @@ echo "instance started with bash PID $BASH_PID ..."
 PROTON_PID=$(pstree -p $BASH_PID | grep -Po 'python3\(\K[0-9]+')
 echo "instance started with proton PID $PROTON_PID ..."
 
-echo "$PROTON_PID" >"${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid"
+# writing pid file data
+echo "PID_ID=$PROTON_PID" >>"${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid"
+echo "PID_IP=$(curl -s ifconfig.me)" >>"${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid"
 
 echo "Server should be up in a few minutes"
