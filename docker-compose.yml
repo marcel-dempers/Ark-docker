@@ -6,7 +6,7 @@ services:
     build:
       dockerfile: dockerfile
     container_name: ark-asa
-    image: aimvector/ark-asa-server:0.0.35
+    image: aimvector/ark-asa-server:0.0.36
     environment:
     - SERVERPASSWORD=test
     - ADMINPASSWORD=testadmin
@@ -25,4 +25,4 @@ services:
     - 20778:20778/udp #island
     - 20779:20779/udp #scorched earth
     - 20780:20780/udp #the center
-    - 20780:20781/udp #aberration
+    - 20781:20781/udp #aberration
