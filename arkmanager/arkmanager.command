@@ -23,7 +23,7 @@ runCommand() {
     set +o allexport
     
     if [ -n "${DISABLED,,}" ] && [ "${DISABLED,,}" = true ]; then
-      echo "instance ${instance} is disabled"
+      echo "instance: ⛔ @${instance} is disabled"
       exit 
     fi
 
