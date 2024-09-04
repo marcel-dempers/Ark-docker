@@ -9,6 +9,8 @@ pid_status=-1
 port_status=-1
 rcon_status=-1
 
+current_ip=$(curl -s ifconfig.me)
+
 while true; do
 
   source ${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid
@@ -20,7 +22,11 @@ while true; do
   else
      
     if ps -p ${ark_pid} > /dev/null; then
-      if [[ ${pid_status} -ne 1 ]]; then #only print this once  
+      if [[ ${pid_status} -ne 1 ]]; then #only print this once
+
+        if [[ $current_ip != $ark_ip ]]; then
+          echo "instance: ❌ @${instance} : registered IP ${ark_ip} != current IP ${current_ip}"
+        fi  
         echo "instance: ✅ @${instance} is already running on IP: ${ark_ip}"
         pid_status=1
       fi
