@@ -79,7 +79,6 @@ data:
   aberration.cfg: |+
     SESSION_NAME=ThatDevOpsAberration
     MAP_NAME=Aberration_WP
-    DISABLED=true
     SERVER_PORT=30781
     RCON_PORT=27023
     arkoption_AltSaveDirectoryName=Aberration_WP
