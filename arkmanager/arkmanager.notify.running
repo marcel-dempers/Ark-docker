@@ -1,0 +1,43 @@
+#!/bin/bash
+
+echo "running notify_template_running"
+
+export EMBED_DESCRIPTION=$(cat << EOF
+\`\`\`
+status-server-map
+-------------
+
+\`\`\`
+EOF
+)
+
+export EMBED_JSON=$(jq -n \
+--arg description "$EMBED_DESCRIPTION" \
+--arg timestamp "$TIMESTAMP" \
+'{
+  "username": "ARK",
+  "avatar_url": "https://ark.wiki.gg/images/thumb/1/1a/ARK_Survival_Ascended.png/20px-ARK_Survival_Ascended.png",
+  "content": ("## Ark Server Status at " + $timestamp),
+  "embeds": [
+      {
+          "title": "server name: ThatDevOpsASAv2 ",
+          "description": "status: ✅ map: TheIsland",
+          "color": "1127128"
+      },
+      {
+          "title": "server name: ThatDevOpsScorchedEarth ",
+          "description": "status: ✅ map: ScorchedEarth",
+          "color": "14177041"
+      },
+      {
+          "title": "server name: ThatDevOpsCenter ",
+          "description": "status: ✅ map: TheCenter",
+          "color": "3447003"
+      },
+      {
+          "title": "server name: ThatDevOpsAberration ",
+          "description": "status: ✅ map: Aberration",
+          "color": "1752220"
+      }
+  ]
+}')

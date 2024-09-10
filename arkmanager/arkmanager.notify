@@ -1,0 +1,38 @@
+#!/bin/bash
+
+template=$1
+
+if [ -z "$template" ]
+then
+  echo "must supply template, e.g maintenance | running"
+  exit
+fi
+
+if [ -z "$DISCORD_URL" ]
+then
+  echo "environment variable DISCORD_URL must be set"
+  exit
+fi
+
+sendNotify() {
+  TIMESTAMP="<t:$(date +%s):t>"
+  curl -H "Content-Type: application/json" \
+    -X POST \
+    -d "${EMBED_JSON}" \
+    ${DISCORD_URL}
+}
+
+case $template in
+  maintenance)
+    source /usr/local/bin/arkmanager.notify.maintenance
+    sendNotify
+    ;;
+  running)
+    source /usr/local/bin/arkmanager.notify.running
+    sendNotify
+    ;;
+  *)
+    echo "unknown template: $template"
+    exit
+    ;;
+esac

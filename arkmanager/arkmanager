@@ -17,6 +17,10 @@ logs() {
   runCommandOnInstance logs $2 
 }
 
+notify() {
+  /usr/local/bin/arkmanager.notify $2
+}
+
 restore() {
   runCommandOnInstance restore $2 $3
 }
@@ -63,6 +67,7 @@ display_help() {
     saveworld @instanceName         Runs an RCON command to save the given instance world
     status @instanceName            Gets status of given instance
     stop @instanceName              Gracefully stops given instance
+    notify <template-name>          Sends a notification to the configured '\$DISCORD_URL' channel
 EOE
 }
 
@@ -81,6 +86,9 @@ list )
         ;;
 logs )                
         logs $@
+        ;;
+notify )                
+        notify $@
         ;;
 stop )                
         stop $@
