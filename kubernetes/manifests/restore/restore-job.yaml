@@ -27,7 +27,7 @@ spec:
       #   kubernetes.io/hostname: pool-e4pb1255q-ry244
       containers:
       - name: restore
-        image: aimvector/ark-asa-server:0.0.37
+        image: aimvector/ark-asa-server:0.0.38
         command: ['/bin/sh', '-c', '. /restore/restore.sh']
         volumeMounts:
         - name: restore

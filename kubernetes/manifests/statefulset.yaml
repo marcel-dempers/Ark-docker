@@ -33,7 +33,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.37
+        image: aimvector/ark-asa-server:0.0.38
         imagePullPolicy: Always
         resources:
           requests:
@@ -58,6 +58,11 @@ spec:
             secretKeyRef:
               name: ark-secrets
               key: CLUSTER_ID
+        - name: DISCORD_URL
+          valueFrom:
+            secretKeyRef:
+              name: ark-secrets
+              key: DISCORD_URL
         ports:
         - containerPort: 30778
           name: clientudp2
