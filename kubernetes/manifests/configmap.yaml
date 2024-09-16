@@ -47,7 +47,6 @@ data:
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Polymer_Organic_C",Quantity=(MaxItemQuantity=50, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_SnailPaste_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
     ConfigOverrideItemMaxQuantity=(ItemClassString="PrimalItemResource_Obsidian_C",Quantity=(MaxItemQuantity=1000, bIgnoreMultiplier=true))
-    [ShooterGameMode_TEMPOverrides]
     bUseCorpseLocator=True
 ---
 apiVersion: v1
