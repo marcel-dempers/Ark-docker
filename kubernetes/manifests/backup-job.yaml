@@ -51,5 +51,6 @@ spec:
             - "/bin/sh"
             - "-c"
             - "kubectl exec -it arkmanager-0 -- bash -c 'arkmanager saveworld @all && arkmanager backup @all'"
+            - "kubectl exec -it arkmanager-0 -- bash -c 'rm -rf /ark/backups/*'" #cleanup old local backups as above sends to S3
           restartPolicy: OnFailure
           serviceAccountName: ark-backup
