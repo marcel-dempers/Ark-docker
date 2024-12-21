@@ -1,4 +1,4 @@
-FROM debian:bookworm@sha256:1aadfee8d292f64b045adb830f8a58bfacc15789ae5f489a0fedcd517a862cb9
+FROM debian:bookworm-20241202
 
 ENV ARK_UID=1000 \
     ARK_GID=1000 \

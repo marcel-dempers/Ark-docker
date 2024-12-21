@@ -33,7 +33,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.38
+        image: aimvector/ark-asa-server:0.0.39
         imagePullPolicy: Always
         resources:
           requests:
@@ -63,6 +63,8 @@ spec:
             secretKeyRef:
               name: ark-secrets
               key: DISCORD_URL
+        - name: DISABLE_START_MAPS_ON_BOOT
+          value: "true"
         ports:
         - containerPort: 30778
           name: clientudp2

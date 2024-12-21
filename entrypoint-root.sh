@@ -16,7 +16,7 @@ else
     mkdir -p ${ARK_DIR}
     echo "setting ownership on install directory before installation: ${ARK_DIR} ..."
     chown -R steam:steam ${ARK_DIR}
-    /home/steam/steamcmd/steamcmd.sh +force_install_dir ${ARK_DIR} +login anonymous +app_update 2430930 +quit
+    su -c "ARK_DIR=${ARK_DIR} /home/steam/steamcmd/steamcmd.sh +force_install_dir \$ARK_DIR +login anonymous +app_update 2430930 +quit" steam
   fi 
 fi
 
