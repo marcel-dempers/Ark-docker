@@ -63,6 +63,13 @@ data:
     arkoption_AltSaveDirectoryName=TheIsland_WP
     arkoption_ShowFloatingDamageText=True
     arkflag_ClusterDirOverride=/ark/clusters
+    # transfering 
+    arkoption_PreventDownloadSurvivors=False
+    arkoption_PreventDownloadItems=False
+    arkoption_PreventDownloadDinos=False
+    arkoption_PreventUploadSurvivors=False 
+    arkoption_PreventUploadItems=False
+    arkoption_PreventUploadDinos=False
   se.cfg: |+
     SESSION_NAME=ThatDevOpsScorchedEarth
     MAP_NAME=ScorchedEarth_WP
@@ -71,6 +78,13 @@ data:
     arkoption_AltSaveDirectoryName=ScorchedEarth_WP
     arkoption_ShowFloatingDamageText=True
     arkflag_ClusterDirOverride=/ark/clusters
+    # transfering 
+    arkoption_PreventDownloadSurvivors=False
+    arkoption_PreventDownloadItems=False
+    arkoption_PreventDownloadDinos=False
+    arkoption_PreventUploadSurvivors=False 
+    arkoption_PreventUploadItems=False
+    arkoption_PreventUploadDinos=False
   center.cfg: |+
     SESSION_NAME=ThatDevOpsCenter
     MAP_NAME=TheCenter_WP
@@ -79,6 +93,13 @@ data:
     arkoption_AltSaveDirectoryName=TheCenter_WP
     arkoption_ShowFloatingDamageText=True
     arkflag_ClusterDirOverride=/ark/clusters
+    # transfering 
+    arkoption_PreventDownloadSurvivors=False
+    arkoption_PreventDownloadItems=False
+    arkoption_PreventDownloadDinos=False
+    arkoption_PreventUploadSurvivors=False 
+    arkoption_PreventUploadItems=False
+    arkoption_PreventUploadDinos=False
   aberration.cfg: |+
     SESSION_NAME=ThatDevOpsAberration
     MAP_NAME=Aberration_WP
