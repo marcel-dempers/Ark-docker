@@ -21,6 +21,7 @@ data:
     DisableCryopodEnemyCheck=True
     AllowCryoFridgeOnSaddle=True
     DisableCryopodFridgeRequirement=True
+    MaxPersonalTamedDinos=1000
     [MessageOfTheDay]
     Duration=60
     Message=Please keep the server clean. Pick up traps. Abandoned structures will be destroyed.
