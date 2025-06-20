@@ -74,6 +74,10 @@ spec:
           name: center
         - containerPort: 30781
           name: aberration
+        - containerPort: 30782
+          name: extinction
+        - containerPort: 30783
+          name: ragnarok  
         volumeMounts:
         - name: backup-secret
           mountPath: /etc/s3cfg/

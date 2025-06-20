@@ -22,5 +22,13 @@ spec:
     protocol: UDP
     name: aberration
     nodePort: 30781
+  - port: 30782
+    protocol: UDP
+    name: extinction
+    nodePort: 30782
+  - port: 30783
+    protocol: UDP
+    name: ragnarok
+    nodePort: 30783
   selector:
     app: arkmanager
