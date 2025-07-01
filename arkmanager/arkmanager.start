@@ -61,6 +61,7 @@ if [ -f "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid" ]; then
     rm "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid"
 fi
 
+touch "${ARK_DIR}/.arkmanager/arkmanager.${instance}.log"
 nohup bash /usr/local/bin/arkmanager.start-instance > ${ARK_DIR}/.arkmanager/arkmanager.${instance}.log 2>&1 &
 sleep 3
 

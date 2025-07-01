@@ -12,8 +12,10 @@ rcon_status=-1
 current_ip=$(curl -s ifconfig.me)
 
 while true; do
-
-  source ${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid
+  
+  if [[ -f "${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid" ]]; then
+    source ${ARK_DIR}/.arkmanager/arkmanager.${instance}.pid
+  fi
   ark_pid=$PID_ID
   ark_ip=$PID_IP
   if [[ -z $ark_pid ]]; then
