@@ -63,6 +63,7 @@ data:
   island.cfg: |+
     SESSION_NAME=ThatDevOpsASAv2
     MAP_NAME=TheIsland_WP
+    DISABLED=true
     SERVER_PORT=30778
     RCON_PORT=27020
     arkoption_AltSaveDirectoryName=TheIsland_WP
