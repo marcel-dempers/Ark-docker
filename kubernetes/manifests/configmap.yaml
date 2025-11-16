@@ -143,6 +143,7 @@ data:
   ragnarok.cfg: |+
     SESSION_NAME=ThatDevOpsRagnarok
     MAP_NAME=Ragnarok_WP
+    DISABLED=true
     SERVER_PORT=30783
     RCON_PORT=27025
     arkoption_AltSaveDirectoryName=Ragnarok_WP

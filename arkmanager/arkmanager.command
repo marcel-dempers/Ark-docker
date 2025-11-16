@@ -22,9 +22,12 @@ runCommand() {
     source "/etc/arkmanager/instances/${instance}.cfg"
     set +o allexport
     
-    if [ -n "${DISABLED,,}" ] && [ "${DISABLED,,}" = true ]; then
-      echo "instance: ⛔ @${instance} is disabled"
-      exit 
+    ## update command special case for disabled instances
+    if [ "$cmd" != "update" ]; then
+      if [ -n "${DISABLED,,}" ] && [ "${DISABLED,,}" = true ]; then
+        echo "instance: ⛔ @${instance} is disabled"
+        exit 
+      fi
     fi
 
     echo "running command ${cmd} on ${instance} with params: ${params}"

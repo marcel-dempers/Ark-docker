@@ -4,6 +4,6 @@ instance=$1
 
 echo "updating ${instance} as steam user..."
 
-su -c "ARK_DIR=${ARK_DIR} /home/steam/steamcmd/steamcmd.sh +force_install_dir \$ARK_DIR +login anonymous +app_update 2430930 +quit" steam
+su -c "ARK_DIR=${ARK_DIR} /home/steam/steamcmd/steamcmd.sh +force_install_dir \$ARK_DIR +login anonymous +app_update 2430930 validate +quit" steam
 
 echo "updated"
