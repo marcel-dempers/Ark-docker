@@ -14,7 +14,7 @@ services:
     - CLUSTER_ID=9e722058d7c5d88f9df56cce
     # below for development purposes only
     - DISABLE_INSTALL_ON_BOOT=true #disable installing the game on boot
-    - DISABLE_START_MAPS_ON_BOOT=false #disable starting the maps on boot
+    - DISABLE_START_MAPS_ON_BOOT=true #disable starting the maps on boot
     volumes:
     - ark:/ark
     - ./configs/instances:/etc/arkmanager/instances
