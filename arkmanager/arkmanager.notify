@@ -4,7 +4,7 @@ template=$1
 
 if [ -z "$template" ]
 then
-  echo "must supply template, e.g maintenance | running"
+  echo "must supply template, e.g status"
   exit
 fi
 
@@ -23,12 +23,8 @@ sendNotify() {
 }
 
 case $template in
-  maintenance)
-    source /usr/local/bin/arkmanager.notify.maintenance
-    sendNotify
-    ;;
-  running)
-    source /usr/local/bin/arkmanager.notify.running
+  status)
+    source /usr/local/bin/arkmanager.notify.status
     sendNotify
     ;;
   *)
