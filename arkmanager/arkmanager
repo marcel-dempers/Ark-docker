@@ -1,6 +1,18 @@
 #!/bin/bash
 RCON_CMDLINE="rcon -a 127.0.0.1:${RCON_PORT} -p ${ADMINPASSWORD}"
 
+# Prevent root from executing the start command directly
+if [ "$(id -u)" -eq 0 ]; then
+    case "$1" in
+        start|backup|restore|update|stop|saveworld)
+            echo "ERROR: Running 'arkmanager $1' as root will break file permissions!"
+            echo "Please run this command as the steam user, or use:"
+            echo "  su steam -c 'arkmanager $1 $2'"
+            exit 1
+            ;;
+    esac
+fi
+
 # command handler for sourcing instance CFGs and running 
 # commands on each instance
 source /usr/local/bin/arkmanager.command 
