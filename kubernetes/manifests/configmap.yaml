@@ -127,7 +127,7 @@ data:
   extinction.cfg: |+
     SESSION_NAME=ThatDevOpsExtinction
     MAP_NAME=Extinction_WP
-    DISABLED=true
+    DISABLED=false
     SERVER_PORT=30782
     RCON_PORT=27024
     arkoption_AltSaveDirectoryName=Extinction_WP
