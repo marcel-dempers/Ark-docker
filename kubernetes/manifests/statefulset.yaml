@@ -33,7 +33,7 @@ spec:
       - name: docker-registry
       containers:
       - name: ark
-        image: aimvector/ark-asa-server:0.0.42
+        image: aimvector/ark-asa-server:0.0.43
         imagePullPolicy: Always
         resources:
           requests:

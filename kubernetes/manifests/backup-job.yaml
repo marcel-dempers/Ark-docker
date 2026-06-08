@@ -50,6 +50,6 @@ spec:
             command:
             - "/bin/sh"
             - "-c"
-            - "kubectl exec -it arkmanager-0 -- bash -c 'arkmanager saveworld @all && arkmanager backup @all && rm -rf /ark/backups/*'"
+            - "kubectl exec -it arkmanager-0 -- bash -c 'su steam arkmanager saveworld @all && su steam arkmanager backup @all && rm -rf /ark/backups/*'"
           restartPolicy: OnFailure
           serviceAccountName: ark-backup

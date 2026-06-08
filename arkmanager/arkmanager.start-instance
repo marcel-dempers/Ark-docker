@@ -1,3 +1,6 @@
 #!/bin/bash
 
-proton run ${ARK_DIR}/ShooterGame/Binaries/Win64/ArkAscendedServer.exe ${MAP_NAME}?SessionName=\"${SESSION_NAME}\"?ServerPassword=${SERVERPASSWORD}?ServerAdminPassword=\"${ADMINPASSWORD}\"?Port=${SERVER_PORT}?RCONEnabled=True?RCONPort=${RCON_PORT}${arkoptions}${_cluster_id}${arkflags}
+echo "Steam Path: ${STEAM_PATH}"
+echo "GE Proton Version: ${GE_PROTON_VERSION}"
+
+${STEAM_PATH}/compatibilitytools.d/GE-Proton${GE_PROTON_VERSION}/proton run ${ARK_DIR}/ShooterGame/Binaries/Win64/ArkAscendedServer.exe ${MAP_NAME}?SessionName=\"${SESSION_NAME}\"?ServerPassword=${SERVERPASSWORD}?ServerAdminPassword=\"${ADMINPASSWORD}\"?Port=${SERVER_PORT}?RCONEnabled=True?RCONPort=${RCON_PORT}${arkoptions}${_cluster_id}${arkflags}
